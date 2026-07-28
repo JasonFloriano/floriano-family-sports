@@ -1,2 +1,2 @@
-# floriano-family-sports
-Ryley and Addisons sorting events
+# FFS — Floriano Family Sports
+Our Family. Our Seasons. Our Story. Never Miss A Game
