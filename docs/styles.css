@@ -190,3 +190,82 @@ h1{
 }
 
 }
+.page-header{
+
+    padding:40px 20px;
+    text-align:center;
+
+}
+
+.small{
+
+    width:120px;
+
+}
+
+.back{
+
+    display:inline-block;
+    margin-bottom:20px;
+
+    color:#F2AF02;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+}
+
+.schedule{
+
+    width:min(700px,92%);
+    margin:40px auto;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.event{
+
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+
+    padding:22px;
+
+    background:#181C23;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.sport{
+
+    font-size:2rem;
+
+}
+
+.event h3{
+
+    margin:0;
+
+}
+
+.event p{
+
+    margin:5px 0;
+    color:#ccc;
+
+}
+
+.event small{
+
+    color:#888;
+
+}
