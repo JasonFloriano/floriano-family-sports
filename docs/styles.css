@@ -1,77 +1,192 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #0F1115;
-    color: white;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    padding: 40px 20px;
+body{
+
+    background:#0F1115;
+
+    color:white;
+
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+    text-align:center;
+
 }
 
-.hero-content {
-    max-width: 650px;
-    text-align: center;
+/****************************/
+
+.hero{
+
+    padding:60px 20px 20px;
+
 }
 
-.shield {
-    width: 180px;
-    max-width: 70%;
-    margin-bottom: 20px;
+/****************************/
+
+.shield{
+
+    width:190px;
+
+    margin:auto;
+
+    display:block;
+
+    filter:
+        drop-shadow(0 15px 40px rgba(242,175,2,.25));
+
 }
 
-.mascot img {
-    width: 220px;
-    max-width: 25vw;
+/****************************/
+
+h1{
+
+    margin-top:25px;
+
+    font-size:3rem;
+
+    color:#F2AF02;
+
+    font-weight:800;
+
 }
 
-h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    color: #F2AF02;
-    margin: 0;
+.hero p{
+
+    margin-top:10px;
+
+    color:#bdbdbd;
+
+    font-size:1.1rem;
+
 }
 
-.tagline {
-    color: #BBBBBB;
-    font-size: 1.3rem;
-    margin: 20px 0 40px;
+/****************************/
+
+.mascots{
+
+    margin-top:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:80px;
+
+    flex-wrap:wrap;
+
 }
 
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.ryley{
+
+    height:430px;
+
+    transition:.35s;
+
 }
 
-.card {
-    display: block;
-    padding: 20px;
-    border-radius: 18px;
-    background: #6B162E;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: transform .25s ease, background .25s ease;
+.addison{
+
+    height:430px;
+
+    transition:.35s;
+
 }
 
-.card:hover {
-    background: #8A2040;
-    transform: translateY(-4px);
+.ryley:hover{
+
+    transform:
+        translateX(8px)
+        scale(1.02);
+
 }
 
-@media (max-width: 900px) {
+.addison:hover{
 
-    .hero {
-        flex-direction: column;
-    }
+    transform:
+        translateX(-8px)
+        scale(1.02);
 
-    .mascot img {
-        width: 180px;
-        max-width: 60vw;
-    }
+}
+
+/****************************/
+
+.buttons{
+
+    margin:50px auto 80px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    width:min(420px,90%);
+
+}
+
+.buttons a{
+
+    background:#6B162E;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    font-size:1.1rem;
+
+    transition:.25s;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.35);
+
+}
+
+.buttons a:hover{
+
+    background:#F2AF02;
+
+    color:#111;
+
+    transform:translateY(-3px);
+
+}
+
+/****************************/
+
+@media(max-width:900px){
+
+h1{
+
+    font-size:2.3rem;
+
+}
+
+.shield{
+
+    width:160px;
+
+}
+
+.mascots{
+
+    gap:20px;
+
+}
+
+.ryley,
+.addison{
+
+    height:250px;
+
+}
+
 }
