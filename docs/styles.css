@@ -10,43 +10,68 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 40px;
+    gap: 40px;
+    padding: 40px 20px;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 650px;
+    text-align: center;
+}
+
+.shield {
+    width: 180px;
+    max-width: 70%;
+    margin-bottom: 20px;
+}
+
+.mascot img {
+    width: 220px;
+    max-width: 25vw;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     color: #F2AF02;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 .tagline {
+    color: #BBBBBB;
     font-size: 1.3rem;
-    color: #bbbbbb;
-    margin-bottom: 50px;
+    margin: 20px 0 40px;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .card {
-    text-decoration: none;
-    background: #6B162E;
-    color: white;
+    display: block;
     padding: 20px;
     border-radius: 18px;
+    background: #6B162E;
+    color: white;
+    text-decoration: none;
     font-size: 1.2rem;
-    transition: all .25s ease;
+    transition: transform .25s ease, background .25s ease;
 }
 
 .card:hover {
     background: #8A2040;
     transform: translateY(-4px);
+}
+
+@media (max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .mascot img {
+        width: 180px;
+        max-width: 60vw;
+    }
 }
