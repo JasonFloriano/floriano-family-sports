@@ -222,15 +222,17 @@ h1{
 
 }
 
-.schedule{
+.schedule h2{
 
-    width:min(700px,92%);
-    margin:40px auto;
+    color:#F2AF02 !important;
 
-    display:flex;
-    flex-direction:column;
+    font-size:1rem !important;
 
-    gap:20px;
+    letter-spacing:2px;
+
+    margin:25px 10px 12px;
+
+    font-weight:700;
 
 }
 
