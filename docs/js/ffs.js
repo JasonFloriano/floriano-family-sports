@@ -15,3 +15,26 @@ const FFS = {
     }
 
 };
+getAthlete(id) {
+
+    return this.data.athletes[id];
+
+},
+
+getTeam(id) {
+
+    return this.data.teams[id];
+
+},
+
+getVenue(id) {
+
+    return this.data.venues[id];
+
+},
+
+getOpponent(id) {
+
+    return this.data.opponents[id];
+
+}
