@@ -68,5 +68,23 @@ const FFS = {
     showOpponents() {
         console.table(this.data.opponents);
     }
+getEventDetails(event) {
 
+    return {
+
+        athlete: this.getAthlete(event.ATHLETEID),
+
+        team: this.getTeam(event.TEAMID),
+
+        venue: this.getVenue(event.VENUEID),
+
+        opponent: this.getOpponent(event.OPPONENTID),
+
+        facility: event.FACILITY,
+
+        type: event.TYPE
+
+    };
+
+},
 };
