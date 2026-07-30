@@ -301,56 +301,50 @@ h1{
 }
 
 /* ==========================================
-   Direction Button
+   Get Directions Button
 ========================================== */
-a.directions-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 24px;
-    background: #8B1538;
-    color: #fff;
-    text-decoration: none;
-    border: 2px solid #F4C542;
-    border-radius: 10px;
-    font-weight: bold;
-}
 
-a.directions-button:hover {
-    background: #A61D4D;
-}
-
-a.directions-button:visited,
-a.directions-button:link {
-    color: #fff;
-    text-decoration: none;
-}
-.directions{
+#next-directions{
 
     display:inline-block;
 
-    margin-top:10px;
+    margin-top:15px;
 
-    padding:8px 16px;
+    padding:12px 24px;
 
-    border-radius:999px;
+    background:#7A1436;
 
-    background:#F2AF02;
+    color:#ffffff !important;
 
-    color:#111;
-
-    text-decoration:none;
+    text-decoration:none !important;
 
     font-weight:700;
+
+    border:3px solid #D4AF37;
+
+    border-radius:18px;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.35);
 
     transition:.25s;
 
 }
 
-.directions:hover{
+#next-directions:hover{
 
-    transform:translateY(-2px);
+    background:#A3194C;
 
+    transform:scale(1.03);
 
+}
+
+#next-directions:visited,
+#next-directions:link,
+#next-directions:active{
+
+    color:#ffffff !important;
+
+    text-decoration:none !important;
 }
 
 /* ==========================================
