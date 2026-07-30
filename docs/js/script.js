@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await FFS.init();
 
+window.FFS = FFS;
+
   // Calendar integration goes here
 
 });
