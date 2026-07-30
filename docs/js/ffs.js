@@ -96,5 +96,26 @@ const FFS = {
     showOpponents() {
         console.table(this.data.opponents);
     }
+getNextGame() {
 
+    const event = {
+
+        ATHLETEID: "ADDISON",
+        TEAMID: "EHS_FJV_VB",
+        VENUEID: "EHS",
+        OPPONENTID: "FULL",
+        FACILITY: "GYM",
+        TYPE: "LEAGUE",
+
+        DATE: "August 13, 2026",
+
+        TIME: "4:00 PM",
+
+        HOME: true
+
+    };
+
+    return this.getEventDetails(event);
+
+},
 };
