@@ -10,6 +10,11 @@ const FFS = {
     // --------------------------------------------------
 
     data: null,
+    calendar: {
+
+    events: []
+
+},
 
     // --------------------------------------------------
     // Initialize
@@ -73,6 +78,8 @@ const FFS = {
 
     getNextGame() {
 
+    if (this.calendar.events.length === 0) {
+
         const event = {
 
             ATHLETEID: "ADDISON",
@@ -83,7 +90,8 @@ const FFS = {
             FACILITY: "GYM",
             TYPE: "LEAGUE",
 
-            DATE: "August 13, 2026",
+            DATE: "Thursday, August 13, 2026",
+
             TIME: "4:00 PM",
 
             HOME: true
@@ -92,8 +100,20 @@ const FFS = {
 
         return this.getEventDetails(event);
 
-    },
+    }
 
+    return this.getEventDetails(this.calendar.events[0]);
+
+},
+loadCalendar(events) {
+
+    this.calendar.events = events;
+
+    console.log("📅 Calendar Loaded");
+
+    console.log(this.calendar.events);
+
+},
     // --------------------------------------------------
     // Render Next Up Card
     // --------------------------------------------------
