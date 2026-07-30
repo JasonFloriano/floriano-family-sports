@@ -31,10 +31,10 @@ async function loadData() {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-  await FFS.init();
+    await FFS.init();
 
-window.FFS = FFS;
+    FFS.renderNextGame();
 
-  // Calendar integration goes here
+    window.FFS = FFS;
 
 });
