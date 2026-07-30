@@ -54,9 +54,9 @@
   "ARL": {
     "school": "Arlington High School",
     "mascot": "Lions"
-  }
+  },
   "FULL": {
-  "school": "Fullerton High School",
-  "mascot": "Indians"
-}
+    "school": "Fullerton High School",
+    "mascot": "Indians"
+  }
 }
