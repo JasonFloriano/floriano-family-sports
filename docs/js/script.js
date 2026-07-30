@@ -31,7 +31,7 @@ async function loadData() {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-  window.data = await loadData();
+  await FFS.init();
 
   // Calendar integration goes here
 
