@@ -1,32 +1,26 @@
-// ==========================================
-// Floriano Family Sports (FFS)
-// Main Application
-// ==========================================
+// ========================================
+// Floriano Family Sports
+// ========================================
 
-console.log("🏐 FFS starting...");
+console.log("🏐 FFS Started");
 
-async function loadData(fileName) {
-    const response = await fetch(`data/${fileName}`);
+async function loadJSON(file) {
+    const response = await fetch(`data/${file}`);
     return await response.json();
 }
 
-async function initializeFFS() {
-    try {
-        const venues = await loadData("venues.json");
-        const athletes = await loadData("athletes.json");
-        const opponents = await loadData("opponents.json");
-        const teams = await loadData("teams.json");
+async function initialize() {
 
-        console.log("✅ FFS Loaded Successfully");
+    const venues = await loadJSON("venues.json");
+    const athletes = await loadJSON("athletes.json");
+    const teams = await loadJSON("teams.json");
+    const opponents = await loadJSON("opponents.json");
 
-        console.table(venues);
-        console.table(athletes);
-        console.table(opponents);
-        console.table(teams);
+    console.log("Venues", venues);
+    console.log("Athletes", athletes);
+    console.log("Teams", teams);
+    console.log("Opponents", opponents);
 
-    } catch (error) {
-        console.error("FFS Error:", error);
-    }
 }
 
-initializeFFS();
+initialize();
