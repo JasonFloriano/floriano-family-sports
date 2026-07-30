@@ -300,6 +300,30 @@ h1{
 
 }
 
+/* ==========================================
+   Direction Button
+========================================== */
+a.directions-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: #8B1538;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #F4C542;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+a.directions-button:hover {
+    background: #A61D4D;
+}
+
+a.directions-button:visited,
+a.directions-button:link {
+    color: #fff;
+    text-decoration: none;
+}
 .directions{
 
     display:inline-block;
