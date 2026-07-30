@@ -96,26 +96,21 @@ const FFS = {
     showOpponents() {
         console.table(this.data.opponents);
     }
-getNextGame() {
+getEventDetails(event) {
 
-    const event = {
+    return {
 
-        ATHLETEID: "ADDISON",
-        TEAMID: "EHS_FJV_VB",
-        VENUEID: "EHS",
-        OPPONENTID: "FULL",
-        FACILITY: "GYM",
-        TYPE: "LEAGUE",
+        ...event,
 
-        DATE: "August 13, 2026",
+        athlete: this.getAthlete(event.ATHLETEID),
 
-        TIME: "4:00 PM",
+        team: this.getTeam(event.TEAMID),
 
-        HOME: true
+        venue: this.getVenue(event.VENUEID),
+
+        opponent: this.getOpponent(event.OPPONENTID)
 
     };
-
-    return this.getEventDetails(event);
 
 },
 };
