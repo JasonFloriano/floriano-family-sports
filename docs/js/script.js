@@ -18,7 +18,8 @@ async function loadData() {
         venues: await loadJSON("venues.json"),
         athletes: await loadJSON("athletes.json"),
         teams: await loadJSON("teams.json"),
-        opponents: await loadJSON("opponents.json")
+        opponents: await loadJSON("opponents.json"),
+        events: await loadJSON("events.json")
     };
 
 }
