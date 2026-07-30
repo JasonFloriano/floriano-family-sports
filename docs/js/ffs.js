@@ -1,13 +1,17 @@
 // ======================================================
 // Floriano Family Sports (FFS)
-// Core Data Engine
+// Core Data Engine v1.0
 // ======================================================
 
 const FFS = {
 
+    // Loaded lookup data
     data: null,
 
-    // Initialize FFS
+    // --------------------------------------------------
+    // Initialize
+    // --------------------------------------------------
+
     async init() {
 
         this.data = await loadData();
@@ -17,60 +21,65 @@ const FFS = {
 
     },
 
-    // -----------------------------
+    // --------------------------------------------------
     // Athletes
-    // -----------------------------
+    // --------------------------------------------------
 
     getAthlete(id) {
         return this.data.athletes[id];
     },
 
-    // -----------------------------
+    // --------------------------------------------------
     // Teams
-    // -----------------------------
+    // --------------------------------------------------
 
     getTeam(id) {
         return this.data.teams[id];
     },
 
-    // -----------------------------
+    // --------------------------------------------------
     // Venues
-    // -----------------------------
+    // --------------------------------------------------
 
     getVenue(id) {
         return this.data.venues[id];
     },
 
-    // -----------------------------
+    // --------------------------------------------------
     // Opponents
-    // -----------------------------
+    // --------------------------------------------------
 
     getOpponent(id) {
         return this.data.opponents[id];
     },
-getEventDetails(event) {
 
-    return {
+    // --------------------------------------------------
+    // Build a Complete Event Object
+    // --------------------------------------------------
 
-        athlete: this.getAthlete(event.ATHLETEID),
+    getEventDetails(event) {
 
-        team: this.getTeam(event.TEAMID),
+        return {
 
-        venue: this.getVenue(event.VENUEID),
+            athlete: this.getAthlete(event.ATHLETEID),
 
-        opponent: this.getOpponent(event.OPPONENTID),
+            team: this.getTeam(event.TEAMID),
 
-        facility: event.FACILITY,
+            venue: this.getVenue(event.VENUEID),
 
-        type: event.TYPE
+            opponent: this.getOpponent(event.OPPONENTID),
 
-    };
+            facility: event.FACILITY,
 
-},
-    
-    // -----------------------------
+            type: event.TYPE
+
+        };
+
+    },
+
+    // --------------------------------------------------
     // Debug Helpers
-    // -----------------------------
+    // --------------------------------------------------
 
     showAthletes() {
         console.table(this.data.athletes);
@@ -87,23 +96,5 @@ getEventDetails(event) {
     showOpponents() {
         console.table(this.data.opponents);
     }
-getEventDetails(event) {
 
-    return {
-
-        athlete: this.getAthlete(event.ATHLETEID),
-
-        team: this.getTeam(event.TEAMID),
-
-        venue: this.getVenue(event.VENUEID),
-
-        opponent: this.getOpponent(event.OPPONENTID),
-
-        facility: event.FACILITY,
-
-        type: event.TYPE
-
-    };
-
-},
 };
