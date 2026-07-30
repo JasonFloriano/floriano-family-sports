@@ -17,28 +17,39 @@ const FFS = {
 
     async load(config) {
 
+    try {
+
         const url =
             `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(config.calendarId)}/events` +
             `?key=${config.apiKey}` +
             `&singleEvents=true` +
             `&orderBy=startTime`;
 
+        console.log(url);
+
         const response = await fetch(url);
 
-        if (!response.ok) {
-            throw new Error(`Calendar request failed: ${response.status}`);
-        }
+        console.log(response.status);
 
         const data = await response.json();
 
-        this.events = data.items;
+        console.log(data);
+
+        this.events = data.items || [];
 
         console.log("📅 Calendar Loaded");
+
         console.log(this.events);
 
     }
 
-},
+    catch(error){
+
+        console.error(error);
+
+    }
+
+}
 
     // ==================================================
     // Initialize
