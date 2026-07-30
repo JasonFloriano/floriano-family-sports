@@ -100,27 +100,31 @@ const FFS = {
 
     renderNextGame() {
 
-        const game = this.getNextGame();
+    const game = this.getNextGame();
 
-        document.getElementById("next-athlete").textContent =
-            game.athlete.name;
+    document.getElementById("next-athlete").textContent =
+        `🏐 ${game.athlete.name}`;
 
-        document.getElementById("next-opponent").textContent =
-            game.HOME
-                ? `vs ${game.opponent.school}`
-                : `@ ${game.opponent.school}`;
+    document.getElementById("next-opponent").textContent =
+        game.HOME
+            ? `🏠 HOME vs ${game.opponent.school} ${game.opponent.mascot}`
+            : `🚌 AWAY @ ${game.opponent.school} ${game.opponent.mascot}`;
 
-        document.getElementById("next-date").textContent =
-            game.DATE;
+    document.getElementById("next-date").textContent =
+        `📅 ${game.DATE}`;
 
-        document.getElementById("next-time").textContent =
-            game.TIME;
+    document.getElementById("next-time").textContent =
+        `🕓 ${game.TIME}`;
 
-        document.getElementById("next-venue").textContent =
-            game.venue.name;
+    document.getElementById("next-venue").textContent =
+        `📍 ${game.venue.name}`;
 
-    },
+    const address = `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
 
+    document.getElementById("next-directions").href =
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+},
     // --------------------------------------------------
     // Debug Helpers
     // --------------------------------------------------
