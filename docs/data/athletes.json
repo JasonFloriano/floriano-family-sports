@@ -1,22 +1,18 @@
 {
-  "addison": {
-    "id": "addison",
+  "ADDISON": {
+    "id": "ADDISON",
     "name": "Addison Floriano",
-    "sport": "Volleyball",
-    "team": "Esperanza Frosh/JV",
     "number": 9,
-    "facility": "Gym",
-    "venue": "EHS"
+    "sport": "Volleyball",
+    "team": "EHS_FJV_VB",
+    "photo": "addison.jpg"
   },
-
-  "ryley": {
-    "id": "ryley",
+  "RYLEY": {
+    "id": "RYLEY",
     "name": "Ryley Floriano",
-    "sport": "Water Polo",
-    "team": "Esperanza Varsity",
     "number": 1,
-    "position": "Goalie",
-    "facility": "Pool",
-    "venue": "EHS"
+    "sport": "Water Polo",
+    "team": "EHS_VAR_WP",
+    "photo": "ryley.jpg"
   }
 }
