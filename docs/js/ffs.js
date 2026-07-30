@@ -106,9 +106,19 @@ const FFS = {
     },
 
     getNextGame() {
-        if (this.calendar.events.length === 0) return null;
-        return this.getEventDetails(this.calendar.events[0]);
-    },
+
+    const event = this.calendar.events.find(event =>
+        event.OPPONENTID &&
+        event.VENUEID
+    );
+
+    if (!event) {
+        return null;
+    }
+
+    return this.getEventDetails(event);
+
+},
 
     renderNextGame() {
         const game = this.getNextGame();
