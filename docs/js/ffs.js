@@ -12,8 +12,33 @@ const FFS = {
     data: null,
 
     calendar: {
-        events: []
-    },
+
+    events: [],
+
+    async load(config) {
+
+        const url =
+            `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(config.calendarId)}/events` +
+            `?key=${config.apiKey}` +
+            `&singleEvents=true` +
+            `&orderBy=startTime`;
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Calendar request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        this.events = data.items;
+
+        console.log("📅 Calendar Loaded");
+        console.log(this.events);
+
+    }
+
+},
 
     // ==================================================
     // Initialize
@@ -21,12 +46,15 @@ const FFS = {
 
     async init() {
 
-        this.data = await loadData();
+    this.data = await loadData();
 
-        console.log("🏆 FFS Initialized");
-        console.log(this.data);
+    await this.calendar.load(this.config);
 
-    },
+    console.log("🏆 FFS Initialized");
+
+    this.renderNextGame();
+
+},
 
     // ==================================================
     // Lookup Functions
@@ -62,7 +90,13 @@ const FFS = {
         this.renderNextGame();
 
     },
+config: {
 
+    calendarId: "571551bd31f9314f7a0a70c01d74605b594b4bc6c5951d8d72657c53c268e6a1@group.calendar.google.com",
+
+    apiKey: "AIzaSyCSUm0-2IIUX_bDPnqXUY6O0lBAbgeEFVc"
+
+},
     getNextGame() {
 
         // Temporary event until Google Calendar is connected
