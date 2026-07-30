@@ -1,35 +1,36 @@
+// ==========================================
+// Floriano Family Sports
+// ==========================================
+
 console.log("🏐 FFS Started");
+
+const calendarURL =
+    "https://calendar.google.com/calendar/ical/571551bd31f9314f7a0a70c01d74605b594b4bc6c5951d8d72657c53c268e6a1%40group.calendar.google.com/public/basic.ics";
 
 async function loadJSON(file) {
     const response = await fetch(`data/${file}`);
     return await response.json();
 }
 
+async function loadData() {
+
+    return {
+        venues: await loadJSON("venues.json"),
+        athletes: await loadJSON("athletes.json"),
+        teams: await loadJSON("teams.json"),
+        opponents: await loadJSON("opponents.json")
+    };
+
+}
+
 async function initialize() {
 
-    try {
+    const data = await loadData();
 
-        const venues = await loadJSON("venues.json");
-        const athletes = await loadJSON("athletes.json");
-        const teams = await loadJSON("teams.json");
-        const opponents = await loadJSON("opponents.json");
+    document.querySelector(".game-status").innerHTML =
+        "🚀 FFS Ready";
 
-        document.getElementById("nextGameCard").innerHTML = `
-            <h3>✅ Website Ready</h3>
-            <p>${venues.length} Venues Loaded</p>
-            <p>${athletes.length} Athletes Loaded</p>
-            <p>${teams.length} Teams Loaded</p>
-            <p>${opponents.length} Opponents Loaded</p>
-        `;
-
-    } catch (error) {
-
-        document.getElementById("nextGameCard").innerHTML = `
-            <h3>❌ Error Loading Data</h3>
-            <p>${error}</p>
-        `;
-
-    }
+    console.log(data);
 
 }
 
