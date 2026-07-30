@@ -28,11 +28,14 @@ async function initialize() {
 
     const data = await loadData();
 
-    document.querySelector(".game-status").innerHTML =
-        "🚀 FFS Ready";
+    const nextEvent = data.events[0];
 
-    console.log(data);
+    document.querySelector(".game-status").innerHTML = `
+        <strong>🏐 ${nextEvent.sport}</strong><br>
+        ${nextEvent.date}<br>
+        ${nextEvent.time}<br>
+        ${nextEvent.homeAway}
+    `;
 
 }
-
 initialize();
