@@ -30,11 +30,16 @@ async function initialize() {
 
     const nextEvent = data.events[0];
 
+    const athlete = data.athletes.find(a => a.id === nextEvent.athleteId);
+    const venue = data.venues.find(v => v.id === nextEvent.venueId);
+    const opponent = data.opponents.find(o => o.id === nextEvent.opponentId);
+
     document.querySelector(".game-status").innerHTML = `
-        <strong>🏐 ${nextEvent.sport}</strong><br>
+        <strong>${athlete.name}</strong><br>
+        ${nextEvent.homeAway === "HOME" ? "vs." : "@"} ${opponent.school}<br>
         ${nextEvent.date}<br>
         ${nextEvent.time}<br>
-        ${nextEvent.homeAway}
+        📍 ${venue.school}
     `;
 
 }
