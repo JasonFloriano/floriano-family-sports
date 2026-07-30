@@ -1,46 +1,38 @@
-// ==========================================
-// Floriano Family Sports
-// ==========================================
-
-console.log("🏐 FFS Started");
-
-const calendarURL =
-    "https://calendar.google.com/calendar/ical/571551bd31f9314f7a0a70c01d74605b594b4bc6c5951d8d72657c53c268e6a1%40group.calendar.google.com/public/basic.ics";
+// script.js
 
 async function loadJSON(file) {
-    const response = await fetch(`data/${file}`);
-    return await response.json();
+  const response = await fetch(file);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load ${file}`);
+  }
+
+  return response.json();
 }
 
 async function loadData() {
-
-    return {
-        venues: await loadJSON("venues.json"),
-        athletes: await loadJSON("athletes.json"),
-        teams: await loadJSON("teams.json"),
-        opponents: await loadJSON("opponents.json"),
-        events: await loadJSON("events.json")
+  try {
+    const data = {
+      athletes: await loadJSON("data/athletes.json"),
+      teams: await loadJSON("data/teams.json"),
+      venues: await loadJSON("data/venues.json"),
+      opponents: await loadJSON("data/opponents.json")
     };
 
+    console.log("FFS Data Loaded");
+    console.log(data);
+
+    return data;
+
+  } catch (error) {
+    console.error("Error loading data:", error);
+  }
 }
 
-async function initialize() {
+document.addEventListener("DOMContentLoaded", async () => {
 
-    const data = await loadData();
+  const data = await loadData();
 
-    const nextEvent = data.events[0];
+  // Calendar integration goes here
 
-    const athlete = data.athletes.find(a => a.id === nextEvent.athleteId);
-    const venue = data.venues.find(v => v.id === nextEvent.venueId);
-    const opponent = data.opponents.find(o => o.id === nextEvent.opponentId);
-
-    document.querySelector(".game-status").innerHTML = `
-        <strong>${athlete.name}</strong><br>
-        ${nextEvent.homeAway === "HOME" ? "vs." : "@"} ${opponent.school}<br>
-        ${nextEvent.date}<br>
-        ${nextEvent.time}<br>
-        📍 ${venue.school}
-    `;
-
-}
-initialize();
+});
