@@ -139,3 +139,5 @@ const FFS = {
 };
 
 document.addEventListener("DOMContentLoaded", () => FFS.init());
+
+
