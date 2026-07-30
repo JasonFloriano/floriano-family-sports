@@ -1,6 +1,6 @@
 // ======================================================
 // Floriano Family Sports (FFS)
-// Core Data Engine v1.1
+// Core Data Engine v1.2
 // ======================================================
 
 const FFS = {
@@ -67,7 +67,8 @@ const FFS = {
     },
 
     // --------------------------------------------------
-    // Temporary Test Event
+    // Temporary Next Game
+    // (Later this will come from Google Calendar)
     // --------------------------------------------------
 
     getNextGame() {
@@ -90,6 +91,33 @@ const FFS = {
         };
 
         return this.getEventDetails(event);
+
+    },
+
+    // --------------------------------------------------
+    // Render Next Up Card
+    // --------------------------------------------------
+
+    renderNextGame() {
+
+        const game = this.getNextGame();
+
+        document.getElementById("next-athlete").textContent =
+            game.athlete.name;
+
+        document.getElementById("next-opponent").textContent =
+            game.HOME
+                ? `vs ${game.opponent.school}`
+                : `@ ${game.opponent.school}`;
+
+        document.getElementById("next-date").textContent =
+            game.DATE;
+
+        document.getElementById("next-time").textContent =
+            game.TIME;
+
+        document.getElementById("next-venue").textContent =
+            game.venue.name;
 
     },
 
