@@ -138,4 +138,4 @@ const FFS = {
 
 };
 
-document.addEventListener(“DOMContentLoaded”, () => FFS.init());
+document.addEventListener("DOMContentLoaded", () => FFS.init());
