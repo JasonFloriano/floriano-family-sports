@@ -1,20 +1,18 @@
 {
-  "esperanza_frosh_jv_volleyball": {
-    "id": "esperanza_frosh_jv_volleyball",
+  "EHS_FJV_VB": {
+    "id": "EHS_FJV_VB",
     "school": "Esperanza High School",
+    "name": "Frosh/JV Volleyball",
     "sport": "Volleyball",
     "level": "Frosh/JV",
-    "homeVenue": "EHS",
-    "facility": "Gym",
-    "season": "2026"
+    "season": "Fall"
   },
-  "esperanza_varsity_water_polo": {
-    "id": "esperanza_varsity_water_polo",
+  "EHS_VAR_WP": {
+    "id": "EHS_VAR_WP",
     "school": "Esperanza High School",
+    "name": "Varsity Water Polo",
     "sport": "Water Polo",
     "level": "Varsity",
-    "homeVenue": "EHS",
-    "facility": "Pool",
-    "season": "2026"
+    "season": "Fall"
   }
 }
