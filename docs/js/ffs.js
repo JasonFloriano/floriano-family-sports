@@ -6,7 +6,7 @@ const FFS = {
 
     config: {
         calendarId: "571551bd31f9314f7a0a70c01d74605b594b4bc6c5951d8d72657c53c268e6a1@group.calendar.google.com",
-        apiKey: "REPLACE_WITH_YOUR_API_KEY"
+        apiKey: "AIzaSyCSUm0-2IIUX_bDPnqXUY6O0lBAbgeEFVc"
     },
 
     data: null,
