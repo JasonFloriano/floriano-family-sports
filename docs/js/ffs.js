@@ -122,7 +122,15 @@ const FFS = {
 
     renderNextGame() {
         const game = this.getNextGame();
-        if (!game) return;
+        if (!game) {
+    console.warn("No upcoming games found.");
+    return;
+}
+
+if (!game.opponent || !game.venue) {
+    console.warn("Incomplete event", game);
+    return;
+}
 
         const school = game.opponent.school.replace(" High School", "");
 
