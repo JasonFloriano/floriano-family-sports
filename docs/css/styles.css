@@ -1,408 +1,266 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ======================================================
+   Floriano Family Sports (FFS)
+   Main Stylesheet
+====================================================== */
+
+/* ======================================================
+   Global
+====================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-    background:#0F1115;
-
-    color:white;
-
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-
-    text-align:center;
-
+body {
+    background: #0F1115;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: center;
 }
 
-/****************************/
+/* ======================================================
+   Hero
+====================================================== */
 
-.hero{
-
-    padding:60px 20px 20px;
-
+.hero {
+    padding: 60px 20px 20px;
 }
 
-/****************************/
-
-.shield{
-
-    width:190px;
-
-    margin:auto;
-
-    display:block;
-
-    filter:
-        drop-shadow(0 15px 40px rgba(242,175,2,.25));
-
+.shield {
+    width: 190px;
+    display: block;
+    margin: auto;
+    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
 }
 
-/****************************/
-
-h1{
-
-    margin-top:25px;
-
-    font-size:3rem;
-
-    color:#F2AF02;
-
-    font-weight:800;
-
+h1 {
+    margin-top: 25px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #F2AF02;
 }
 
-.hero p{
-
-    margin-top:10px;
-
-    color:#bdbdbd;
-
-    font-size:1.1rem;
-
+.hero p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #bdbdbd;
 }
 
-/****************************/
+/* ======================================================
+   Mascots
+====================================================== */
 
-.mascots{
-
-    margin-top:45px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-end;
-
-    gap:80px;
-
-    flex-wrap:wrap;
-
-}
-
-.ryley{
-
-    height:430px;
-
-    transition:.35s;
-
-}
-
-.addison{
-
-    height:430px;
-
-    transition:.35s;
-
-}
-
-.ryley:hover{
-
-    transform:
-        translateX(8px)
-        scale(1.02);
-
-}
-
-.addison:hover{
-
-    transform:
-        translateX(-8px)
-        scale(1.02);
-
-}
-
-/****************************/
-
-.buttons{
-
-    margin:50px auto 80px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-
-    width:min(420px,90%);
-
-}
-
-.buttons a{
-
-    background:#6B162E;
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:20px;
-
-    border-radius:18px;
-
-    font-size:1.1rem;
-
-    transition:.25s;
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.35);
-
-}
-
-.buttons a:hover{
-
-    background:#F2AF02;
-
-    color:#111;
-
-    transform:translateY(-3px);
-
-}
-
-/****************************/
-
-@media(max-width:900px){
-
-h1{
-
-    font-size:2.3rem;
-
-}
-
-.shield{
-
-    width:160px;
-
-}
-
-.mascots{
-
-    gap:20px;
-
+.mascots {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin-top: 45px;
 }
 
 .ryley,
-.addison{
-
-    height:250px;
-
+.addison {
+    height: 430px;
+    transition: .35s;
 }
 
-}
-.page-header{
-
-    padding:40px 20px;
-    text-align:center;
-
-}
-.page-header h1{
-
-    font-size:2.3rem;
-
-    margin-top:18px;
-
-}
-.small{
-
-    width:90px;
-
+.ryley:hover {
+    transform: translateX(8px) scale(1.02);
 }
 
-.back{
-
-    display:inline-block;
-    margin-bottom:20px;
-
-    color:#F2AF02;
-
-    text-decoration:none;
-
-    font-weight:700;
-
+.addison:hover {
+    transform: translateX(-8px) scale(1.02);
 }
 
-.schedule h2{
+/* ======================================================
+   Main Buttons
+====================================================== */
 
-    color:#F2AF02 !important;
-
-    font-size:1rem !important;
-
-    letter-spacing:2px;
-
-    margin:25px 10px 12px;
-
-    font-weight:700;
-
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: min(420px, 90%);
+    margin: 50px auto 80px;
 }
 
-.event{
-
-    display:flex;
-    align-items:center;
-
-    gap:20px;
-
-    padding:22px;
-
-    background:#181C23;
-
-    border-radius:18px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.35);
-
+.buttons a {
+    padding: 20px;
+    border-radius: 18px;
+    background: #6B162E;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: .25s;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
 }
 
-.sport{
-
-    font-size:2.8rem;
-    width:60px;
-    text-align:center;
-
+.buttons a:hover {
+    background: #F2AF02;
+    color: #111;
+    transform: translateY(-3px);
 }
 
-.event p{
+/* ======================================================
+   Page Header
+====================================================== */
 
-    margin:6px 0;
-    font-size:1.2rem;
-    color:#d0d0d0;
-
+.page-header {
+    padding: 40px 20px;
+    text-align: center;
 }
 
-.event p{
-
-    margin:5px 0;
-    color:#ccc;
-
+.page-header h1 {
+    margin-top: 18px;
+    font-size: 2.3rem;
 }
 
-.event small{
-
-    color:#888;
-
-
-}
-.schedule h2{
-
-    color:#F2AF02;
-
-    margin:25px 10px 12px;
-
-    font-size:1rem;
-
-    letter-spacing:2px;
-
+.small {
+    width: 90px;
 }
 
-.featured{
-
-    border:2px solid rgba(242,175,2,.25);
-
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #F2AF02;
+    text-decoration: none;
+    font-weight: 700;
 }
 
-/* ==========================================
+/* ======================================================
+   Schedule
+====================================================== */
+
+.schedule h2 {
+    margin: 25px 10px 12px;
+    color: #F2AF02;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px;
+    background: #181C23;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+
+.sport {
+    width: 60px;
+    text-align: center;
+    font-size: 2.8rem;
+}
+
+.event p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+.event small {
+    color: #888;
+}
+
+.featured {
+    border: 2px solid rgba(242,175,2,.25);
+}
+
+/* ======================================================
    Get Directions Button
-========================================== */
+====================================================== */
 
-#next-directions{
-
-    display:inline-block;
-
-    margin-top:15px;
-
-    padding:12px 24px;
-
-    background:#7A1436;
-
-    color:#ffffff !important;
-
-    text-decoration:none !important;
-
-    font-weight:700;
-
-    border:3px solid #D4AF37;
-
-    border-radius:18px;
-
-    box-shadow:0 6px 15px rgba(0,0,0,.35);
-
-    transition:.25s;
-
+#next-directions {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: #7A1436;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    border: 3px solid #D4AF37;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,.35);
+    transition: .25s;
 }
 
-#next-directions:hover{
-
-    background:#A3194C;
-
-    transform:scale(1.03);
-
+#next-directions:hover {
+    background: #A3194C;
+    transform: scale(1.03);
 }
 
-#next-directions:visited,
 #next-directions:link,
-#next-directions:active{
-
-    color:#ffffff !important;
-
-    text-decoration:none !important;
+#next-directions:visited,
+#next-directions:active {
+    color: #fff !important;
+    text-decoration: none !important;
 }
 
-/* ==========================================
-   Subscribe Button
-========================================== */
+/* ======================================================
+   Subscribe
+====================================================== */
 
-#subscribe{
-    text-align:center;
-    margin:50px 20px;
+#subscribe {
+    margin: 50px 20px;
+    text-align: center;
 }
 
-.subscribe-button{
-
-    display:block;
-
-    max-width:340px;
-
-    margin:20px auto;
-
-    padding:18px 24px;
-
-    background:#7a1436;
-
-    color:#ffffff;
-
-    text-decoration:none;
-
-    font-size:1.2rem;
-
-    font-weight:bold;
-
-    border-radius:18px;
-
-    border:3px solid #d4af37;
-
-    box-shadow:0 6px 15px rgba(0,0,0,.35);
-
-    transition:.25s;
+.subscribe-button {
+    display: block;
+    max-width: 340px;
+    margin: 20px auto;
+    padding: 18px 24px;
+    background: #7A1436;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 3px solid #D4AF37;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,.35);
+    transition: .25s;
 }
 
-.subscribe-button:hover{
-
-    background:#a3194c;
-
-    transform:scale(1.03);
-
+.subscribe-button:hover {
+    background: #A3194C;
+    transform: scale(1.03);
 }
 
-.subscribe-button small{
+.subscribe-button small {
+    display: block;
+    margin-top: 8px;
+    font-size: .9rem;
+    font-weight: 400;
+    color: #f2f2f2;
+}
 
-    display:block;
+/* ======================================================
+   Responsive
+====================================================== */
 
-    margin-top:8px;
+@media (max-width: 900px) {
 
-    font-size:.9rem;
+    h1 {
+        font-size: 2.3rem;
+    }
 
-    color:#f2f2f2;
+    .shield {
+        width: 160px;
+    }
 
-    font-weight:400;
+    .mascots {
+        gap: 20px;
+    }
+
+    .ryley,
+    .addison {
+        height: 250px;
+    }
 
 }
