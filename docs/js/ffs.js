@@ -1,24 +1,23 @@
 // ======================================================
 // Floriano Family Sports (FFS)
-// Core Data Engine v1.2
+// Core Data Engine v2.0
 // ======================================================
 
 const FFS = {
 
-    // --------------------------------------------------
-    // Loaded Data
-    // --------------------------------------------------
+    // ==================================================
+    // Data Stores
+    // ==================================================
 
     data: null,
+
     calendar: {
+        events: []
+    },
 
-    events: []
-
-},
-
-    // --------------------------------------------------
+    // ==================================================
     // Initialize
-    // --------------------------------------------------
+    // ==================================================
 
     async init() {
 
@@ -29,9 +28,9 @@ const FFS = {
 
     },
 
-    // --------------------------------------------------
+    // ==================================================
     // Lookup Functions
-    // --------------------------------------------------
+    // ==================================================
 
     getAthlete(id) {
         return this.data.athletes[id];
@@ -49,9 +48,55 @@ const FFS = {
         return this.data.opponents[id];
     },
 
-    // --------------------------------------------------
-    // Build Rich Event Object
-    // --------------------------------------------------
+    // ==================================================
+    // Calendar
+    // ==================================================
+
+    loadCalendar(events) {
+
+        this.calendar.events = events;
+
+        console.log("📅 Calendar Loaded");
+        console.log(this.calendar.events);
+
+        this.renderNextGame();
+
+    },
+
+    getNextGame() {
+
+        // Temporary event until Google Calendar is connected
+
+        if (this.calendar.events.length === 0) {
+
+            const event = {
+
+                ATHLETEID: "ADDISON",
+                TEAMID: "EHS_FJV_VB",
+                VENUEID: "EHS",
+                OPPONENTID: "FULL",
+
+                FACILITY: "GYM",
+                TYPE: "LEAGUE",
+
+                DATE: "Thursday, August 13, 2026",
+                TIME: "4:00 PM",
+
+                HOME: true
+
+            };
+
+            return this.getEventDetails(event);
+
+        }
+
+        return this.getEventDetails(this.calendar.events[0]);
+
+    },
+
+    // ==================================================
+    // Event Builder
+    // ==================================================
 
     getEventDetails(event) {
 
@@ -71,83 +116,44 @@ const FFS = {
 
     },
 
-    // --------------------------------------------------
-    // Temporary Next Game
-    // (Later this will come from Google Calendar)
-    // --------------------------------------------------
-
-    getNextGame() {
-
-    if (this.calendar.events.length === 0) {
-
-        const event = {
-
-            ATHLETEID: "ADDISON",
-            TEAMID: "EHS_FJV_VB",
-            VENUEID: "EHS",
-            OPPONENTID: "FULL",
-
-            FACILITY: "GYM",
-            TYPE: "LEAGUE",
-
-            DATE: "Thursday, August 13, 2026",
-
-            TIME: "4:00 PM",
-
-            HOME: true
-
-        };
-
-        return this.getEventDetails(event);
-
-    }
-
-    return this.getEventDetails(this.calendar.events[0]);
-
-},
-loadCalendar(events) {
-
-    this.calendar.events = events;
-
-    console.log("📅 Calendar Loaded");
-
-    console.log(this.calendar.events);
-
-},
-    // --------------------------------------------------
-    // Render Next Up Card
-    // --------------------------------------------------
+    // ==================================================
+    // UI
+    // ==================================================
 
     renderNextGame() {
 
-    const game = this.getNextGame();
+        const game = this.getNextGame();
 
-    document.getElementById("next-athlete").textContent =
-        `🏐 ${game.athlete.name}`;
+        const school = game.opponent.school.replace(" High School", "");
 
-    document.getElementById("next-opponent").textContent =
-        game.HOME
-            ? `🏠 HOME vs ${game.opponent.school} ${game.opponent.mascot}`
-            : `🚌 AWAY @ ${game.opponent.school} ${game.opponent.mascot}`;
+        document.getElementById("next-athlete").textContent =
+            `🏐 ${game.athlete.name}`;
 
-    document.getElementById("next-date").textContent =
-        `📅 ${game.DATE}`;
+        document.getElementById("next-opponent").textContent =
+            game.HOME
+                ? `🏠 HOME vs ${school} ${game.opponent.mascot}`
+                : `🚌 AWAY @ ${school} ${game.opponent.mascot}`;
 
-    document.getElementById("next-time").textContent =
-        `🕓 ${game.TIME}`;
+        document.getElementById("next-date").textContent =
+            `📅 ${game.DATE}`;
 
-    document.getElementById("next-venue").textContent =
-        `📍 ${game.venue.name}`;
+        document.getElementById("next-time").textContent =
+            `🕓 ${game.TIME}`;
 
-    const address = `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
+        document.getElementById("next-venue").textContent =
+            `📍 ${game.venue.name}`;
 
-    document.getElementById("next-directions").href =
-        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+        const address =
+            `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
 
-},
-    // --------------------------------------------------
-    // Debug Helpers
-    // --------------------------------------------------
+        document.getElementById("next-directions").href =
+            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+    },
+
+    // ==================================================
+    // Debug
+    // ==================================================
 
     showAthletes() {
         console.table(this.data.athletes);
@@ -163,6 +169,10 @@ loadCalendar(events) {
 
     showOpponents() {
         console.table(this.data.opponents);
+    },
+
+    showCalendar() {
+        console.table(this.calendar.events);
     }
 
 };
