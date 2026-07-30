@@ -1,163 +1,83 @@
 {
   "EHS": {
-    "school": "Esperanza High School",
+    "name": "Esperanza High School",
+    "address": "1830 Kellogg Dr",
     "city": "Anaheim",
     "state": "CA",
-    "address": "1830 Kellogg Dr, Anaheim, CA 92807",
+    "zip": "92807",
     "gym": "Main Gym",
     "pool": "Aquatics Center"
+  },
+
+  "FULL": {
+    "name": "Fullerton High School"
   },
 
   "SON": {
-    "school": "Sonora High School",
-    "city": "La Habra",
-    "state": "CA",
-    "address": "401 S Palm St, La Habra, CA 90631",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Sonora High School"
   },
 
   "ELT": {
-    "school": "El Toro High School",
-    "city": "Lake Forest",
-    "state": "CA",
-    "address": "25255 Toledo Way, Lake Forest, CA 92630",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "El Toro High School"
   },
 
   "YL": {
-    "school": "Yorba Linda High School",
-    "city": "Yorba Linda",
-    "state": "CA",
-    "address": "19900 Bastanchury Rd, Yorba Linda, CA 92886",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Yorba Linda High School"
   },
 
   "VAL": {
-    "school": "Valencia High School",
-    "city": "Placentia",
-    "state": "CA",
-    "address": "512 Bradford Ave, Placentia, CA 92870",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Valencia High School"
   },
 
   "DB": {
-    "school": "Diamond Bar High School",
-    "city": "Diamond Bar",
-    "state": "CA",
-    "address": "21400 Pathfinder Rd, Diamond Bar, CA 91765",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Diamond Bar High School"
   },
 
   "ED": {
-    "school": "El Dorado High School",
-    "city": "Placentia",
-    "state": "CA",
-    "address": "1651 Valencia Ave, Placentia, CA 92870",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "El Dorado High School"
   },
 
   "TROY": {
-    "school": "Troy High School",
-    "city": "Fullerton",
-    "state": "CA",
-    "address": "2200 E Dorothy Ln, Fullerton, CA 92831",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Troy High School"
   },
 
   "FOOT": {
-    "school": "Foothill High School",
-    "city": "Santa Ana",
-    "state": "CA",
-    "address": "19251 Dodge Ave, Santa Ana, CA 92705",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Foothill High School"
   },
 
   "WB": {
-    "school": "Woodbridge High School",
-    "city": "Irvine",
-    "state": "CA",
-    "address": "2 Meadowbrook, Irvine, CA 92604",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Woodbridge High School"
   },
 
   "SH": {
-    "school": "Sunny Hills High School",
-    "city": "Fullerton",
-    "state": "CA",
-    "address": "1801 Warburton Way, Fullerton, CA 92833",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Sunny Hills High School"
   },
 
   "NW": {
-    "school": "Northwood High School",
-    "city": "Irvine",
-    "state": "CA",
-    "address": "4515 Portola Pkwy, Irvine, CA 92620",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Northwood High School"
   },
 
   "BO": {
-    "school": "Brea Olinda High School",
-    "city": "Brea",
-    "state": "CA",
-    "address": "789 Wildcat Way, Brea, CA 92821",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Brea Olinda High School"
   },
 
   "PAC": {
-    "school": "Pacifica High School",
-    "city": "Garden Grove",
-    "state": "CA",
-    "address": "6851 Lampson Ave, Garden Grove, CA 92845",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Pacifica High School"
   },
 
   "ARL": {
-    "school": "Arlington High School",
-    "city": "Riverside",
-    "state": "CA",
-    "address": "2951 Jackson St, Riverside, CA 92503",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Arlington High School"
   },
 
   "TUSTIN": {
-    "school": "Tustin High School",
-    "city": "Tustin",
-    "state": "CA",
-    "address": "1171 El Camino Real, Tustin, CA 92780",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Tustin High School"
   },
 
   "VILLA": {
-    "school": "Villa Park High School",
-    "city": "Villa Park",
-    "state": "CA",
-    "address": "18042 Taft Ave, Villa Park, CA 92861",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Villa Park High School"
   },
 
   "CDM": {
-    "school": "Corona del Mar High School",
-    "city": "Newport Beach",
-    "state": "CA",
-    "address": "2101 Eastbluff Dr, Newport Beach, CA 92660",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center"
+    "name": "Corona del Mar High School"
   }
 }
