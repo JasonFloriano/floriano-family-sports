@@ -12,13 +12,13 @@ function createEventCard(event) {
 
             <p>${event.TYPE}</p>
 
-            <strong>${event.opponent.school}</strong>
+            <strong>${event.opponent?.school||event.TYPE}</strong>
 
             <p>${event.DATE}</p>
 
             <p>${event.TIME}</p>
 
-            <small>${event.venue.name}</small>
+            <small>${event.venue?.name||""}</small>
 
         </div>
     `;
