@@ -144,7 +144,7 @@ h1 {
 
     flex-wrap:wrap;
 
-    margin:10px auto 30px;
+    margin:0px auto 30px;
 
 }
 
@@ -323,7 +323,7 @@ h1 {
 ====================================================== */
 
 #subscribe {
-    margin: 50px 20px;
+    margin: 20px auto 30px;
     text-align: center;
 }
 
