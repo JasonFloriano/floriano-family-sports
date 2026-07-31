@@ -238,7 +238,37 @@ function getFilteredEvents() {
     return events;
 
 }
+// ========================================
+// countdown timer
+//=========================================
 
+function getCountdown(start) {
+
+    const now = new Date();
+
+    const diff = start - now;
+
+    if (diff <= 0) {
+        return "LIVE NOW";
+    }
+
+    const days = Math.floor(diff / 86400000);
+
+    const hours = Math.floor((diff % 86400000) / 3600000);
+
+    const minutes = Math.floor((diff % 3600000) / 60000);
+
+    if (days > 0) {
+        return `${days} Day${days !== 1 ? "s" : ""} ${hours} Hour${hours !== 1 ? "s" : ""}`;
+    }
+
+    if (hours > 0) {
+        return `${hours} Hour${hours !== 1 ? "s" : ""} ${minutes} Minute${minutes !== 1 ? "s" : ""}`;
+    }
+
+    return `${minutes} Minute${minutes !== 1 ? "s" : ""}`;
+
+}
 // =========================================
 // Render Dashboard
 // =========================================
@@ -273,7 +303,7 @@ if (upcoming.length > 0) {
 
     nextContainer.innerHTML = `
 
-<h2>NEXT UP</h2>
+<h2>NEXT GAME</h2>
 
 <div class="hero-card">
 
@@ -311,9 +341,19 @@ if (upcoming.length > 0) {
 
     <div class="countdown">
 
-        ⏱ Countdown Coming...
+    <div class="countdown-label">
+
+        STARTS IN
 
     </div>
+
+    <div id="countdown">
+
+        ${getCountdown(game.start)}
+
+    </div>
+
+</div>>
 
     <div class="weather">
 
@@ -354,7 +394,20 @@ if (upcoming.length > 0) {
             : `UPCOMING • ${activeFilter}`,
         upcoming.slice(0, 10)
     );
+    
+clearInterval(window.countdownTimer);
 
+window.countdownTimer = setInterval(() => {
+
+    const countdown = document.getElementById("countdown");
+
+    if (countdown && upcoming.length > 0) {
+
+        countdown.textContent = getCountdown(upcoming[0].start);
+
+    }
+
+}, 60000);
 }
 
 // =========================================
