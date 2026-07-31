@@ -1,7 +1,7 @@
-// ====================================================== 
-// Floriano Family Sports (FFS) 
-// Core Data Engine v3.1
 // ======================================================
+// Floriano Family Sports (FFS)
+// Core Data Engine v3.1.1
+// =======================================================
 
 const FFS = {
 
@@ -105,16 +105,65 @@ const FFS = {
     getVenue(id) { return this.data.venues[id]; },
     getOpponent(id) { return this.data.opponents[id]; },
 
-    getEventDetails(event) {
-        return {
-            ...event,
-            athlete: this.getAthlete(event.ATHLETEID),
-            team: this.getTeam(event.TEAMID),
-            venue: this.getVenue(event.VENUEID),
-            opponent: this.getOpponent(event.OPPONENTID)
-        };
-    },
+getEventDetails(event) {
 
+    const athlete = this.getAthlete(event.ATHLETEID);
+    const team = this.getTeam(event.TEAMID);
+    const venue = this.getVenue(event.VENUEID);
+    const opponent = this.getOpponent(event.OPPONENTID);
+
+    return {
+
+        ...event,
+
+        athlete,
+        team,
+        venue,
+        opponent,
+
+        display: {
+
+            athlete: athlete?.name || "",
+
+            opponent: opponent
+                ? opponent.school
+                : event.TYPE,
+
+            venue: venue
+                ? venue.name
+                : "",
+
+            badge: event.TYPE,
+
+            homeAway: event.HOME
+                ? "HOME"
+                : "AWAY",
+
+            shortDate: event.start.toLocaleDateString(
+                "en-US",
+                {
+                    weekday: "short",
+                    month: "short",
+                    day: "numeric"
+                }
+            ),
+
+            directions: venue
+                ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                    `${venue.address}, ${venue.city}, ${venue.state} ${venue.zip}`
+                )}`
+                : "",
+
+            accent:
+                event.ATHLETEID === "ADDISON"
+                    ? "addison"
+                    : "ryley"
+
+        }
+
+    };
+
+},
 getNextGame() {
 
     const now = new Date();
@@ -214,6 +263,6 @@ showCalendar() {
 
 };
 
-document.addEventListener("DOMContentLoaded", () => FFS.init());
+
 
 
