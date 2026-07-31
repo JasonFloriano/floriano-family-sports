@@ -249,7 +249,7 @@ function getCountdown(start) {
     const diff = start - now;
 
     if (diff <= 0) {
-        return "LIVE NOW";
+        return "LIVE";
     }
 
     const days = Math.floor(diff / 86400000);
@@ -259,16 +259,17 @@ function getCountdown(start) {
     const minutes = Math.floor((diff % 3600000) / 60000);
 
     if (days > 0) {
-        return `${days} Day${days !== 1 ? "s" : ""} ${hours} Hour${hours !== 1 ? "s" : ""}`;
+        return `${days}D ${hours}H`;
     }
 
     if (hours > 0) {
-        return `${hours} Hour${hours !== 1 ? "s" : ""} ${minutes} Minute${minutes !== 1 ? "s" : ""}`;
+        return `${hours}H ${minutes}M`;
     }
 
-    return `${minutes} Minute${minutes !== 1 ? "s" : ""}`;
+    return `${minutes}M`;
 
 }
+
 // =========================================
 // Render Dashboard
 // =========================================
