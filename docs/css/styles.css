@@ -380,3 +380,76 @@ h1 {
     }
 
 }
+/* ==========================================
+   Hero Next Up Card
+========================================== */
+
+.hero-card{
+
+    background:#181C23;
+
+    border:2px solid rgba(242,175,2,.25);
+
+    border-radius:22px;
+
+    padding:34px;
+
+    width:min(900px,94%);
+
+    margin:20px auto;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+}
+
+.hero-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:14px;
+
+}
+
+.hero-opponent{
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+    margin:22px 0;
+
+}
+
+.hero-info{
+
+    margin:12px 0;
+
+    color:#C8CED8;
+
+    font-size:1.05rem;
+
+}
+
+.countdown{
+
+    margin-top:30px;
+
+    padding-top:20px;
+
+    border-top:1px solid #333;
+
+    font-size:1.3rem;
+
+    font-weight:700;
+
+}
+
+.weather{
+
+    margin-top:20px;
+
+    color:#F2AF02;
+
+    font-size:1.2rem;
+
+}
