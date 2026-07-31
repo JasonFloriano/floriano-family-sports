@@ -265,7 +265,7 @@ h1 {
 }
 
 /* ======================================================
-   Apple Segmented Control
+   Athlete Filter Pills
 ====================================================== */
 
 .filters{
@@ -276,21 +276,11 @@ h1 {
 
     align-items:center;
 
-    gap:6px;
+    gap:16px;
 
-    width:fit-content;
+    margin:26px auto 36px;
 
-    margin:24px auto 36px;
-
-    padding:6px;
-
-    background:#181C23;
-
-    border-radius:999px;
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.06),
-        0 12px 28px rgba(0,0,0,.35);
+    flex-wrap:wrap;
 
 }
 
@@ -300,17 +290,17 @@ h1 {
 
     align-items:center;
 
-    gap:8px;
+    gap:10px;
 
-    padding:11px 20px;
+    padding:12px 22px;
 
     border:none;
 
     border-radius:999px;
 
-    background:transparent;
+    background:#232831;
 
-    color:#AEB7C4;
+    color:#D2D7DF;
 
     font-size:.95rem;
 
@@ -318,26 +308,30 @@ h1 {
 
     cursor:pointer;
 
-    transition:all .22s ease;
+    transition:all .20s ease;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.30);
 
 }
 
 .filter:hover{
 
-    color:white;
+    transform:translateY(-2px);
+
+    background:#2B313C;
 
 }
 
 .filter.active{
 
-    background:#2B3440;
-
     color:white;
 
-    box-shadow:
-        0 6px 18px rgba(0,0,0,.35);
+    transform:translateY(-2px);
 
 }
+
+/* ===== Colored Dots ===== */
 
 .dot{
 
@@ -349,9 +343,9 @@ h1 {
 
     flex:none;
 
-    transition:.22s;
-
 }
+
+/* Dashboard */
 
 .filter[data-athlete="ALL"] .dot{
 
@@ -359,11 +353,15 @@ h1 {
 
 }
 
+/* Addison */
+
 .filter[data-athlete="ADDISON"] .dot{
 
     background:#8B5CF6;
 
 }
+
+/* Ryley */
 
 .filter[data-athlete="RYLEY"] .dot{
 
@@ -371,33 +369,38 @@ h1 {
 
 }
 
+/* ===== Active States ===== */
+
+.filter.active[data-athlete="ALL"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(242,175,2,.35);
+
+}
+
+.filter.active[data-athlete="ADDISON"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(139,92,246,.40);
+
+}
+
+.filter.active[data-athlete="RYLEY"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(59,130,246,.40);
+
+}
+
 .filter.active .dot{
 
     transform:scale(1.35);
-
-}
-
-.filter.active[data-athlete="ALL"] .dot{
-
-    box-shadow:
-        0 0 10px #F2AF02,
-        0 0 18px rgba(242,175,2,.60);
-
-}
-
-.filter.active[data-athlete="ADDISON"] .dot{
-
-    box-shadow:
-        0 0 10px #8B5CF6,
-        0 0 18px rgba(139,92,246,.60);
-
-}
-
-.filter.active[data-athlete="RYLEY"] .dot{
-
-    box-shadow:
-        0 0 10px #3B82F6,
-        0 0 18px rgba(59,130,246,.60);
 
 }
 /* ======================================================
