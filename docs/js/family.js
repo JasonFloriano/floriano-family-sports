@@ -5,23 +5,39 @@
 
 function createEventCard(event) {
 
+    const opponent =
+        event.opponent?.school || event.TYPE;
+
+    const venue =
+        event.venue?.name || "";
+
     return `
-        <div class="event">
 
-            <h3>${event.athlete.name}</h3>
+<div class="event">
 
-            <p>${event.TYPE}</p>
+    <div class="event-content">
 
-            <strong>${event.opponent?.school||event.TYPE}</strong>
+        <h3>${event.athlete.name}</h3>
 
-            <p>${event.DATE}</p>
+        <div class="event-type">
 
-            <p>${event.TIME}</p>
-
-            <small>${event.venue?.name||""}</small>
+            ${event.TYPE}
 
         </div>
-    `;
+
+        <strong>${opponent}</strong>
+
+        <p>📅 ${event.DATE}</p>
+
+        <p>🕓 ${event.TIME}</p>
+
+        <small>📍 ${venue}</small>
+
+    </div>
+
+</div>
+
+`;
 
 }
 
