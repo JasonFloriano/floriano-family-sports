@@ -131,145 +131,108 @@ h1 {
 }
 
 /* ======================================================
-   Schedule
+   Family Calendar Schedule V1.2
 ====================================================== */
 
-.schedule h2{
-
-    margin:45px auto 18px;
-
-    width:min(850px,92%);
-
-    text-align:left;
-
-    color:#F2AF02;
-
-    font-size:1rem;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-}
-
 .schedule{
-
-    padding-bottom:80px;
-
+    width:min(900px,94%);
+    margin:0 auto 80px;
 }
 
-.event {
-
-    display: grid;
-
-    grid-template-columns: 6px 1fr;
-
-    gap: 18px;
-
-    padding: 22px;
-
-    margin: 18px auto;
-
-    width: min(900px,95%);
-
-    background: #181C23;
-
-    border-radius: 20px;
-
-    box-shadow: 0 12px 30px rgba(0,0,0,.35);
-
-    transition: .25s;
-
-    overflow: hidden;
-
+.schedule h2{
+    text-align:left;
+    color:#F2AF02;
+    letter-spacing:3px;
+    margin:40px 0 16px;
+    font-size:.95rem;
 }
 
-.event:hover{
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 18px 40px rgba(0,0,0,.45);
-
+.event-card{
+    position:relative;
+    display:flex;
+    background:#181C23;
+    border-radius:18px;
+    overflow:hidden;
+    margin:16px 0;
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    transition:.2s ease;
 }
 
-.event::before{
-
-    content:"";
-
-    background:#F2AF02;
-
-    border-radius:10px;
-
+.event-card:hover{
+    transform:translateY(-2px);
 }
+
+.accent{
+    width:8px;
+    flex:none;
+}
+
+.accent.addison{background:#8B5CF6;}
+.accent.ryley{background:#3B82F6;}
 
 .event-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
+    padding:20px;
+    text-align:left;
     width:100%;
-
 }
 
-.sport {
-    width: 60px;
-    text-align: center;
-    font-size: 2.8rem;
+.event-content h3{
+    margin:0 0 10px;
+    font-size:1.5rem;
 }
 
-.event h3{
-
-    text-align:left;
-
-    font-size:1.45rem;
-
-    margin-bottom:8px;
-
+.meta-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-bottom:12px;
 }
 
-.event p{
+.badge{
+    padding:5px 12px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:700;
+}
 
-    text-align:left;
+.league{background:#15803D;}
+.practice{background:#2563EB;}
+.tournament{background:#D97706;}
+.school{background:#52525B;}
 
+.homeaway{
+    color:#cfcfcf;
+    font-size:.8rem;
+    font-weight:700;
+}
+
+.opponent{
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.info{
+    color:#c9c9c9;
     margin:6px 0;
-
-    color:#B8BDC6;
-
-    font-size:1rem;
-
 }
 
-.event strong{
-
-    display:block;
-
-    text-align:left;
-
-    margin-top:6px;
-
-    font-size:1.3rem;
-
-    color:white;
-
+.directions{
+    display:inline-block;
+    margin-top:16px;
+    padding:10px 18px;
+    background:#7A1436;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:700;
 }
 
-.event small{
-
-    display:block;
-
-    text-align:left;
-
-    margin-top:8px;
-
-    color:#8E98A8;
-
+.directions:hover{
+    background:#A3194C;
 }
 
-.featured {
-    border: 2px solid rgba(242,175,2,.25);
-}
 
 /* ======================================================
    Get Directions Button
