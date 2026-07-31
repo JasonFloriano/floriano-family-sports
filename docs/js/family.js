@@ -242,31 +242,50 @@ function getFilteredEvents() {
 // countdown timer
 //=========================================
 
-function getCountdown(start) {
+function getCountdown(start){
 
-    const now = new Date();
+    const diff = start - new Date();
 
-    const diff = start - now;
+    if(diff <= 0){
 
-    if (diff <= 0) {
-        return "LIVE";
+        return{
+            value:"LIVE",
+            units:"NOW"
+        };
+
     }
 
-    const days = Math.floor(diff / 86400000);
+    const days=Math.floor(diff/86400000);
 
-    const hours = Math.floor((diff % 86400000) / 3600000);
+    const hours=Math.floor((diff%86400000)/3600000);
 
-    const minutes = Math.floor((diff % 3600000) / 60000);
+    const minutes=Math.floor((diff%3600000)/60000);
 
-    if (days > 0) {
-        return `${days}D ${hours}H`;
+    if(days>0){
+
+        return{
+            value:`${String(days).padStart(2,"0")} : ${String(hours).padStart(2,"0")}`,
+            units:"DAYS      HOURS"
+        };
+
     }
 
-    if (hours > 0) {
-        return `${hours}H ${minutes}M`;
+    if(hours>0){
+
+        return{
+            value:`${String(hours).padStart(2,"0")} : ${String(minutes).padStart(2,"0")}`,
+            units:"HOURS    MINUTES"
+        };
+
     }
 
-    return `${minutes}M`;
+    return{
+
+        value:`${minutes}`,
+
+        units:"MINUTES"
+
+    };
 
 }
 
@@ -348,13 +367,25 @@ if (upcoming.length > 0) {
 
     </div>
 
-    <div id="countdown">
+<div class="countdown">
 
-        ${getCountdown(game.start)}
+    <div class="countdown-label">
+        STARTS IN
+    </div>
+
+    <div class="countdown-box">
+
+        <div id="countdown-value">
+            ${getCountdown(game.start).value}
+        </div>
+
+        <div id="countdown-units">
+            ${getCountdown(game.start).units}
+        </div>
 
     </div>
 
-</div>>
+</div>
 
     <div class="weather">
 
