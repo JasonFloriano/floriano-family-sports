@@ -57,14 +57,14 @@ function renderSection(selector,title,events){
         `<h2>${title}</h2>${events.map(createEventCard).join("")}`;
 }
 
-async function initFamily(){
+async function initFamily() {
+
     await FFS.init();
-    const next=FFS.getNextGame();
-    if(next){
-        document.querySelector(".next-up").innerHTML=`<h2>NEXT UP</h2>${createEventCard(next)}`;
-    }
-    renderSection("#today","TODAY",FFS.getTodaysEvents());
-    renderSection("#week","UPCOMING",FFS.getUpcomingEvents().slice(0,10));
+
+    setupFilters();
+
+    renderAll();
+
 }
 
 document.addEventListener("DOMContentLoaded",initFamily);
