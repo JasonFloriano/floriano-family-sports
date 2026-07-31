@@ -107,9 +107,14 @@ const FFS = {
 
     getNextGame() {
 
+    const now = new Date();
+
     const event = this.calendar.events.find(event =>
-        event.OPPONENTID &&
-        event.VENUEID
+
+        ["LEAGUE", "TOURNAMENT"].includes(event.TYPE) &&
+
+        event.start >= now
+
     );
 
     if (!event) {
