@@ -43,7 +43,7 @@ const FFS = {
         this.data = await loadData();
         await this.calendar.load(this.config);
         console.log("🏆 FFS Initialized");
-        this.renderNextGame();
+        //this.renderNextGame();
     },
 
     parseMetadata(description = "") {
