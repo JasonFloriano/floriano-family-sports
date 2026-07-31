@@ -362,14 +362,6 @@ if (upcoming.length > 0) {
     <div class="countdown">
 
     <div class="countdown-label">
-
-        STARTS IN
-
-    </div>
-
-<div class="countdown">
-
-    <div class="countdown-label">
         STARTS IN
     </div>
 
