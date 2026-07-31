@@ -115,7 +115,7 @@ const FFS = {
         };
     },
 
-    getNextGame() {
+getNextGame() {
 
     const now = new Date();
 
@@ -124,47 +124,93 @@ const FFS = {
         event.start >= now
     );
 
-    if (!event) {
-        return null;
-    }
+    if (!event) return null;
 
     return this.getEventDetails(event);
 
 },
 
-    renderNextGame() {
-        const game = this.getNextGame();
-        if (!game) {
-    console.warn("No upcoming games found.");
-    return;
-}
+getUpcomingEvents() {
 
-if (!game.opponent || !game.venue) {
-    console.warn("Incomplete event", game);
-    return;
-}
+    const now = new Date();
 
-        const school = game.opponent.school.replace(" High School", "");
+    return this.calendar.events
+        .filter(event => event.start >= now)
+        .sort((a, b) => a.start - b.start)
+        .map(event => this.getEventDetails(event));
 
-        document.getElementById("next-athlete").textContent = `🏐 ${game.athlete.name}`;
-        document.getElementById("next-opponent").textContent =
-            game.HOME
-                ? `🏠 HOME vs ${school} ${game.opponent.mascot}`
-                : `🚌 AWAY @ ${school} ${game.opponent.mascot}`;
+},
 
-        document.getElementById("next-date").textContent = `📅 ${game.DATE}`;
-        document.getElementById("next-time").textContent = `🕓 ${game.TIME}`;
-        document.getElementById("next-venue").textContent = `📍 ${game.venue.name}`;
+getTodaysEvents() {
 
-        const address = `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
+    const today = new Date().toDateString();
 
-        document.getElementById("next-directions").href =
-            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-    },
+    return this.getUpcomingEvents().filter(event =>
+        event.start.toDateString() === today
+    );
 
-    showCalendar() {
-        console.table(this.calendar.events);
+},
+
+getAthleteSchedule(athleteId) {
+
+    return this.getUpcomingEvents().filter(event =>
+        event.ATHLETEID === athleteId
+    );
+
+},
+
+getEventsByType(type) {
+
+    return this.getUpcomingEvents().filter(event =>
+        event.TYPE === type
+    );
+
+},
+
+renderNextGame() {
+
+    const game = this.getNextGame();
+
+    if (!game) {
+        console.warn("No upcoming games found.");
+        return;
     }
+
+    if (!game.opponent || !game.venue) {
+        console.warn("Incomplete event", game);
+        return;
+    }
+
+    const school = (game.opponent.school || "").replace(" High School", "");
+
+    document.getElementById("next-athlete").textContent =
+        `🏐 ${game.athlete.name}`;
+
+    document.getElementById("next-opponent").textContent =
+        game.HOME
+            ? `🏠 HOME vs ${school} ${game.opponent.mascot}`
+            : `🚌 AWAY @ ${school} ${game.opponent.mascot}`;
+
+    document.getElementById("next-date").textContent =
+        `📅 ${game.DATE}`;
+
+    document.getElementById("next-time").textContent =
+        `🕓 ${game.TIME}`;
+
+    document.getElementById("next-venue").textContent =
+        `📍 ${game.venue.name}`;
+
+    const address =
+        `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
+
+    document.getElementById("next-directions").href =
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+},
+
+showCalendar() {
+    console.table(this.calendar.events);
+}
 
 };
 
