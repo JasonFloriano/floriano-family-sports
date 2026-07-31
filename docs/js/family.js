@@ -4,6 +4,8 @@
 // Family Calendar v1.2
 // =========================================
 
+let activeFilter = "ALL";
+
 function badgeClass(type){
     switch((type||"").toUpperCase()){
         case "LEAGUE": return "badge league";
