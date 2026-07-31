@@ -120,11 +120,8 @@ const FFS = {
     const now = new Date();
 
     const event = this.calendar.events.find(event =>
-
         ["LEAGUE", "TOURNAMENT"].includes(event.TYPE) &&
-
         event.start >= now
-
     );
 
     if (!event) {
