@@ -131,6 +131,60 @@ h1 {
 }
 
 /* ======================================================
+   Filters
+====================================================== */
+
+.filters{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin:10px auto 30px;
+
+}
+
+.filter{
+
+    background:#232833;
+
+    color:#ddd;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.filter:hover{
+
+    background:#313846;
+
+}
+
+.filter.active{
+
+    background:#F2AF02;
+
+    color:#111;
+
+}
+
+/* ======================================================
    Family Calendar Schedule V1.2
 ====================================================== */
 
