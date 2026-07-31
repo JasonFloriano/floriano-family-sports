@@ -61,34 +61,44 @@ const FFS = {
     },
 
     convertGoogleEvent(event) {
-        const meta = this.parseMetadata(event.description || "");
 
-        if (!meta.ATHLETEID) return null;
+    const meta = this.parseMetadata(event.description || "");
 
-        const start = new Date(event.start.dateTime || event.start.date);
+    if (!meta.ATHLETEID) return null;
 
-        return {
-            ATHLETEID: meta.ATHLETEID,
-            TEAMID: meta.TEAMID,
-            VENUEID: meta.VENUEID,
-            OPPONENTID: meta.OPPONENTID,
-            FACILITY: meta.FACILITY,
-            TYPE: meta.TYPE,
-            HOME: /HOME/i.test(event.summary || ""),
-            DATE: start.toLocaleDateString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            }),
-            TIME: event.start.dateTime
-                ? start.toLocaleTimeString("en-US", {
-                    hour: "numeric",
-                    minute: "2-digit"
-                })
-                : "TBD"
-        };
-    },
+    const start = new Date(event.start.dateTime || event.start.date);
+
+    return {
+
+        ATHLETEID: meta.ATHLETEID,
+        TEAMID: meta.TEAMID,
+        VENUEID: meta.VENUEID,
+        OPPONENTID: meta.OPPONENTID,
+        FACILITY: meta.FACILITY,
+        TYPE: meta.TYPE,
+
+        // Keep the raw Date object for sorting/filtering
+        start: start,
+
+        HOME: /HOME/i.test(event.summary || ""),
+
+        DATE: start.toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }),
+
+        TIME: event.start.dateTime
+            ? start.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit"
+            })
+            : "TBD"
+
+    };
+
+},
 
     getAthlete(id) { return this.data.athletes[id]; },
     getTeam(id) { return this.data.teams[id]; },
