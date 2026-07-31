@@ -134,22 +134,71 @@ h1 {
    Schedule
 ====================================================== */
 
-.schedule h2 {
-    margin: 25px 10px 12px;
-    color: #F2AF02;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+.schedule h2{
+
+    margin:45px auto 18px;
+
+    width:min(900px,95%);
+
+    text-align:left;
+
+    color:#F2AF02;
+
+    font-size:1rem;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+.schedule{
+
+    padding-bottom:80px;
+
 }
 
 .event {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+
+    display: grid;
+
+    grid-template-columns: 6px 1fr;
+
+    gap: 18px;
+
     padding: 22px;
+
+    margin: 18px auto;
+
+    width: min(900px,95%);
+
     background: #181C23;
-    border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.35);
+
+    border-radius: 20px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
+
+    transition: .25s;
+
+    overflow: hidden;
+
+}
+
+.event:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 18px 40px rgba(0,0,0,.45);
+
+}
+
+.event::before{
+
+    content:"";
+
+    background:#F2AF02;
+
+    border-radius:10px;
+
 }
 
 .sport {
@@ -158,14 +207,52 @@ h1 {
     font-size: 2.8rem;
 }
 
-.event p {
-    margin: 5px 0;
-    font-size: 1.2rem;
-    color: #ccc;
+.event h3{
+
+    text-align:left;
+
+    font-size:1.45rem;
+
+    margin-bottom:8px;
+
 }
 
-.event small {
-    color: #888;
+.event p{
+
+    text-align:left;
+
+    margin:6px 0;
+
+    color:#B8BDC6;
+
+    font-size:1rem;
+
+}
+
+.event strong{
+
+    display:block;
+
+    text-align:left;
+
+    margin-top:6px;
+
+    font-size:1.3rem;
+
+    color:white;
+
+}
+
+.event small{
+
+    display:block;
+
+    text-align:left;
+
+    margin-top:8px;
+
+    color:#8E98A8;
+
 }
 
 .featured {
