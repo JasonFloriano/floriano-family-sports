@@ -19,7 +19,7 @@ function badgeClass(type) {
         case "PRACTICE":
             return "badge practice";
 
-        case "TOURNAMENT":
+        case "TOURNAMENT":                    
             return "badge tournament";
 
         case "SCHOOL":
@@ -257,17 +257,84 @@ function renderAll() {
     const nextContainer =
         document.querySelector(".next-up");
 
-    if (upcoming.length > 0) {
+if (upcoming.length > 0) {
 
-        nextContainer.innerHTML = `
+    const game = upcoming[0];
+
+    const opponent =
+        game.display?.opponent ??
+        game.opponent?.school ??
+        game.TYPE;
+
+    const venue =
+        game.display?.venue ??
+        game.venue?.name ??
+        "";
+
+    nextContainer.innerHTML = `
 
 <h2>NEXT UP</h2>
 
-${createEventCard(upcoming[0])}
+<div class="hero-card">
+
+    <h3>${game.athlete.name}</h3>
+
+    <div class="${badgeClass(game.TYPE)}">
+
+        ${game.TYPE}
+
+    </div>
+
+    <div class="hero-opponent">
+
+        🆚 ${opponent}
+
+    </div>
+
+    <div class="hero-info">
+
+        📅 ${game.DATE}
+
+    </div>
+
+    <div class="hero-info">
+
+        🕓 ${game.TIME}
+
+    </div>
+
+    <div class="hero-info">
+
+        📍 ${venue}
+
+    </div>
+
+    <div class="countdown">
+
+        ⏱ Countdown Coming...
+
+    </div>
+
+    <div class="weather">
+
+        ☀️ Weather Coming...
+
+    </div>
+
+    <a
+        class="directions"
+        href="${directionsUrl(game)}"
+        target="_blank">
+
+        Directions →
+
+    </a>
+
+</div>
 
 `;
 
-    }
+}
     else {
 
         nextContainer.innerHTML = "";
