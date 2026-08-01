@@ -365,9 +365,7 @@ if (upcoming.length > 0) {
     <div class="hero-info">
 
         📍 ${venue}
-
-    </div>
-
+   
 </div>
 
 <div class="countdown">
@@ -403,6 +401,26 @@ if (upcoming.length > 0) {
         </div>
 
     </div>
+
+</div>
+
+<div class="weather">
+
+    ☀️ Weather Coming...
+
+</div>
+
+<a
+    class="directions"
+    href="${directionsUrl(game)}"
+    target="_blank">
+
+    Directions →
+
+</a>
+
+</div>
+`;
     
     <div class="weather">
 
@@ -448,13 +466,25 @@ clearInterval(window.countdownTimer);
 
 window.countdownTimer = setInterval(() => {
 
-    const countdown = document.getElementById("countdown");
+   const countdown = getCountdown(upcoming[0].start);
 
-    if (countdown && upcoming.length > 0) {
+const days =
+    document.getElementById("countdown-days");
 
-        countdown.textContent = getCountdown(upcoming[0].start);
+const hours =
+    document.getElementById("countdown-hours");
 
-    }
+if(days){
+
+    days.textContent = countdown.days;
+
+}
+
+if(hours){
+
+    hours.textContent = countdown.hours;
+
+}
 
 }, 60000);
 }
