@@ -8,148 +8,166 @@
     "lat": 33.8475,
     "lon": -117.7972
   },
-
   "FULL": {
     "name": "Fullerton Union High School",
     "address": "201 E Chapman Ave",
     "city": "Fullerton",
     "state": "CA",
-    "zip": "92832"
+    "zip": "92832",
+    "lat": "33.874068",
+    "lon": "-117.921946"
   },
-
   "SON": {
     "name": "Sonora High School",
     "address": "401 S Palm St",
     "city": "La Habra",
     "state": "CA",
-    "zip": "90631"
+    "zip": "90631",
+    "lat": "33.928037",
+    "lon": "-117.926594"
   },
-
   "ELT": {
     "name": "El Toro High School",
     "address": "25255 Toledo Way",
     "city": "Lake Forest",
     "state": "CA",
-    "zip": "92630"
+    "zip": "92630",
+    "lat": "33.636973",
+    "lon": "-117.687752"
   },
-
   "YL": {
     "name": "Yorba Linda High School",
     "address": "19900 Bastanchury Rd",
     "city": "Yorba Linda",
     "state": "CA",
-    "zip": "92886"
+    "zip": "92886",
+    "lat": "33.897886",
+    "lon": "-117.790617"
   },
-
   "VAL": {
     "name": "Valencia High School",
     "address": "512 Bradford Ave",
     "city": "Placentia",
     "state": "CA",
-    "zip": "92870"
+    "zip": "92870",
+    "lat": "33.876336",
+    "lon": "-117.869115"
   },
-
   "DB": {
     "name": "Diamond Bar High School",
     "address": "21400 Pathfinder Rd",
     "city": "Diamond Bar",
     "state": "CA",
-    "zip": "91765"
+    "zip": "91765",
+    "lat": "33.981398",
+    "lon": "-117.838956"
   },
-
   "ED": {
     "name": "El Dorado High School",
     "address": "1651 N Valencia Ave",
     "city": "Placentia",
     "state": "CA",
-    "zip": "92870"
+    "zip": "92870",
+    "lat": "33.892222",
+    "lon": "-117.856111"
   },
-
   "TROY": {
     "name": "Troy High School",
     "address": "2200 E Dorothy Ln",
     "city": "Fullerton",
     "state": "CA",
-    "zip": "92831"
+    "zip": "92831",
+    "lat": "33.881373",
+    "lon": "-117.905560"
   },
-
   "FOOT": {
     "name": "Foothill High School",
     "address": "19251 Dodge Ave",
     "city": "Santa Ana",
     "state": "CA",
-    "zip": "92705"
+    "zip": "92705",
+    "lat": "33.7674",
+    "lon": "-117.7981"
   },
-
   "WB": {
     "name": "Woodbridge High School",
     "address": "2 Meadowbrook",
     "city": "Irvine",
     "state": "CA",
-    "zip": "92604"
+    "zip": "92604",
+    "lat": "33.678982",
+    "lon": "-117.806909"
   },
-
   "SH": {
     "name": "Sunny Hills High School",
     "address": "1801 Lancer Way",
     "city": "Fullerton",
     "state": "CA",
-    "zip": "92833"
+    "zip": "92833",
+    "lat": "33.883421",
+    "lon": "-117.953582"
   },
-
   "NW": {
     "name": "Northwood High School",
     "address": "4515 Portola Pkwy",
     "city": "Irvine",
     "state": "CA",
-    "zip": "92620"
+    "zip": "92620",
+    "lat": "33.732439",
+    "lon": "-117.751082"
   },
-
   "BO": {
     "name": "Brea Olinda High School",
     "address": "789 Wildcat Way",
     "city": "Brea",
     "state": "CA",
-    "zip": "92821"
+    "zip": "92821",
+    "lat": "33.931962",
+    "lon": "-117.875972"
   },
-
   "PAC": {
     "name": "Pacifica High School",
     "address": "6851 Lampson Ave",
     "city": "Garden Grove",
     "state": "CA",
-    "zip": "92845"
+    "zip": "92845",
+    "lat": "33.782859",
+    "lon": "-118.013565"
   },
-
   "ARL": {
     "name": "Arlington High School",
     "address": "2951 Jackson St",
     "city": "Riverside",
     "state": "CA",
-    "zip": "92503"
+    "zip": "92503",
+    "lat": "33.914956",
+    "lon": "-117.429643"
   },
-
   "TUSTIN": {
     "name": "Tustin High School",
     "address": "1171 El Camino Real",
     "city": "Tustin",
     "state": "CA",
-    "zip": "92780"
+    "zip": "92780",
+    "lat": "33.737612",
+    "lon": "-117.817167"
   },
-
   "VILLA": {
     "name": "Villa Park High School",
     "address": "18042 E Taft Ave",
     "city": "Villa Park",
     "state": "CA",
-    "zip": "92861"
+    "zip": "92861",
+    "lat": "33.816288",
+    "lon": "-117.817744"
   },
-
   "CDM": {
     "name": "Corona del Mar High School",
     "address": "2101 Eastbluff Dr",
     "city": "Newport Beach",
     "state": "CA",
-    "zip": "92660"
+    "zip": "92660",
+    "lat": "33.634365",
+    "lon": "-117.878435"
   }
 }
