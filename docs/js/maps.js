@@ -1,33 +1,35 @@
 // =========================================
-// Floriano Family Sports
-// Maps Module v1.0
+// FFS Venue Map Module v1.0
 // =========================================
 
 const Maps = {
 
-    getVenueCard(event){
+    getMap(event) {
 
-        if(!event?.venue){
+        const venue = event.venue;
 
+        if (!venue || !venue.lat || !venue.lon) {
             return "";
-
         }
+
+        const lat = venue.lat;
+        const lon = venue.lon;
 
         return `
 
-<div class="venue-card">
+<div class="map-card">
 
-    <h4>
+    <div class="map-title">
 
-        🗺 Venue
-
-    </h4>
-
-    <div>
-
-        ${event.venue.name}
+        VENUE
 
     </div>
+
+    <iframe
+        class="venue-map"
+        loading="lazy"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.003}%2C${lat-0.003}%2C${Number(lon)+0.003}%2C${Number(lat)+0.003}&layer=mapnik&marker=${lat}%2C${lon}">
+    </iframe>
 
 </div>
 
