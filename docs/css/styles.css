@@ -119,7 +119,7 @@ h1 {
 }
 
 .small {
-    width: 90px;
+    width: 140px;
 }
 
 .back {
@@ -451,8 +451,14 @@ h1 {
         font-size: 2.3rem;
     }
 
+    /* Home page shield */
     .shield {
         width: 160px;
+    }
+
+    /* Family Calendar shield */
+    .small {
+        width: 95px;
     }
 
     .mascots {
