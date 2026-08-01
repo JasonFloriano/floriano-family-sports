@@ -750,6 +750,8 @@ h1 {
 
 .venue-card{
 
+    display:block;
+
     margin:30px auto;
 
     padding:24px;
@@ -765,14 +767,35 @@ h1 {
     box-shadow:0 10px 30px rgba(0,0,0,.35);
 
     text-align:center;
-   
+
+    text-decoration:none;
+
+    color:inherit;
+
+    cursor:pointer;
+
     transition:.25s ease;
 
 }
 
+.venue-card,
+.venue-card:visited,
+.venue-card:hover,
+.venue-card:active{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
 .venue-card:hover{
-   transform:translateY(-3px);
-   border-color:#F2AF02;
+
+    transform:translateY(-3px);
+
+    border-color:#F2AF02;
+
+    box-shadow:0 12px 32px rgba(242,175,2,.20);
 
 }
 
@@ -792,11 +815,11 @@ h1 {
 
 .venue-name{
 
+    color:#FFFFFF;
+
     font-size:1.35rem;
 
     font-weight:800;
-
-    color:#FFFFFF;
 
 }
 
@@ -817,6 +840,7 @@ h1 {
     font-size:.95rem;
 
 }
+
 .venue-action{
 
     margin-top:20px;
