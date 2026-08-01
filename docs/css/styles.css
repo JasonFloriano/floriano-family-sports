@@ -523,13 +523,13 @@ h1 {
 
     display:block;
 
-    font-size:.75rem;
+    font-size:.60rem;
 
-    letter-spacing:5px;
+    letter-spacing:4px;
 
     color:#7F8A99;
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
 }
 
@@ -624,7 +624,7 @@ h1 {
 
 .weather-card{
 
-    margin:30px auto 20px;
+    margin:40px auto 24px;
 
     padding-top:24px;
 
