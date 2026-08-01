@@ -624,8 +624,8 @@ h1 {
 
 .weather-card{
 
-    margin:28px auto 18px;
-
+    margin:28px auto 40px;
+   
     padding-top:24px;
 
     border-top:1px solid rgba(255,255,255,.08);
@@ -752,7 +752,7 @@ h1 {
 
     display:block;
 
-    margin:30px auto;
+    margin:40px auto 0;
 
     padding:24px;
 
@@ -800,7 +800,7 @@ h1 {
 }
 
 .venue-title{
-
+   
     color:#F2AF02;
 
     font-size:.85rem;
@@ -808,8 +808,9 @@ h1 {
     font-weight:700;
 
     letter-spacing:4px;
+   margin-bottom:20px;
+   text-transform:uppercase;
 
-    margin-bottom:18px;
 
 }
 
