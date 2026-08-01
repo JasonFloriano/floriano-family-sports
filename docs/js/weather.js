@@ -1,55 +1,73 @@
 // =========================================
 // Floriano Family Sports
-// Weather Module v2.0
+// Weather Module v3.0
 // =========================================
 
 const Weather = {
 
-    async getForecast(event){
+    async getForecast(event) {
 
-        if(!event?.venue){
+        const venue = event.venue;
 
-            return "";
-
-        }
-
-        const { lat, lon } = event.venue;
-
-        if(lat == null || lon == null){
+        if (!venue?.lat || !venue?.lon) {
 
             return "";
 
         }
 
-        try{
+        const url =
+            `https://api.open-meteo.com/v1/forecast` +
+            `?latitude=${venue.lat}` +
+            `&longitude=${venue.lon}` +
+            `&hourly=temperature_2m,weathercode,windspeed_10m,precipitation_probability` +
+            `&temperature_unit=fahrenheit` +
+            `&wind_speed_unit=mph` +
+            `&timezone=auto`;
 
-            const response = await fetch(
+        const response = await fetch(url);
 
-                `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`
+        const data = await response.json();
 
+        const gameHour = event.start.getHours();
+
+        const gameDate = event.start.toISOString().split("T")[0];
+
+        const index = data.hourly.time.findIndex(time =>
+
+            time.startsWith(`${gameDate}T${String(gameHour).padStart(2,"0")}`)
+
+        );
+
+        if (index === -1) {
+
+            return "";
+
+        }
+
+        const temp = Math.round(data.hourly.temperature_2m[index]);
+
+        const wind = Math.round(data.hourly.windspeed_10m[index]);
+
+        const rain = data.hourly.precipitation_probability[index];
+
+        const description =
+            this.getWeatherDescription(
+                data.hourly.weathercode[index]
             );
 
-            if(!response.ok){
-
-                throw new Error("Weather request failed");
-
-            }
-
-            const data = await response.json();
-
-            const temp =
-                Math.round(data.current.temperature_2m);
-
-            const code =
-                data.current.weather_code;
-
-            return `
+        return `
 
 <div class="weather-card">
 
+    <div class="weather-title">
+
+        GAME TIME FORECAST
+
+    </div>
+
     <div class="weather-icon">
 
-        ${this.getIcon(code)}
+        ${this.getWeatherIcon(data.hourly.weathercode[index])}
 
     </div>
 
@@ -61,7 +79,13 @@ const Weather = {
 
     <div class="weather-desc">
 
-        ${this.getDescription(code)}
+        ${description}
+
+    </div>
+
+    <div class="weather-extra">
+
+        💨 ${wind} mph &nbsp;&nbsp; ☔ ${rain}%
 
     </div>
 
@@ -69,48 +93,4 @@ const Weather = {
 
 `;
 
-        }
-
-        catch(error){
-
-            console.error("Weather:", error);
-
-            return "";
-
-        }
-
     },
-
-    getIcon(code){
-
-        if(code === 0) return "☀️";
-
-        if(code <= 3) return "🌤️";
-
-        if(code <= 48) return "☁️";
-
-        if(code <= 67) return "🌧️";
-
-        if(code <= 77) return "❄️";
-
-        return "⛈️";
-
-    },
-
-    getDescription(code){
-
-        if(code === 0) return "Clear Sky";
-
-        if(code <= 3) return "Partly Cloudy";
-
-        if(code <= 48) return "Cloudy";
-
-        if(code <= 67) return "Rain";
-
-        if(code <= 77) return "Snow";
-
-        return "Thunderstorms";
-
-    }
-
-};
