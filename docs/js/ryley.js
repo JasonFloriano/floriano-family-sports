@@ -3,7 +3,7 @@
 // Family Dashboard v1.3.1
 // =========================================
 
-let activeFilter = "ALL";
+const DASHBOARD_ATHLETE = "RYLEY";
 
 // =========================================
 // Badge Helper
