@@ -9,9 +9,16 @@ const Weather = {
 
         const venue = event.venue;
 
-        if (!venue || !venue.lat || !venue.lon) {
-            return "";
-        }
+console.log("===== WEATHER DEBUG =====");
+console.log("Venue Object:", venue);
+console.log("Latitude:", venue?.lat);
+console.log("Longitude:", venue?.lon);
+console.log("Game Date:", event.start);
+
+if (!venue || !venue.lat || !venue.lon) {
+    console.warn("Missing venue coordinates.");
+    return "";
+}
 
         try {
 
@@ -28,6 +35,7 @@ const Weather = {
             const response = await fetch(url);
 
             const data = await response.json();
+            console.log("Weather API Response:", data);
 
             if (!data.current || !data.hourly) {
                 return "";
@@ -59,9 +67,15 @@ const Weather = {
                     String(event.start.getHours()).padStart(2, "0");
 
                 const index =
-                    data.hourly.time.findIndex(time =>
-                        time.startsWith(`${gameDate}T${gameHour}`)
-                    );
+    data.hourly.time.findIndex(time =>
+        time.startsWith(`${gameDate}T${gameHour}`)
+    );
+
+console.log("Forecast Index:", index);
+console.log(
+    "Last Forecast Time:",
+    data.hourly.time[data.hourly.time.length - 1]
+);
 
                 if (index > -1) {
 
