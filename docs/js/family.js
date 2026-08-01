@@ -306,7 +306,7 @@ function getCountdown(start){
 // Render Dashboard
 // =========================================
 
-function renderAll() {
+async function renderAll() {
 
     const upcoming = getFilteredEvents();
 
@@ -331,6 +331,9 @@ function renderAll() {
             "";
 
         const countdown = getCountdown(game.start);
+        
+        const weather =
+    await Weather.getForecast(game);
 
         nextContainer.innerHTML = `
 
@@ -396,9 +399,7 @@ function renderAll() {
 
     </div>
 
-    <div class="weather">
-        ☀️ Weather Coming...
-    </div>
+${weather}
 
     <a
         class="directions"
