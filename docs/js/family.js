@@ -267,14 +267,12 @@ function getFilteredEvents() {
 
     let events = FFS.getUpcomingEvents();
 
-    // Dashboard-specific athlete (Ryley/Addison)
-    if (App.athlete) {
+    console.log("First Event:");
+    console.log(events[0]);
 
-        events = events.filter(
-            event => event.ATHLETEID === App.athlete
-        );
+    return events;
 
-    }
+}
 
     // Family Dashboard filter chips
     else if (activeFilter !== "ALL") {
