@@ -400,15 +400,28 @@ const weather =
     </div>
 
 ${weather}
-${map}
-    <a
-        class="directions"
-        href="${directionsUrl(game)}"
-        target="_blank">
 
-        Directions →
+<div class="venue-card">
 
-    </a>
+    <div class="venue-title">
+        📍 GAME LOCATION
+    </div>
+
+    <div class="venue-name">
+        🏫 ${game.venue.name}
+    </div>
+
+    <div class="venue-address">
+        ${game.venue.address}
+    </div>
+
+    <div class="venue-city">
+        ${game.venue.city}, ${game.venue.state} ${game.venue.zip}
+    </div>
+
+</div>
+
+<a
 
 </div>
 
