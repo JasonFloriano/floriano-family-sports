@@ -332,7 +332,7 @@ async function renderAll() {
 
         const countdown = getCountdown(game.start);
         
-        const weather =
+const weather =
     await Weather.getForecast(game);
 
         nextContainer.innerHTML = `
