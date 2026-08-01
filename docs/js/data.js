@@ -1,3 +1,17 @@
+async function loadJSON(file) {
+
+    const response = await fetch(file);
+
+    if (!response.ok) {
+
+        throw new Error(`Failed to load ${file}`);
+
+    }
+
+    return response.json();
+
+}
+
 async function loadData() {
 
     try {
@@ -25,7 +39,7 @@ async function loadData() {
 
         console.error("Error loading data:", error);
 
-        throw error;   // <-- ADD THIS
+        throw error;
 
     }
 
