@@ -6,6 +6,46 @@
 let activeFilter = "ALL";
 
 // =========================================
+// Dashboard Configuration
+// =========================================
+
+const DashboardConfig = {
+
+    family: {
+
+        athlete: null,
+
+        showFilters: true,
+
+        title: "Family Dashboard"
+
+    },
+
+    ryley: {
+
+        athlete: "RYLEY",
+
+        showFilters: false,
+
+        title: "Ryley's Dashboard"
+
+    },
+
+    addison: {
+
+        athlete: "ADDISON",
+
+        showFilters: false,
+
+        title: "Addison's Dashboard"
+
+    }
+
+};
+
+const App = DashboardConfig[DASHBOARD];
+
+// =========================================
 // Badge Helper
 // =========================================
 
