@@ -340,9 +340,9 @@ function renderAll() {
 
     <h3>${game.athlete.name}</h3>
 
-    <div class="${badgeClass(game.TYPE)}">
-        ${game.TYPE === "LEAGUE" ? "LEAGUE GAME" : game.TYPE}
-    </div>
+<div class="hero-badge ${game.TYPE.toLowerCase()}">
+    ${game.TYPE === "LEAGUE" ? "LEAGUE GAME" : game.TYPE}
+</div>
 
     <div class="hero-opponent">
         🆚 ${opponent}
