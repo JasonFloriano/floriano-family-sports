@@ -267,7 +267,7 @@ function getFilteredEvents() {
 
     let events = FFS.getUpcomingEvents();
 
-    // Athlete page (Ryley/Addison)
+    // Athlete pages
     if (App.athlete) {
 
         events = events.filter(
@@ -287,19 +287,6 @@ function getFilteredEvents() {
 
     console.log("First Event:");
     console.log(events[0]);
-
-    return events;
-
-}
-
-    // Family Dashboard filter chips
-    else if (activeFilter !== "ALL") {
-
-        events = events.filter(
-            event => event.ATHLETEID === activeFilter
-        );
-
-    }
 
     return events;
 
