@@ -101,14 +101,21 @@ const FFS = {
 
 },
 
-    getAthlete(id) {
-    console.log("this =", this);
-    console.log("this.data =", this.data);
+getAthlete(id) {
     return this.data.athletes[id];
-}
-    getTeam(id) { return this.data.teams[id]; },
-    getVenue(id) { return this.data.venues[id]; },
-    getOpponent(id) { return this.data.opponents[id]; },
+},
+
+getTeam(id) {
+    return this.data.teams[id];
+},
+
+getVenue(id) {
+    return this.data.venues[id];
+},
+
+getOpponent(id) {
+    return this.data.opponents[id];
+},
 
 getEventDetails(event) {
 
