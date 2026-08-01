@@ -744,3 +744,68 @@ h1 {
 
 }
 
+/* ==========================================
+   Venue Card
+========================================== */
+
+.venue-card{
+
+    margin:30px auto;
+
+    padding:24px;
+
+    max-width:420px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    background:#11161E;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+    text-align:center;
+
+}
+
+.venue-title{
+
+    color:#F2AF02;
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+
+    margin-bottom:18px;
+
+}
+
+.venue-name{
+
+    font-size:1.35rem;
+
+    font-weight:800;
+
+    color:#FFFFFF;
+
+}
+
+.venue-address{
+
+    margin-top:14px;
+
+    color:#D3D9E3;
+
+}
+
+.venue-city{
+
+    margin-top:6px;
+
+    color:#9FA8B6;
+
+    font-size:.95rem;
+
+}
