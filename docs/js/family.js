@@ -334,8 +334,6 @@ async function renderAll() {
         
 const weather =
     await Weather.getForecast(game);
-const map = 
-    Maps.getMap(game);
         
         nextContainer.innerHTML = `
 
