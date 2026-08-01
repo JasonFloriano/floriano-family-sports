@@ -43,7 +43,7 @@ const DashboardConfig = {
 
 };
 
-const App = DashboardConfig[DASHBOARD];
+const App = DashboardConfig[DASHBOARD || "family"];
 
 // =========================================
 // Badge Helper
