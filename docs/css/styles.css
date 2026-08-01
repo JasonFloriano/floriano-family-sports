@@ -661,6 +661,21 @@ h1 {
     font-size:.95rem;
 
 }
+
+.weather-title{
+
+    margin-bottom:10px;
+
+    color:#7F8A99;
+
+    font-size:.72rem;
+
+    letter-spacing:4px;
+
+    font-weight:700;
+
+}
+
 /* ==========================================
    Hero Badge
 ========================================== */
