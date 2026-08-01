@@ -1,4 +1,4 @@
-// script.js
+// dashboard.js
 
 document.addEventListener("DOMContentLoaded", async () => {
 
