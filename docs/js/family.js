@@ -334,7 +334,9 @@ async function renderAll() {
         
 const weather =
     await Weather.getForecast(game);
-
+const map = 
+    Maps.getMap(game);
+        
         nextContainer.innerHTML = `
 
 <h2>NEXT GAME</h2>
@@ -400,7 +402,7 @@ const weather =
     </div>
 
 ${weather}
-
+${map}
     <a
         class="directions"
         href="${directionsUrl(game)}"
