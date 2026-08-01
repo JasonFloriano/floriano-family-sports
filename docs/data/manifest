@@ -1,0 +1,22 @@
+{
+  "name": "Floriano Family Sports",
+  "short_name": "FFS",
+  "description": "Family Sports Dashboard",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#11161E",
+  "theme_color": "#F2AF02",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logos/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logos/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
