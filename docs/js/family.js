@@ -249,8 +249,15 @@ function getCountdown(start){
     if(diff <= 0){
 
         return{
-            value:"LIVE",
-            units:"NOW"
+
+            days:"LIVE",
+
+            hours:"NOW",
+
+            dayLabel:"",
+
+            hourLabel:""
+
         };
 
     }
@@ -264,30 +271,66 @@ function getCountdown(start){
     if(days>0){
 
         return{
-            value:`${String(days).padStart(2,"0")} : ${String(hours).padStart(2,"0")}`,
-            units:"DAYS      HOURS"
-        };
 
-    }
+            days,
 
-    if(hours>0){
+            hours,
 
-        return{
-            value:`${String(hours).padStart(2,"0")} : ${String(minutes).padStart(2,"0")}`,
-            units:"HOURS    MINUTES"
+            dayLabel:"DAYS",
+
+            hourLabel:"HOURS"
+
         };
 
     }
 
     return{
 
-        value:`${minutes}`,
+        days:hours,
 
-        units:"MINUTES"
+        hours:minutes,
+
+        dayLabel:"HOURS",
+
+        hourLabel:"MINUTES"
 
     };
 
 }
+
+<div class="countdown">
+
+    <div class="countdown-label">
+        STARTS IN
+    </div>
+
+    <div class="countdown-grid">
+
+        <div class="count-box">
+
+            <div id="countdown-days" class="count-value">
+                ${getCountdown(game.start).days}
+            </div>
+
+            <div class="count-unit">
+                ${getCountdown(game.start).dayLabel}
+            </div>
+
+        </div>
+
+        <div class="count-box">
+
+            <div id="countdown-hours" class="count-value">
+                ${getCountdown(game.start).hours}
+            </div>
+
+            <div class="count-unit">
+                ${getCountdown(game.start).hourLabel}
+            </div>
+
+        </div>
+
+    </div>
 
 // =========================================
 // Render Dashboard
@@ -329,11 +372,11 @@ if (upcoming.length > 0) {
 
     <h3>${game.athlete.name}</h3>
 
-    <div class="${badgeClass(game.TYPE)}">
+   <div class="${badgeClass(game.TYPE)}">
 
-        ${game.TYPE}
+    ${game.TYPE === "LEAGUE" ? "LEAGUE GAME" : game.TYPE}
 
-    </div>
+</div>
 
     <div class="hero-opponent">
 
@@ -359,26 +402,7 @@ if (upcoming.length > 0) {
 
     </div>
 
-    <div class="countdown">
-
-    <div class="countdown-label">
-        STARTS IN
-    </div>
-
-    <div class="countdown-box">
-
-        <div id="countdown-value">
-            ${getCountdown(game.start).value}
-        </div>
-
-        <div id="countdown-units">
-            ${getCountdown(game.start).units}
-        </div>
-
-    </div>
-
 </div>
-
     <div class="weather">
 
         ☀️ Weather Coming...
