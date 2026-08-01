@@ -428,6 +428,7 @@ ${weather}
     </div>
 
 </a>
+</div>
 
 `;
 
