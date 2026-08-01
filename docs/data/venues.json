@@ -5,14 +5,16 @@
     "city": "Anaheim",
     "state": "CA",
     "zip": "92807",
-    "gym": "Main Gym",
-    "pool": "Aquatics Center",
     "lat": 33.8475,
     "lon": -117.7972
   },
 
   "FULL": {
-    "name": "Fullerton High School"
+    "name": "Fullerton Union High School",
+    "address": "201 E Chapman Ave",
+    "city": "Fullerton",
+    "state": "CA",
+    "zip": "92832"
   },
 
   "SON": {
@@ -20,72 +22,134 @@
     "address": "401 S Palm St",
     "city": "La Habra",
     "state": "CA",
-    "zip": "90631",
-    "lat": 33.9257,
-    "lon": -117.9470
-},
+    "zip": "90631"
+  },
 
   "ELT": {
-    "name": "El Toro High School"
+    "name": "El Toro High School",
+    "address": "25255 Toledo Way",
+    "city": "Lake Forest",
+    "state": "CA",
+    "zip": "92630"
   },
 
   "YL": {
-    "name": "Yorba Linda High School"
+    "name": "Yorba Linda High School",
+    "address": "19900 Bastanchury Rd",
+    "city": "Yorba Linda",
+    "state": "CA",
+    "zip": "92886"
   },
 
   "VAL": {
-    "name": "Valencia High School"
+    "name": "Valencia High School",
+    "address": "512 Bradford Ave",
+    "city": "Placentia",
+    "state": "CA",
+    "zip": "92870"
   },
 
   "DB": {
-    "name": "Diamond Bar High School"
+    "name": "Diamond Bar High School",
+    "address": "21400 Pathfinder Rd",
+    "city": "Diamond Bar",
+    "state": "CA",
+    "zip": "91765"
   },
 
   "ED": {
-    "name": "El Dorado High School"
+    "name": "El Dorado High School",
+    "address": "1651 N Valencia Ave",
+    "city": "Placentia",
+    "state": "CA",
+    "zip": "92870"
   },
 
   "TROY": {
-    "name": "Troy High School"
+    "name": "Troy High School",
+    "address": "2200 E Dorothy Ln",
+    "city": "Fullerton",
+    "state": "CA",
+    "zip": "92831"
   },
 
   "FOOT": {
-    "name": "Foothill High School"
+    "name": "Foothill High School",
+    "address": "19251 Dodge Ave",
+    "city": "Santa Ana",
+    "state": "CA",
+    "zip": "92705"
   },
 
   "WB": {
-    "name": "Woodbridge High School"
+    "name": "Woodbridge High School",
+    "address": "2 Meadowbrook",
+    "city": "Irvine",
+    "state": "CA",
+    "zip": "92604"
   },
 
   "SH": {
-    "name": "Sunny Hills High School"
+    "name": "Sunny Hills High School",
+    "address": "1801 Lancer Way",
+    "city": "Fullerton",
+    "state": "CA",
+    "zip": "92833"
   },
 
   "NW": {
-    "name": "Northwood High School"
+    "name": "Northwood High School",
+    "address": "4515 Portola Pkwy",
+    "city": "Irvine",
+    "state": "CA",
+    "zip": "92620"
   },
 
   "BO": {
-    "name": "Brea Olinda High School"
+    "name": "Brea Olinda High School",
+    "address": "789 Wildcat Way",
+    "city": "Brea",
+    "state": "CA",
+    "zip": "92821"
   },
 
   "PAC": {
-    "name": "Pacifica High School"
+    "name": "Pacifica High School",
+    "address": "6851 Lampson Ave",
+    "city": "Garden Grove",
+    "state": "CA",
+    "zip": "92845"
   },
 
   "ARL": {
-    "name": "Arlington High School"
+    "name": "Arlington High School",
+    "address": "2951 Jackson St",
+    "city": "Riverside",
+    "state": "CA",
+    "zip": "92503"
   },
 
   "TUSTIN": {
-    "name": "Tustin High School"
+    "name": "Tustin High School",
+    "address": "1171 El Camino Real",
+    "city": "Tustin",
+    "state": "CA",
+    "zip": "92780"
   },
 
   "VILLA": {
-    "name": "Villa Park High School"
+    "name": "Villa Park High School",
+    "address": "18042 E Taft Ave",
+    "city": "Villa Park",
+    "state": "CA",
+    "zip": "92861"
   },
 
   "CDM": {
-    "name": "Corona del Mar High School"
+    "name": "Corona del Mar High School",
+    "address": "2101 Eastbluff Dr",
+    "city": "Newport Beach",
+    "state": "CA",
+    "zip": "92660"
   }
 }
