@@ -359,6 +359,10 @@ function getCountdown(start){
 async function renderAll() {
 
     const upcoming = getFilteredEvents();
+console.log("Dashboard:", DASHBOARD);
+console.log("App:", App);
+console.log("Upcoming Count:", upcoming.length);
+console.log(upcoming);
 
     const today = upcoming.filter(event =>
         event.start.toDateString() === new Date().toDateString()
