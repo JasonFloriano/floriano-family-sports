@@ -5,9 +5,9 @@
 
 const Weather = {
 
-    async getForecast(event) {
+    async getForecast(event){
 
-        if (!event?.venue) {
+        if(!event?.venue){
 
             return `
                 <div class="weather-card">
@@ -19,21 +19,34 @@ const Weather = {
 
         }
 
-        // API call goes here
+        // TODO:
+        // Open-Meteo API
 
         return `
-            <div class="weather-card">
 
-                ☀️ 82°
+<div class="weather-card">
 
-                <div class="weather-desc">
+    <div class="weather-icon">
 
-                    Mostly Sunny
+        ☀️
 
-                </div>
+    </div>
 
-            </div>
-        `;
+    <div class="weather-temp">
+
+        82°
+
+    </div>
+
+    <div class="weather-desc">
+
+        Mostly Sunny
+
+    </div>
+
+</div>
+
+`;
 
     }
 
