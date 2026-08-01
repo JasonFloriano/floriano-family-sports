@@ -57,6 +57,19 @@ async function geocodeVenues() {
 
     console.log("Finished!");
 
-    console.log(JSON.stringify(venues, null, 2));
+    const blob = new Blob(
+    [JSON.stringify(venues, null, 2)],
+    { type: "application/json" }
+);
+
+const a = document.createElement("a");
+
+a.href = URL.createObjectURL(blob);
+
+a.download = "venues.json";
+
+a.click();
+
+console.log("✅ Downloaded updated venues.json");
 
 }
