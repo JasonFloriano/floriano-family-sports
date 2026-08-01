@@ -16,8 +16,14 @@
   },
 
   "SON": {
-    "name": "Sonora High School"
-  },
+    "name": "Sonora High School",
+    "address": "401 S Palm St",
+    "city": "La Habra",
+    "state": "CA",
+    "zip": "90631",
+    "lat": 33.9257,
+    "lon": -117.9470
+},
 
   "ELT": {
     "name": "El Toro High School"
