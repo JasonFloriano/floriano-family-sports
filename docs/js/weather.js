@@ -1,6 +1,6 @@
 // =========================================
-// FFS Weather Module v2.0
-// Game Time Forecast
+// FFS Weather Module v3.0
+// Smart Weather
 // =========================================
 
 const Weather = {
@@ -19,78 +19,114 @@ const Weather = {
                 `https://api.open-meteo.com/v1/forecast` +
                 `?latitude=${venue.lat}` +
                 `&longitude=${venue.lon}` +
+                `&current=temperature_2m,weathercode,wind_speed_10m` +
                 `&hourly=temperature_2m,weathercode,wind_speed_10m,precipitation_probability` +
                 `&temperature_unit=fahrenheit` +
                 `&wind_speed_unit=mph` +
                 `&timezone=auto`;
 
             const response = await fetch(url);
-const data = await response.json();
 
-if (!data.hourly || !data.hourly.time) {
+            const data = await response.json();
 
-    return "";
-
-}
-
-const gameDate =
-    event.start.toISOString().split("T")[0];
-
-            const gameHour =
-                String(event.start.getHours()).padStart(2, "0");
-
-            const index = data.hourly.time.findIndex(time =>
-                time.startsWith(`${gameDate}T${gameHour}`)
-            );
-
-            if (index === -1) {
+            if (!data.current || !data.hourly) {
                 return "";
             }
 
-            const temp =
-                Math.round(data.hourly.temperature_2m[index]);
+            //--------------------------------------------------
+            // Is game inside forecast window?
+            //--------------------------------------------------
 
-            const wind =
-                Math.round(data.hourly.wind_speed_10m[index]);
+            const daysUntilGame =
+                (event.start - new Date()) / 86400000;
 
-            const rain =
-                data.hourly.precipitation_probability[index];
+            let title;
+            let temp;
+            let wind;
+            let rain = 0;
+            let code;
 
-            const code =
-                data.hourly.weathercode[index];
+            //--------------------------------------------------
+            // GAME TIME FORECAST
+            //--------------------------------------------------
+
+            if (daysUntilGame <= 7) {
+
+                const gameDate =
+                    event.start.toISOString().split("T")[0];
+
+                const gameHour =
+                    String(event.start.getHours()).padStart(2, "0");
+
+                const index =
+                    data.hourly.time.findIndex(time =>
+                        time.startsWith(`${gameDate}T${gameHour}`)
+                    );
+
+                if (index > -1) {
+
+                    title = "GAME TIME FORECAST";
+
+                    temp =
+                        Math.round(data.hourly.temperature_2m[index]);
+
+                    wind =
+                        Math.round(data.hourly.wind_speed_10m[index]);
+
+                    rain =
+                        data.hourly.precipitation_probability[index];
+
+                    code =
+                        data.hourly.weathercode[index];
+
+                }
+
+            }
+
+            //--------------------------------------------------
+            // FALLBACK TO CURRENT CONDITIONS
+            //--------------------------------------------------
+
+            if (temp === undefined) {
+
+                title = "CURRENT CONDITIONS";
+
+                temp =
+                    Math.round(data.current.temperature_2m);
+
+                wind =
+                    Math.round(data.current.wind_speed_10m);
+
+                code =
+                    data.current.weathercode;
+
+            }
 
             return `
 
 <div class="weather-card">
 
     <div class="weather-title">
-
-        GAME TIME FORECAST
-
+        ${title}
     </div>
 
     <div class="weather-icon">
-
         ${this.getWeatherIcon(code)}
-
     </div>
 
     <div class="weather-temp">
-
         ${temp}°
-
     </div>
 
     <div class="weather-desc">
-
         ${this.getWeatherDescription(code)}
-
     </div>
 
     <div class="weather-extra">
-
-        💨 ${wind} mph&nbsp;&nbsp;&nbsp;☔ ${rain}%
-
+        💨 ${wind} mph
+        ${title === "GAME TIME FORECAST"
+            ? `&nbsp;&nbsp;&nbsp;☔ ${rain}%`
+            : ""}
     </div>
 
 </div>
@@ -114,8 +150,10 @@ const gameDate =
         switch (code) {
 
             case 0: return "Clear Sky";
+
             case 1:
             case 2: return "Mostly Sunny";
+
             case 3: return "Cloudy";
 
             case 45:
