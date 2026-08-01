@@ -298,40 +298,6 @@ function getCountdown(start){
 
 }
 
-<div class="countdown">
-
-    <div class="countdown-label">
-        STARTS IN
-    </div>
-
-    <div class="countdown-grid">
-
-        <div class="count-box">
-
-            <div id="countdown-days" class="count-value">
-                ${getCountdown(game.start).days}
-            </div>
-
-            <div class="count-unit">
-                ${getCountdown(game.start).dayLabel}
-            </div>
-
-        </div>
-
-        <div class="count-box">
-
-            <div id="countdown-hours" class="count-value">
-                ${getCountdown(game.start).hours}
-            </div>
-
-            <div class="count-unit">
-                ${getCountdown(game.start).hourLabel}
-            </div>
-
-        </div>
-
-    </div>
-
 // =========================================
 // Render Dashboard
 // =========================================
@@ -403,6 +369,41 @@ if (upcoming.length > 0) {
     </div>
 
 </div>
+
+<div class="countdown">
+
+    <div class="countdown-label">
+        STARTS IN
+    </div>
+
+    <div class="countdown-grid">
+
+        <div class="count-box">
+
+            <div id="countdown-days" class="count-value">
+                ${getCountdown(game.start).days}
+            </div>
+
+            <div class="count-unit">
+                ${getCountdown(game.start).dayLabel}
+            </div>
+
+        </div>
+
+        <div class="count-box">
+
+            <div id="countdown-hours" class="count-value">
+                ${getCountdown(game.start).hours}
+            </div>
+
+            <div class="count-unit">
+                ${getCountdown(game.start).hourLabel}
+            </div>
+
+        </div>
+
+    </div>
+    
     <div class="weather">
 
         ☀️ Weather Coming...
