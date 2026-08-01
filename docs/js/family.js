@@ -401,7 +401,11 @@ const weather =
 
 ${weather}
 
-<div class="venue-card">
+<a
+    class="venue-card"
+    href="${game.display.directions}"
+    target="_blank"
+    rel="noopener">
 
     <div class="venue-title">
         📍 GAME LOCATION
@@ -419,11 +423,11 @@ ${weather}
         ${game.venue.city}, ${game.venue.state} ${game.venue.zip}
     </div>
 
-</div>
+    <div class="venue-action">
+        🧭 Open in Google Maps →
+    </div>
 
-<a
-
-</div>
+</a>
 
 `;
 
