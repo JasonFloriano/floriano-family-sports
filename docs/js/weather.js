@@ -25,10 +25,16 @@ const Weather = {
                 `&timezone=auto`;
 
             const response = await fetch(url);
-            const data = await response.json();
+const data = await response.json();
 
-            const gameDate =
-                event.start.toISOString().split("T")[0];
+if (!data.hourly || !data.hourly.time) {
+
+    return "";
+
+}
+
+const gameDate =
+    event.start.toISOString().split("T")[0];
 
             const gameHour =
                 String(event.start.getHours()).padStart(2, "0");
