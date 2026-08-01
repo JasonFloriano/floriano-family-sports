@@ -302,35 +302,37 @@ function getCountdown(start){
 // Render Dashboard
 // =========================================
 
+// =========================================
+// Render Dashboard
+// =========================================
+
 function renderAll() {
 
     const upcoming = getFilteredEvents();
 
     const today = upcoming.filter(event =>
-
-        event.start.toDateString() ===
-        new Date().toDateString()
-
+        event.start.toDateString() === new Date().toDateString()
     );
 
-    const nextContainer =
-        document.querySelector(".next-up");
+    const nextContainer = document.querySelector(".next-up");
 
-if (upcoming.length > 0) {
+    if (upcoming.length > 0) {
 
-    const game = upcoming[0];
+        const game = upcoming[0];
 
-    const opponent =
-        game.display?.opponent ??
-        game.opponent?.school ??
-        game.TYPE;
+        const opponent =
+            game.display?.opponent ??
+            game.opponent?.school ??
+            game.TYPE;
 
-    const venue =
-        game.display?.venue ??
-        game.venue?.name ??
-        "";
+        const venue =
+            game.display?.venue ??
+            game.venue?.name ??
+            "";
 
-    nextContainer.innerHTML = `
+        const countdown = getCountdown(game.start);
+
+        nextContainer.innerHTML = `
 
 <h2>NEXT GAME</h2>
 
@@ -338,94 +340,64 @@ if (upcoming.length > 0) {
 
     <h3>${game.athlete.name}</h3>
 
-   <div class="${badgeClass(game.TYPE)}">
-
-    ${game.TYPE === "LEAGUE" ? "LEAGUE GAME" : game.TYPE}
-
-</div>
+    <div class="${badgeClass(game.TYPE)}">
+        ${game.TYPE === "LEAGUE" ? "LEAGUE GAME" : game.TYPE}
+    </div>
 
     <div class="hero-opponent">
-
         🆚 ${opponent}
-
     </div>
 
     <div class="hero-info">
-
         📅 ${game.DATE}
-
     </div>
 
     <div class="hero-info">
-
         🕓 ${game.TIME}
-
     </div>
 
     <div class="hero-info">
-
         📍 ${venue}
-   
-</div>
-
-<div class="countdown">
-
-    <div class="countdown-label">
-        STARTS IN
     </div>
 
-    <div class="countdown-grid">
+    <div class="countdown">
 
-        <div class="count-box">
+        <div class="countdown-label">
+            STARTS IN
+        </div>
 
-            <div id="countdown-days" class="count-value">
-                ${getCountdown(game.start).days}
+        <div class="countdown-grid">
+
+            <div class="count-box">
+
+                <div id="countdown-days" class="count-value">
+                    ${countdown.days}
+                </div>
+
+                <div id="countdown-day-label" class="count-unit">
+                    ${countdown.dayLabel}
+                </div>
+
             </div>
 
-            <div class="count-unit">
-                ${getCountdown(game.start).dayLabel}
+            <div class="count-box">
+
+                <div id="countdown-hours" class="count-value">
+                    ${countdown.hours}
+                </div>
+
+                <div id="countdown-hour-label" class="count-unit">
+                    ${countdown.hourLabel}
+                </div>
+
             </div>
 
         </div>
 
-        <div class="count-box">
-
-            <div id="countdown-hours" class="count-value">
-                ${getCountdown(game.start).hours}
-            </div>
-
-            <div class="count-unit">
-                ${getCountdown(game.start).hourLabel}
-            </div>
-
-        </div>
-
     </div>
 
-</div>
-
-<div class="weather">
-
-    ☀️ Weather Coming...
-
-</div>
-
-<a
-    class="directions"
-    href="${directionsUrl(game)}"
-    target="_blank">
-
-    Directions →
-
-</a>
-
-</div>
-`;
-    
     <div class="weather">
-
         ☀️ Weather Coming...
-
     </div>
 
     <a
@@ -441,8 +413,7 @@ if (upcoming.length > 0) {
 
 `;
 
-}
-    else {
+    } else {
 
         nextContainer.innerHTML = "";
 
@@ -461,32 +432,27 @@ if (upcoming.length > 0) {
             : `UPCOMING • ${activeFilter}`,
         upcoming.slice(0, 10)
     );
-    
-clearInterval(window.countdownTimer);
 
-window.countdownTimer = setInterval(() => {
+    clearInterval(window.countdownTimer);
 
-   const countdown = getCountdown(upcoming[0].start);
+    window.countdownTimer = setInterval(() => {
 
-const days =
-    document.getElementById("countdown-days");
+        if (upcoming.length === 0) return;
 
-const hours =
-    document.getElementById("countdown-hours");
+        const countdown = getCountdown(upcoming[0].start);
 
-if(days){
+        const days = document.getElementById("countdown-days");
+        const hours = document.getElementById("countdown-hours");
+        const dayLabel = document.getElementById("countdown-day-label");
+        const hourLabel = document.getElementById("countdown-hour-label");
 
-    days.textContent = countdown.days;
+        if (days) days.textContent = countdown.days;
+        if (hours) hours.textContent = countdown.hours;
+        if (dayLabel) dayLabel.textContent = countdown.dayLabel;
+        if (hourLabel) hourLabel.textContent = countdown.hourLabel;
 
-}
+    }, 60000);
 
-if(hours){
-
-    hours.textContent = countdown.hours;
-
-}
-
-}, 60000);
 }
 
 // =========================================
