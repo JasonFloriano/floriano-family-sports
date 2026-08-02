@@ -844,114 +844,138 @@ h1 {
 
 }
 
-/* ======================================
+/* =========================================
    Install Modal
-====================================== */
+========================================= */
 
-.install-modal{
+.install-modal {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    background:rgba(0,0,0,.65);
+    background: rgba(0,0,0,.55);
 
-    display:flex;
+    backdrop-filter: blur(10px);
 
-    justify-content:center;
+    display: flex;
 
-    align-items:flex-end;
+    justify-content: center;
 
-    opacity:0;
+    align-items: flex-end;
 
-    visibility:hidden;
+    opacity: 0;
 
-    transition:.3s;
+    visibility: hidden;
 
-    z-index:9999;
+    transition: .30s ease;
 
-}
-
-.install-modal.show{
-
-    opacity:1;
-
-    visibility:visible;
+    z-index: 9999;
 
 }
 
-.install-sheet{
+.install-modal.show {
 
-    width:100%;
+    opacity: 1;
 
-    max-width:500px;
-
-    background:#181d24;
-
-    border-radius:24px 24px 0 0;
-
-    padding:28px;
-
-    text-align:center;
-
-    transform:translateY(100%);
-
-    transition:.35s ease;
+    visibility: visible;
 
 }
 
-.install-modal.show .install-sheet{
+.install-sheet {
 
-    transform:translateY(0);
+    width: 100%;
 
-}
+    max-width: 500px;
 
-.install-sheet-icon{
+    background: #181D24;
 
-    width:72px;
+    border-radius: 26px 26px 0 0;
 
-    height:72px;
+    padding: 30px;
 
-    margin:auto;
+    transform: translateY(100%);
 
-    border-radius:50%;
+    transition: transform .35s ease;
 
-    background:#d4af37;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:36px;
-
-    margin-bottom:20px;
+    box-shadow: 0 -20px 40px rgba(0,0,0,.45);
 
 }
 
-.close-install{
+.install-modal.show .install-sheet {
 
-    float:right;
-
-    background:none;
-
-    border:none;
-
-    color:white;
-
-    font-size:26px;
-
-    cursor:pointer;
+    transform: translateY(0);
 
 }
 
-#installInstructions{
+.close-install {
 
-    margin-top:24px;
+    float: right;
 
-    text-align:left;
+    background: none;
 
-    line-height:1.8;
+    border: none;
+
+    color: #bbb;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+}
+
+.install-sheet-icon {
+
+    width: 72px;
+
+    height: 72px;
+
+    margin: auto;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+
+    background: #D4AF37;
+
+    color: #111;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 36px;
+
+}
+
+#installMessage {
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+#installInstructions {
+
+    color: #d6d6d6;
+
+    line-height: 1.8;
+
+}
+
+#installInstructions ol {
+
+    padding-left: 20px;
+
+}
+
+#installInstructions li {
+
+    margin-bottom: 14px;
 
 }
