@@ -979,3 +979,15 @@ h1 {
     margin-bottom: 14px;
 
 }
+
+.install-logo{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+}
