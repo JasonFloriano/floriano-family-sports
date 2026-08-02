@@ -92,28 +92,49 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // iPhone / iPad instructions
-        if (isIOS()) {
+if (isIOS()) {
 
-            showInstallModal(
+    showInstallModal(
 
-    "Add FFS to your Home Screen",
+        "Add FFS to your Home Screen",
 
-    `
-    <p>
-        Add FFS to your Home Screen for one-tap access.
-    </p>
+        `
+        <p class="install-intro">
+            Install FFS for one-tap access just like a real app.
+        </p>
 
-    <ol>
-        <li>Tap the <strong>Share</strong> button.</li>
-        <li>Select <strong>Add to Home Screen</strong>.</li>
-    </ol>
-    `
+        <div class="install-step">
 
-);
+            <div class="step-number">1</div>
 
-            return;
+            <div class="step-text">
 
-        }
+                Tap the <strong>Share</strong> button
+                <span class="step-icon">⬆️</span>
+
+            </div>
+
+        </div>
+
+        <div class="install-step">
+
+            <div class="step-number">2</div>
+
+            <div class="step-text">
+
+                Tap <strong>Add to Home Screen</strong>
+
+            </div>
+
+        </div>
+
+        `
+
+    );
+
+    return;
+
+}
 
         // Fallback for unsupported browsers/devices
         showInstallModal(
