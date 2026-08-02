@@ -843,3 +843,115 @@ h1 {
     font-size:34px;
 
 }
+
+/* ======================================
+   Install Modal
+====================================== */
+
+.install-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:9999;
+
+}
+
+.install-modal.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.install-sheet{
+
+    width:100%;
+
+    max-width:500px;
+
+    background:#181d24;
+
+    border-radius:24px 24px 0 0;
+
+    padding:28px;
+
+    text-align:center;
+
+    transform:translateY(100%);
+
+    transition:.35s ease;
+
+}
+
+.install-modal.show .install-sheet{
+
+    transform:translateY(0);
+
+}
+
+.install-sheet-icon{
+
+    width:72px;
+
+    height:72px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:36px;
+
+    margin-bottom:20px;
+
+}
+
+.close-install{
+
+    float:right;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:26px;
+
+    cursor:pointer;
+
+}
+
+#installInstructions{
+
+    margin-top:24px;
+
+    text-align:left;
+
+    line-height:1.8;
+
+}
