@@ -140,15 +140,26 @@ if (isInstalled()) {
 
             showInstallModal(
 
-"Installation requires Safari",
+"You're using Google Chrome",
 
 `
 <p>
 
-Apple only allows Home Screen installation
-from Safari.
+To install Floriano Family Sports:
 
 </p>
+
+<ol>
+
+<li>Tap the menu or Share button.</li>
+
+<li>Select <strong>Open in Safari</strong>.</li>
+
+<li>In Safari, tap <strong>Share</strong>.</li>
+
+<li>Select <strong>Add to Home Screen</strong>.</li>
+
+</ol>
 
 `
 
