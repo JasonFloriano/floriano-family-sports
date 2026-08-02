@@ -853,3 +853,167 @@ h1 {
     letter-spacing:1px;
 
 }
+
+/* ========================================
+   Install FFS Card
+======================================== */
+
+.install-card {
+
+    margin: 32px auto;
+
+    max-width: 700px;
+
+    background: #151B24;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.install-header {
+
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 24px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+.install-chevron {
+
+    font-size: 28px;
+
+    transition: transform .35s ease;
+
+}
+
+.install-card.open .install-chevron {
+
+    transform: rotate(180deg);
+
+}
+
+.install-content {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height .45s ease;
+
+    text-align: center;
+
+}
+
+.install-card.open .install-content {
+
+    max-height: 900px;
+
+}
+
+.install-inner {
+
+    padding: 28px;
+
+}
+
+.install-icon{
+
+    width:60px;
+
+    opacity:.75;
+
+    transform:scale(.85);
+
+    transition:
+
+        width .35s ease,
+
+        transform .35s ease,
+
+        opacity .35s ease;
+
+}
+
+.install-card.open .install-icon{
+
+    width:110px;
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+.install-content h3 {
+
+    margin-bottom: 10px;
+
+}
+
+.install-content p {
+
+    color: #C8CDD4;
+
+    margin-bottom: 28px;
+
+    line-height: 1.5;
+
+}
+
+.install-platform {
+
+    text-align: left;
+
+    margin-top: 26px;
+
+    background: rgba(255,255,255,.03);
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+}
+
+.install-platform h4 {
+
+    color: #F2AF02;
+
+    margin-bottom: 10px;
+
+}
+
+.install-platform ol {
+
+    padding-left: 20px;
+
+}
+
+.install-platform li {
+
+    margin-bottom: 10px;
+
+}
