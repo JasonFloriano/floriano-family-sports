@@ -1116,3 +1116,132 @@ h1 {
     border-radius:999px;
     margin:0 auto 26px;
 }
+
+/* ===========================================
+   Featured Fundraiser
+=========================================== */
+
+.featured-card{
+
+    display:block;
+
+    width:90%;
+
+    margin:30px auto;
+
+    background:#171b23;
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    text-decoration:none;
+
+    color:white;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45);
+
+    transition:.25s;
+
+}
+
+.featured-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.featured-badge{
+
+    background:#D4AF37;
+
+    color:#000;
+
+    font-weight:700;
+
+    text-align:center;
+
+    padding:12px;
+
+    letter-spacing:.8px;
+
+    font-size:.9rem;
+
+}
+
+.featured-image{
+
+    width:100%;
+
+    display:block;
+
+}
+
+.featured-content{
+
+    padding:24px;
+
+}
+
+.featured-content h2{
+
+    margin:0;
+
+    font-size:2rem;
+
+}
+
+.featured-content p{
+
+    margin:18px 0;
+
+    line-height:1.6;
+
+    color:#d5d5d5;
+
+}
+
+.featured-highlights{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:25px 0;
+
+}
+
+.featured-highlights span{
+
+    background:#252c37;
+
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    font-size:.9rem;
+
+}
+
+.featured-button{
+
+    margin-top:15px;
+
+    background:#D4AF37;
+
+    color:#000;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-weight:700;
+
+    font-size:1.1rem;
+
+}
