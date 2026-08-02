@@ -924,31 +924,17 @@ h1 {
 
 }
 
-.install-sheet-icon {
+.install-sheet-icon{
 
-    width: 72px;
+    display:flex;
 
-    height: 72px;
+    justify-content:center;
 
-    margin: auto;
-
-    margin-bottom: 20px;
-
-    border-radius: 50%;
-
-    background: #D4AF37;
-
-    color: #111;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 36px;
+    margin-bottom:22px;
 
 }
+
+
 
 #installMessage {
 
@@ -982,13 +968,17 @@ h1 {
 
 .install-logo{
 
-    width:56px;
+    width:78px;
 
-    height:56px;
+    height:78px;
 
-    border-radius:14px;
+    border-radius:20px;
 
-    object-fit:cover;
+    box-shadow:
+
+        0 0 30px rgba(212,175,55,.30),
+
+        0 8px 25px rgba(0,0,0,.45);
 
 }
 
