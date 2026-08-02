@@ -96,24 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             showInstallModal(
 
-                "Install Floriano Family Sports",
+    "Add FFS to your Home Screen",
 
-                `
-                <p>
-                    Add FFS to your Home Screen for one-tap access.
-                </p>
+    `
+    <p>
+        Add FFS to your Home Screen for one-tap access.
+    </p>
 
-                <ol>
+    <ol>
+        <li>Tap the <strong>Share</strong> button.</li>
+        <li>Select <strong>Add to Home Screen</strong>.</li>
+    </ol>
+    `
 
-                    <li>Tap the <strong>Share</strong> button.</li>
-
-                    <li>Select <strong>Add to Home Screen</strong>.</li>
-
-                </ol>
-
-                `
-
-            );
+);
 
             return;
 
