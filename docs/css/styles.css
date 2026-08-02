@@ -1109,3 +1109,16 @@ h1 {
 
 }
 
+.sheet-handle{
+
+    width:48px;
+    height:5px;
+
+    background:#555;
+
+    border-radius:999px;
+
+    margin:0 auto 26px;
+
+}
+
