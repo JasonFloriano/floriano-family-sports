@@ -122,9 +122,21 @@ document
         // iPhone Chrome
         if (isIPhoneChrome()) {
 
-            alert(
-`Open this website in Safari to install the app.`
-            );
+            showInstallModal(
+
+"Installation requires Safari",
+
+`
+<p>
+
+Apple only allows Home Screen installation
+from Safari.
+
+</p>
+
+`
+
+);
 
         }
 
