@@ -4,11 +4,10 @@
 
 let deferredPrompt = null;
 
-// Android / Chrome install prompt
+// Android install prompt
 window.addEventListener("beforeinstallprompt", (event) => {
 
     event.preventDefault();
-
     deferredPrompt = event;
 
 });
@@ -21,81 +20,58 @@ function isInstalled() {
 
 }
 
-// iPhone Safari
-function isIPhoneSafari() {
+// Detect iPhone / iPad
+function isIOS() {
 
-    const ua = navigator.userAgent;
-
-    return /iPhone|iPad|iPod/.test(ua)
-        && /Safari/.test(ua)
-        && !/CriOS/.test(ua);
+    return /iPhone|iPad|iPod/.test(navigator.userAgent);
 
 }
 
-// iPhone Chrome
-function isIPhoneChrome() {
-
-    return /CriOS/.test(navigator.userAgent);
-
-}
-
-// Android
+// Detect Android
 function isAndroid() {
 
     return /Android/.test(navigator.userAgent);
 
-} 
+}
+
 // =========================================
 // Install Button
 // =========================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const button =
-        document.getElementById("installButton");
+    const button = document.getElementById("installButton");
 
     if (!button) return;
-    
-const modal = document.getElementById("installModal");
-const message = document.getElementById("installMessage");
-const instructions = document.getElementById("installInstructions");
-const logo =
-    document.getElementById("installLogo");
 
-function showInstallModal(title, html) {
+    const modal = document.getElementById("installModal");
+    const message = document.getElementById("installMessage");
+    const instructions = document.getElementById("installInstructions");
 
-    message.innerHTML = title;
-    instructions.innerHTML = html;
+    function showInstallModal(title, html) {
 
-    modal.classList.add("show");
+        message.innerHTML = title;
+        instructions.innerHTML = html;
 
-}
+        modal.classList.add("show");
 
-document
-.getElementById("closeInstallModal")
-.addEventListener("click", () => {
+    }
 
-    modal.classList.remove("show");
+    function closeInstallModal() {
 
-});
+        modal.classList.remove("show");
 
-document
-.getElementById("installOkay")
-.addEventListener("click", () => {
+    }
 
-    modal.classList.remove("show");
+    document
+        .getElementById("closeInstallModal")
+        .addEventListener("click", closeInstallModal);
 
-});
+    document
+        .getElementById("installOkay")
+        .addEventListener("click", closeInstallModal);
 
-// Hide if already installed
-if (isInstalled()) {
-
-    button.style.display = "none";
-    return;
-
-}
-
-    // Hide if already installed
+    // Hide install button if already installed
     if (isInstalled()) {
 
         button.style.display = "none";
@@ -105,7 +81,7 @@ if (isInstalled()) {
 
     button.addEventListener("click", () => {
 
-        // Android
+        // Android native install prompt
         if (deferredPrompt) {
 
             deferredPrompt.prompt();
@@ -113,65 +89,48 @@ if (isInstalled()) {
 
         }
 
-        // iPhone Safari
-        if (isIPhoneSafari()) {
+        // iPhone / iPad instructions
+        if (isIOS()) {
 
             showInstallModal(
 
-"Install Floriano Family Sports",
+                "Install Floriano Family Sports",
 
-`
-<ol>
+                `
+                <p>
+                    Add FFS to your Home Screen for one-tap access.
+                </p>
 
-<li>Tap the <strong>Share</strong> button.</li>
+                <ol>
 
-<li>Tap <strong>Add to Home Screen</strong>.</li>
+                    <li>Tap the <strong>Share</strong> button.</li>
 
-</ol>
+                    <li>Select <strong>Add to Home Screen</strong>.</li>
 
-`
+                </ol>
 
-);
+                `
+
+            );
 
             return;
 
         }
 
-        // iPhone Chrome
-if (isIPhoneChrome()) {
+        // Fallback for unsupported browsers/devices
+        showInstallModal(
 
-    showInstallModal(
+            "Installation",
 
-        "You're using Google Chrome",
+            `
+            <p>
 
-        `
-        <p>
-        To install <strong>Floriano Family Sports</strong>:
-        </p>
+                Installation isn't available on this browser.
 
-        <ol>
+            </p>
+            `
 
-            <li>Tap the <strong>⋯</strong> menu or the <strong>Share</strong> button.</li>
-
-            <li>Select <strong>Open in Safari</strong>.</li>
-
-            <li>In Safari, tap the <strong>Share</strong> button.</li>
-
-            <li>Select <strong>Add to Home Screen</strong>.</li>
-
-        </ol>
-
-        <p style="margin-top:18px;color:#bbb;font-size:.95rem;">
-            Apple only allows Home Screen installation from Safari.
-        </p>
-
-        `
-
-    );
-
-    return;
-
-}
+        );
 
     });
 
