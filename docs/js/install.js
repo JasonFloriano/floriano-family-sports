@@ -55,6 +55,27 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("installButton");
 
     if (!button) return;
+    
+    const modal = document.getElementById("installModal");
+const message = document.getElementById("installMessage");
+const instructions = document.getElementById("installInstructions");
+
+function showInstallModal(title, html) {
+
+    message.innerHTML = title;
+    instructions.innerHTML = html;
+
+    modal.classList.add("show");
+
+}
+
+document
+.getElementById("closeInstallModal")
+.addEventListener("click", () => {
+
+    modal.classList.remove("show");
+
+});
 
     // Hide if already installed
     if (isInstalled()) {
@@ -77,13 +98,22 @@ document.addEventListener("DOMContentLoaded", () => {
         // iPhone Safari
         if (isIPhoneSafari()) {
 
-            alert(
-`Install Floriano Family Sports
+            showInstallModal(
 
-1. Tap Share
+"Install Floriano Family Sports",
 
-2. Tap Add to Home Screen`
-            );
+`
+<ol>
+
+<li>Tap the <strong>Share</strong> button.</li>
+
+<li>Tap <strong>Add to Home Screen</strong>.</li>
+
+</ol>
+
+`
+
+);
 
             return;
 
