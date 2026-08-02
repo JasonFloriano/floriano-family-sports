@@ -77,6 +77,22 @@ document
 
 });
 
+document
+.getElementById("installOkay")
+.addEventListener("click", () => {
+
+    modal.classList.remove("show");
+
+});
+
+// Hide if already installed
+if (isInstalled()) {
+
+    button.style.display = "none";
+    return;
+
+}
+
     // Hide if already installed
     if (isInstalled()) {
 
