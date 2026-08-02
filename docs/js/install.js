@@ -56,9 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!button) return;
     
-    const modal = document.getElementById("installModal");
+const modal = document.getElementById("installModal");
 const message = document.getElementById("installMessage");
 const instructions = document.getElementById("installInstructions");
+const logo =
+    document.getElementById("installLogo");
 
 function showInstallModal(title, html) {
 
