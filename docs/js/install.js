@@ -23,8 +23,9 @@ function isInstalled() {
 // Detect iPhone / iPad
 function isIOS() {
 
-    return /iPad|iPhone|iPod/.test(navigator.userAgent)
-        || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    alert(navigator.userAgent);
+
+    return true;
 
 }
 
