@@ -136,36 +136,40 @@ if (isInstalled()) {
         }
 
         // iPhone Chrome
-        if (isIPhoneChrome()) {
+if (isIPhoneChrome()) {
 
-            showInstallModal(
+    showInstallModal(
 
-"You're using Google Chrome",
+        "You're using Google Chrome",
 
-`
-<p>
+        `
+        <p>
+        To install <strong>Floriano Family Sports</strong>:
+        </p>
 
-To install Floriano Family Sports:
+        <ol>
 
-</p>
+            <li>Tap the <strong>⋯</strong> menu or the <strong>Share</strong> button.</li>
 
-<ol>
+            <li>Select <strong>Open in Safari</strong>.</li>
 
-<li>Tap the menu or Share button.</li>
+            <li>In Safari, tap the <strong>Share</strong> button.</li>
 
-<li>Select <strong>Open in Safari</strong>.</li>
+            <li>Select <strong>Add to Home Screen</strong>.</li>
 
-<li>In Safari, tap <strong>Share</strong>.</li>
+        </ol>
 
-<li>Select <strong>Add to Home Screen</strong>.</li>
+        <p style="margin-top:18px;color:#bbb;font-size:.95rem;">
+            Apple only allows Home Screen installation from Safari.
+        </p>
 
-</ol>
+        `
 
-`
+    );
 
-);
+    return;
 
-        }
+}
 
     });
 
