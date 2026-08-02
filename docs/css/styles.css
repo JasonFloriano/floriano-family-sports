@@ -940,13 +940,31 @@ h1 {
 
 }
 
-.install-icon {
+.install-icon{
 
-    width: 110px;
+    width:60px;
 
-    border-radius: 24px;
+    opacity:.75;
 
-    margin-bottom: 18px;
+    transform:scale(.85);
+
+    transition:
+
+        width .35s ease,
+
+        transform .35s ease,
+
+        opacity .35s ease;
+
+}
+
+.install-card.open .install-icon{
+
+    width:110px;
+
+    opacity:1;
+
+    transform:scale(1);
 
 }
 
