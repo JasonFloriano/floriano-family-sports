@@ -14,60 +14,7 @@
 @import url("09-install.css");
 @import url("10-fundraiser.css");
 @import url("99-desktop.css");
-/* ======================================================
-   Hero
-====================================================== */
 
-.hero {
-    padding: 60px 20px 20px;
-}
-
-.shield {
-    width: 190px;
-    display: block;
-    margin: auto;
-    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
-}
-
-h1 {
-    margin-top: 25px;
-    font-size: 3rem;
-    font-weight: 800;
-    color: #F2AF02;
-}
-
-.hero p {
-    margin-top: 10px;
-    font-size: 1.1rem;
-    color: #bdbdbd;
-}
-
-/* ======================================================
-   Mascots
-====================================================== */
-
-.mascots {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 80px;
-    margin-top: 45px;
-}
-
-.ryley,
-.addison {
-    height: 430px;
-    transition: .35s;
-}
-
-.ryley:hover {
-    transform: translateX(8px) scale(1.02);
-}
-
-.addison:hover {
-    transform: translateX(-8px) scale(1.02);
-}
 
 /* ======================================================
    Main Buttons
