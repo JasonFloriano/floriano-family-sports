@@ -21,63 +21,7 @@
 
 
 
-/* ==========================================
-   WEATHER FORECAST
-========================================== */
 
-.weather-card{
-
-    margin:28px auto 40px;
-   
-    padding-top:24px;
-
-    border-top:1px solid rgba(255,255,255,.08);
-
-    text-align:center;
-
-}
-
-.weather-icon{
-
-    font-size:2rem;
-
-}
-
-.weather-temp{
-
-    margin-top:8px;
-
-    font-size:2.5rem;
-
-    font-weight:900;
-
-    color:#F2AF02;
-
-}
-
-.weather-desc{
-
-    margin-top:6px;
-
-    color:#C9CED7;
-
-    font-size:.95rem;
-
-}
-
-.weather-title{
-
-    margin-bottom:10px;
-
-    color:#7F8A99;
-
-    font-size:.72rem;
-
-    letter-spacing:4px;
-
-    font-weight:700;
-
-}
 
 /* ==========================================
    Venue Card
