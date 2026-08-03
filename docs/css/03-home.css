@@ -13,11 +13,11 @@
 }
 
 /* ======================================================
-   Mascots
+   Athletes
 ====================================================== */
 
 .ryley,
-.addison {
+.athlete-addison {
     height: 430px;
     transition: .35s;
 }
@@ -26,6 +26,6 @@
     transform: translateX(8px) scale(1.02);
 }
 
-.addison:hover {
+.athlete-addison:hover {
     transform: translateX(-8px) scale(1.02);
 }
