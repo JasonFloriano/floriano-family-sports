@@ -11,3 +11,21 @@
     font-size: 1.1rem;
     color: #bdbdbd;
 }
+
+/* ======================================================
+   Mascots
+====================================================== */
+
+.ryley,
+.addison {
+    height: 430px;
+    transition: .35s;
+}
+
+.ryley:hover {
+    transform: translateX(8px) scale(1.02);
+}
+
+.addison:hover {
+    transform: translateX(-8px) scale(1.02);
+}
