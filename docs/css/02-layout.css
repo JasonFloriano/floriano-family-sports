@@ -11,3 +11,16 @@
     display: block;
     margin: auto;
 }
+
+/* ======================================================
+   Mascot Layout
+====================================================== */
+
+.mascots {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin-top: 45px;
+}
