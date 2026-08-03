@@ -190,3 +190,21 @@
 
 }
 
+/* ==========================================
+   Athlete Filter Colors
+========================================== */
+
+/* All */
+.filter[data-athlete="ALL"] .dot {
+    background: #F2AF02;
+}
+
+/* Addison */
+.filter[data-athlete="ADDISON"] .dot {
+    background: #8B5CF6;
+}
+
+/* Ryley */
+.filter[data-athlete="RYLEY"] .dot {
+    background: #3B82F6;
+}
