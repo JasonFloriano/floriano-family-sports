@@ -1,0 +1,1350 @@
+/* ======================================================
+   Floriano Family Sports (FFS)
+   Main Stylesheet
+====================================================== */
+
+/* ======================================================
+   Global
+====================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0F1115;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: center;
+}
+
+/* ======================================================
+   Hero
+====================================================== */
+
+.hero {
+    padding: 60px 20px 20px;
+}
+
+.shield {
+    width: 190px;
+    display: block;
+    margin: auto;
+    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
+}
+
+h1 {
+    margin-top: 25px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #F2AF02;
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #bdbdbd;
+}
+
+/* ======================================================
+   Mascots
+====================================================== */
+
+.mascots {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin-top: 45px;
+}
+
+.ryley,
+.addison {
+    height: 430px;
+    transition: .35s;
+}
+
+.ryley:hover {
+    transform: translateX(8px) scale(1.02);
+}
+
+.addison:hover {
+    transform: translateX(-8px) scale(1.02);
+}
+
+/* ======================================================
+   Main Buttons
+====================================================== */
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: min(420px, 90%);
+    margin: 50px auto 80px;
+}
+
+.buttons a {
+    padding: 20px;
+    border-radius: 18px;
+    background: #6B162E;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: .25s;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+
+.buttons a:hover {
+    background: #F2AF02;
+    color: #111;
+    transform: translateY(-3px);
+}
+
+/* ======================================================
+   Page Header
+====================================================== */
+
+.page-header {
+    padding: 25px 20px 10px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin-top: 12px;
+    font-size: 2.3rem;
+}
+
+.small {
+    width: 140px;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #F2AF02;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* ======================================================
+   Family Calendar Schedule V1.2
+====================================================== */
+
+.schedule{
+    width:min(900px,94%);
+    margin:0 auto 80px;
+}
+
+.schedule h2{
+    text-align:left;
+    color:#F2AF02;
+    letter-spacing:3px;
+    margin:40px 0 16px;
+    font-size:.95rem;
+}
+
+.event-card{
+    position:relative;
+    display:flex;
+    background:#181C23;
+    border-radius:18px;
+    overflow:hidden;
+    margin:16px 0;
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+    transition:.2s ease;
+}
+
+.event-card:hover{
+    transform:translateY(-2px);
+}
+
+.accent{
+    width:8px;
+    flex:none;
+}
+
+.accent.addison{background:#8B5CF6;}
+.accent.ryley{background:#3B82F6;}
+
+.event-content{
+    padding:20px;
+    text-align:left;
+    width:100%;
+}
+
+.event-content h3{
+    margin:0 0 10px;
+    font-size:1.5rem;
+}
+
+.meta-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+}
+
+.badge{
+    padding:5px 12px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:700;
+}
+
+.league{background:#15803D;}
+.practice{background:#2563EB;}
+.tournament{background:#D97706;}
+.school{background:#52525B;}
+
+.homeaway{
+    color:#cfcfcf;
+    font-size:.8rem;
+    font-weight:700;
+}
+
+.opponent{
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.info{
+    color:#c9c9c9;
+    margin:6px 0;
+}
+
+.directions{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 18px;
+    background:#7A1436;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:700;
+}
+
+.directions:hover{
+    background:#A3194C;
+}
+
+
+/* ======================================================
+   Get Directions Button
+====================================================== */
+
+#next-directions {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: #7A1436;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    border: 3px solid #D4AF37;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,.35);
+    transition: .25s;
+}
+
+#next-directions:hover {
+    background: #A3194C;
+    transform: scale(1.03);
+}
+
+#next-directions:link,
+#next-directions:visited,
+#next-directions:active {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+/* ======================================================
+   Athlete Filter Pills
+====================================================== */
+
+.filters{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin:26px auto 36px;
+
+    flex-wrap:wrap;
+
+}
+
+.filter{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:#232831;
+
+    color:#D2D7DF;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .20s ease;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.30);
+
+}
+
+.filter:hover{
+
+    transform:translateY(-2px);
+
+    background:#2B313C;
+
+}
+
+.filter.active{
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===== Colored Dots ===== */
+
+.dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    flex:none;
+
+}
+
+/* Dashboard */
+
+.filter[data-athlete="ALL"] .dot{
+
+    background:#F2AF02;
+
+}
+
+/* Addison */
+
+.filter[data-athlete="ADDISON"] .dot{
+
+    background:#8B5CF6;
+
+}
+
+/* Ryley */
+
+.filter[data-athlete="RYLEY"] .dot{
+
+    background:#3B82F6;
+
+}
+
+/* ===== Active States ===== */
+
+.filter.active[data-athlete="ALL"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(242,175,2,.35);
+
+}
+
+.filter.active[data-athlete="ADDISON"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(139,92,246,.40);
+
+}
+
+.filter.active[data-athlete="RYLEY"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(59,130,246,.40);
+
+}
+
+.filter.active .dot{
+
+    transform:scale(1.35);
+
+}
+/* ======================================================
+   Subscribe
+====================================================== */
+
+#subscribe {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.subscribe-button {
+    display: block;
+    max-width: 340px;
+    margin: 20px auto;
+    padding: 18px 24px;
+    background: #7A1436;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 3px solid #D4AF37;
+    border-radius: 18px;
+    box-shadow: 0 6px 15px rgba(0,0,0,.35);
+    transition: .25s;
+}
+
+.subscribe-button:hover {
+    background: #A3194C;
+    transform: scale(1.03);
+}
+
+.subscribe-button small {
+    display: block;
+    margin-top: 8px;
+    font-size: .9rem;
+    font-weight: 400;
+    color: #f2f2f2;
+}
+
+/* ======================================================
+   Responsive
+====================================================== */
+
+@media (max-width: 900px) {
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    /* Home page shield */
+    .shield {
+        width: 160px;
+    }
+
+    /* Family Calendar shield */
+    .small {
+        width: 95px;
+    }
+
+    .mascots {
+        gap: 20px;
+    }
+
+    .ryley,
+    .addison {
+        height: 250px;
+    }
+
+}
+/* ==========================================
+   Hero Next Up Card
+========================================== */
+
+.hero-card{
+
+    background:#181C23;
+
+    border:2px solid rgba(242,175,2,.25);
+
+    border-radius:22px;
+
+    padding:34px;
+
+    width:min(900px,94%);
+
+    margin:20px auto;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+}
+
+.hero-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:14px;
+
+}
+
+.hero-opponent{
+
+    margin:26px 0;
+
+    font-size:2.25rem;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    color:#ffffff;
+
+}
+
+.hero-opponent::before{
+
+    content:"VS";
+
+    display:block;
+
+    font-size:.60rem;
+
+    letter-spacing:4px;
+
+    color:#7F8A99;
+
+    margin-bottom:8px;
+
+}
+
+.hero-info{
+
+    margin:12px 0;
+
+    color:#C8CED8;
+
+    font-size:1.05rem;
+
+}
+
+/* ==========================================
+   Countdown Timer
+========================================== */
+.countdown{
+
+    margin:36px 0;
+
+    text-align:center;
+
+}
+
+.countdown-label{
+
+    color:#98A4B5;
+
+    letter-spacing:4px;
+
+    font-size:.8rem;
+
+    margin-bottom:18px;
+
+}
+
+.countdown-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+}
+
+.count-box{
+
+    width:135px;
+
+    padding:24px 0;
+
+    border-radius:20px;
+
+    background:#10151C;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.02),
+        0 12px 28px rgba(0,0,0,.45);
+
+}
+
+.count-value{
+
+    font-size:3.8rem;
+
+    font-weight:900;
+
+    line-height:1;
+
+    color:#F2AF02;
+
+}
+
+.count-unit{
+
+    margin-top:12px;
+
+    font-size:.72rem;
+
+    letter-spacing:3px;
+
+    color:#8D98A6;
+
+}
+
+/* ==========================================
+   WEATHER FORECAST
+========================================== */
+
+.weather-card{
+
+    margin:28px auto 40px;
+   
+    padding-top:24px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+}
+
+.weather-icon{
+
+    font-size:2rem;
+
+}
+
+.weather-temp{
+
+    margin-top:8px;
+
+    font-size:2.5rem;
+
+    font-weight:900;
+
+    color:#F2AF02;
+
+}
+
+.weather-desc{
+
+    margin-top:6px;
+
+    color:#C9CED7;
+
+    font-size:.95rem;
+
+}
+
+.weather-title{
+
+    margin-bottom:10px;
+
+    color:#7F8A99;
+
+    font-size:.72rem;
+
+    letter-spacing:4px;
+
+    font-weight:700;
+
+}
+
+/* ==========================================
+   Venue Card
+========================================== */
+
+.venue-card{
+    display:block;
+    margin:32px auto 0;
+    padding:24px;
+    background:#181C23;
+    border:2px solid rgba(242,175,2,.18);
+    border-radius:22px;
+    text-decoration:none;
+    color:#fff;
+    transition:.25s;
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+.venue-card:hover{
+    transform:translateY(-2px);
+    border-color:#D4AF37;
+}
+
+.venue-card:link,
+.venue-card:visited,
+.venue-card:active{
+    color:#fff;
+    text-decoration:none;
+}
+
+.venue-title{
+    color:#98A4B5;
+    font-size:.75rem;
+    letter-spacing:4px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.venue-name{
+    font-size:1.45rem;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.venue-address,
+.venue-city{
+    color:#C9CED7;
+    line-height:1.6;
+}
+
+.venue-action{
+    margin-top:22px;
+    color:#F2AF02;
+    font-weight:700;
+}
+
+/* ==========================================
+   Hero Badge
+========================================== */
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 18px;
+
+    margin:18px auto 20px;
+
+    border-radius:999px;
+
+    font-size:.80rem;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+/* League */
+
+.hero-badge.league{
+
+    background:#1D7A39;
+
+    color:white;
+
+}
+
+/* Practice */
+
+.hero-badge.practice{
+
+    background:#1D4ED8;
+
+    color:white;
+
+}
+
+/* Tournament */
+
+.hero-badge.tournament{
+
+    background:#C26A00;
+
+    color:white;
+
+}
+
+/* School */
+
+.hero-badge.school{
+
+    background:#4B5563;
+
+    color:white;
+
+}
+
+/* =========================================
+   Smart Install Button
+========================================= */
+
+#installContainer{
+
+    margin:32px 0;
+
+}
+
+.install-button{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#5b1010;
+
+    border:2px solid #d4af37;
+
+    border-radius:18px;
+
+    padding:18px 22px;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+}
+
+.install-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.30);
+
+}
+
+.install-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.phone-circle{
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    color:#111;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:26px;
+
+}
+
+.install-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.install-subtitle{
+
+    color:#d7d7d7;
+
+    margin-top:4px;
+
+}
+
+.install-arrow{
+
+    color:#d4af37;
+
+    font-size:34px;
+
+}
+
+/* =========================================
+   Install Modal
+========================================= */
+
+.install-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.55);
+
+    backdrop-filter: blur(10px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .30s ease;
+
+    z-index: 9999;
+
+}
+
+.install-modal.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+.install-sheet {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    background: #181D24;
+
+    border-radius: 26px 26px 0 0;
+
+    padding: 30px;
+
+    transform: translateY(100%);
+
+    transition: transform .35s ease;
+
+    box-shadow: 0 -20px 40px rgba(0,0,0,.45);
+
+}
+
+.install-modal.show .install-sheet {
+
+    transform: translateY(0);
+
+}
+
+.close-install {
+
+    float: right;
+
+    background: none;
+
+    border: none;
+
+    color: #bbb;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+}
+
+.install-sheet-icon{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:22px;
+
+}
+
+
+
+#installMessage {
+
+    color: white;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+#installInstructions {
+
+    color: #d6d6d6;
+
+    line-height: 1.8;
+
+}
+
+#installInstructions ol {
+
+    padding-left: 20px;
+
+}
+
+#installInstructions li {
+
+    margin-bottom: 14px;
+
+}
+
+.install-logo{
+
+    width:78px;
+
+    height:78px;
+
+    border-radius:20px;
+
+    box-shadow:
+
+        0 0 30px rgba(212,175,55,.30),
+
+        0 8px 25px rgba(0,0,0,.45);
+
+}
+
+.install-title-main{
+
+    color:white;
+
+    font-size:28px;
+
+    margin-top:16px;
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
+}
+
+#installMessage{
+
+    color:#d2d2d2;
+
+    margin-bottom:28px;
+
+    line-height:1.5;
+
+}
+
+.install-logo{
+
+    width:56px;
+    height:56px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+}
+
+.install-title-main{
+
+    color:#fff;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin:16px 0 8px;
+
+}
+
+#installOkay{
+
+    width:100%;
+
+    margin-top:30px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#d4af37;
+
+    color:#111;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.install-intro{
+
+    text-align:center;
+    color:#d9d9d9;
+    margin:20px 0 30px;
+    line-height:1.6;
+
+}
+
+.install-step{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    margin:18px 0;
+
+}
+
+.step-number{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    color:#111;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.step-text{
+
+    color:#fff;
+
+    font-size:18px;
+
+    line-height:1.5;
+
+}
+
+.step-icon{
+
+    font-size:22px;
+
+}
+
+.sheet-handle{
+    width:48px;
+    height:5px;
+    background:rgba(255,255,255,.22);
+    border-radius:999px;
+    margin:0 auto 26px;
+}
+
+/* ===========================================
+   Featured Fundraiser
+=========================================== */
+
+.featured-card{
+
+    display:block;
+
+    width:90%;
+
+    margin:30px auto;
+
+    background:#171b23;
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    text-decoration:none;
+
+    color:white;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45);
+
+    transition:.25s;
+
+}
+
+.featured-card:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.featured-badge{
+
+    background:#D4AF37;
+
+    color:#000;
+
+    font-weight:700;
+
+    text-align:center;
+
+    padding:12px;
+
+    letter-spacing:.8px;
+
+    font-size:.9rem;
+
+}
+
+.featured-image{
+
+    width:100%;
+
+    display:block;
+
+}
+
+.featured-content{
+
+    padding:24px;
+
+}
+
+.featured-content h2{
+
+    margin:0;
+
+    font-size:2rem;
+
+}
+
+.featured-content p{
+
+    margin:18px 0;
+
+    line-height:1.6;
+
+    color:#d5d5d5;
+
+}
+
+.featured-highlights{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:25px 0;
+
+}
+
+.featured-highlights span{
+
+    background:#252c37;
+
+    padding:10px 16px;
+
+    border-radius:30px;
+
+    font-size:.9rem;
+
+}
+
+.featured-button{
+
+    margin-top:15px;
+
+    background:#D4AF37;
+
+    color:#000;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-weight:700;
+
+    font-size:1.1rem;
+
+}
+
+.hero-image {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    object-position: center 32%;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.45);
+}
+
+.hero-image:hover{
+
+    transform:scale(1.01);
+
+}
+
+.venue-card,
+.venue-card:link,
+.venue-card:visited,
+.venue-card:hover,
+.venue-card:active{
+
+    color:#fff !important;
+    text-decoration:none !important;
+
+}
+
+.venue-title,
+.venue-name,
+.venue-address,
+.venue-city{
+
+    color:#fff !important;
+
+}
+
+.venue-action{
+
+    color:#F2AF02 !important;
+
+}
+
+@media (min-width: 1024px) {
+
+    /* Desktop only */
+
+}
