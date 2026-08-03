@@ -2,14 +2,6 @@
    Hero
 ====================================================== */
 
-.shield {
-    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
-}
-
-.shielzd-small {
-    width: 140px;
-}
-
 .hero p {
     margin-top: 10px;
     font-size: 1.1rem;
@@ -32,4 +24,23 @@
 
 .athlete-addison:hover {
     transform: translateX(-8px) scale(1.02);
+}
+
+/* ======================================================
+   shield
+====================================================== */
+
+.shield {
+    width: 190px;
+    display: block;
+    margin: auto;
+    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
+}
+
+.shield-small {
+    width: 140px;
+}
+
+.shield {
+    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
 }
