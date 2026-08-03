@@ -29,36 +29,7 @@
 
 
 
-/* ======================================================
-   Responsive
-====================================================== */
 
-@media (max-width: 900px) {
-
-    h1 {
-        font-size: 2.3rem;
-    }
-
-    /* Home page shield */
-    .shield {
-        width: 160px;
-    }
-
-    /* Family Calendar shield */
-    .small {
-        width: 95px;
-    }
-
-    .mascots {
-        gap: 20px;
-    }
-
-    .ryley,
-    .addison {
-        height: 250px;
-    }
-
-}
 /* ==========================================
    Hero Next Up Card
 ========================================== */
