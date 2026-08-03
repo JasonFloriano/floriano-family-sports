@@ -1,8 +1,19 @@
 /* ======================================================
-   Floriano Family Sports (FFS)
-   Main Stylesheet
+   Floriano Family Sports
+   Master Stylesheet
 ====================================================== */
 
+@import url("01-base.css");
+@import url("02-layout.css");
+@import url("03-home.css");
+@import url("04-buttons.css");
+@import url("05-schedule.css");
+@import url("06-countdown.css");
+@import url("07-weather.css");
+@import url("08-venue.css");
+@import url("09-install.css");
+@import url("10-fundraiser.css");
+@import url("99-desktop.css");
 /* ======================================================
    Hero
 ====================================================== */
