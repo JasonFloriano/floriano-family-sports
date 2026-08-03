@@ -208,3 +208,41 @@
 .filter[data-athlete="RYLEY"] .dot {
     background: #3B82F6;
 }
+
+/* ==========================================
+   Active Filter States
+========================================== */
+
+.filter.active[data-athlete="ALL"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(242,175,2,.35);
+
+}
+
+.filter.active[data-athlete="ADDISON"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(139,92,246,.40);
+
+}
+
+.filter.active[data-athlete="RYLEY"]{
+
+    background:#2F343D;
+
+    box-shadow:
+        0 0 16px rgba(59,130,246,.40);
+
+}
+
+.filter.active .dot{
+
+    transform:scale(1.35);
+
+}
+
