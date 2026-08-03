@@ -6,6 +6,10 @@
     filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
 }
 
+.shielzd-small {
+    width: 140px;
+}
+
 .hero p {
     margin-top: 10px;
     font-size: 1.1rem;
