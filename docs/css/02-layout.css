@@ -24,3 +24,27 @@
     gap: 80px;
     margin-top: 45px;
 }
+
+/* ======================================================
+   Page Header
+====================================================== */
+
+.page-header {
+    padding: 25px 20px 10px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin-top: 12px;
+    font-size: 2.3rem;
+}
+
+.small {
+    width: 140px;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
