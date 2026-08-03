@@ -677,6 +677,62 @@ h1 {
 }
 
 /* ==========================================
+   Venue Card
+========================================== */
+
+.venue-card{
+    display:block;
+    margin:32px auto 0;
+    padding:24px;
+    background:#181C23;
+    border:2px solid rgba(242,175,2,.18);
+    border-radius:22px;
+    text-decoration:none;
+    color:#fff;
+    transition:.25s;
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+}
+
+.venue-card:hover{
+    transform:translateY(-2px);
+    border-color:#D4AF37;
+}
+
+.venue-card:link,
+.venue-card:visited,
+.venue-card:active{
+    color:#fff;
+    text-decoration:none;
+}
+
+.venue-title{
+    color:#98A4B5;
+    font-size:.75rem;
+    letter-spacing:4px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.venue-name{
+    font-size:1.45rem;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.venue-address,
+.venue-city{
+    color:#C9CED7;
+    line-height:1.6;
+}
+
+.venue-action{
+    margin-top:22px;
+    color:#F2AF02;
+    font-weight:700;
+}
+
+/* ==========================================
    Hero Badge
 ========================================== */
 
