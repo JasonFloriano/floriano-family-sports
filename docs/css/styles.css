@@ -1316,3 +1316,29 @@ h1 {
     transform:scale(1.01);
 
 }
+
+.venue-card,
+.venue-card:link,
+.venue-card:visited,
+.venue-card:hover,
+.venue-card:active{
+
+    color:#fff !important;
+    text-decoration:none !important;
+
+}
+
+.venue-title,
+.venue-name,
+.venue-address,
+.venue-city{
+
+    color:#fff !important;
+
+}
+
+.venue-action{
+
+    color:#F2AF02 !important;
+
+}
