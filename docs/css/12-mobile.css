@@ -1,0 +1,27 @@
+/* ======================================================
+   Mobile Layout
+====================================================== */
+
+@media (max-width: 900px) {
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .shield {
+        width: 160px;
+    }
+
+    .shield-small {
+        width: 95px;
+    }
+
+    .athletes {
+        gap: 20px;
+    }
+
+    .athlete-addison {
+        height: 250px;
+    }
+
+}
