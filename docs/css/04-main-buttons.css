@@ -2,7 +2,7 @@
    Main Buttons
 ====================================================== */
 
-.buttons {
+.main-buttons {
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -10,18 +10,18 @@
     margin: 50px auto 80px;
 }
 
-.buttons a {
+.main-buttons a {
     padding: 20px;
     border-radius: 18px;
     background: #6B162E;
-    color: #fff;
+    color: #FFF;
     text-decoration: none;
     font-size: 1.1rem;
     transition: .25s;
     box-shadow: 0 12px 30px rgba(0,0,0,.35);
 }
 
-.buttons a:hover {
+.main-buttons a:hover {
     background: #F2AF02;
     color: #111;
     transform: translateY(-3px);
