@@ -1342,3 +1342,9 @@ h1 {
     color:#F2AF02 !important;
 
 }
+
+@media (min-width: 1024px) {
+
+    /* Desktop only */
+
+}
