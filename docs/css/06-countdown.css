@@ -145,3 +145,64 @@
 
 }
 
+/* ======================================================
+   Hero Badge
+====================================================== */
+
+.hero-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 18px;
+
+    margin: 18px auto 20px;
+
+    border-radius: 999px;
+
+    font-size: .80rem;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+
+/* ==========================================
+   Badge Variants
+========================================== */
+
+.hero-badge.league {
+
+    background: #1D7A39;
+
+    color: #FFFFFF;
+
+}
+
+.hero-badge.practice {
+
+    background: #1D4ED8;
+
+    color: #FFFFFF;
+
+}
+
+.hero-badge.tournament {
+
+    background: #C26A00;
+
+    color: #FFFFFF;
+
+}
+
+.hero-badge.school {
+
+    background: #4B5563;
+
+    color: #FFFFFF;
+
+}
+
