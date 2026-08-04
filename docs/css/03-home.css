@@ -2,54 +2,24 @@
    Hero
 ====================================================== */
 
+.hero {
+    padding: 60px 20px 20px;
+}
+
 .hero p {
     margin-top: 10px;
     font-size: 1.1rem;
-    color: #bdbdbd;
+    color: #BDBDBD;
 }
 
 /* ======================================================
-   Hero Image
-====================================================== */
-
-.hero-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.45);
-}
-
-.hero-image:hover {
-    transform: scale(1.01);
-}
-
-/* ======================================================
-   Athletes
-====================================================== */
-
-.athlete-ryley,
-.athlete-addison {
-    height: 430px;
-    transition: .35s;
-}
-
-.athlete-ryley:hover {
-    transform: translateX(8px) scale(1.02);
-}
-
-.athlete-addison:hover {
-    transform: translateX(-8px) scale(1.02);
-}
-
-/* ======================================================
-   shield
+   Shield
 ====================================================== */
 
 .shield {
-    width: 190px;
     display: block;
-    margin: auto;
+    width: 190px;
+    margin: 0 auto;
     filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
 }
 
@@ -57,6 +27,27 @@
     width: 140px;
 }
 
-.shield {
-    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
+/* ======================================================
+   Athletes
+====================================================== */
+
+.athletes {
+    width: min(900px, 94%);
+    margin: 40px auto;
+    display: grid;
+    gap: 28px;
+    justify-items: center;
+}
+
+.athlete {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.45);
+    transition: transform .30s ease;
+}
+
+.athlete:hover {
+    transform: scale(1.01);
 }
