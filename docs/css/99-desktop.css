@@ -36,9 +36,11 @@
     }
 
     .featured-image {
-        max-height: 340px;
-        object-fit: cover;
+        width: 100%;
+        height: auto;
+        display: block;
     }
+
 }
 
 
