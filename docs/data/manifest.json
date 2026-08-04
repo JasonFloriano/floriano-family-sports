@@ -1,26 +1,36 @@
 {
+  "id": "/",
   "name": "Floriano Family Sports",
   "short_name": "FFS",
-  "description": "Family Sports Dashboard",
-  "id": "/",
+  "description": "Our Family. Our Seasons. Our Story.",
+
   "start_url": "/",
   "scope": "/",
+
   "display": "standalone",
   "orientation": "portrait",
+
   "background_color": "#11161E",
   "theme_color": "#F2AF02",
+
   "icons": [
     {
-      "src": "assets/icons/icon-192.png",
+      "src": "/assets/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "assets/icons/icon-512.png",
+      "src": "/assets/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
