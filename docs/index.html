@@ -2,71 +2,98 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Floriano Family Sports</title>
 
     <link rel="stylesheet" href="css/styles.css">
 
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#F2AF02">
+
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon-180.png">
+
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="FFS">
+
 </head>
 
 <body>
 
 <header class="hero">
 
-    <img src="assets/logos/shield.png" class="shield" alt="FFS Shield">
+    <img
+        src="assets/logos/shield.png"
+        class="shield"
+        alt="Floriano Family Sports">
 
     <h1>Floriano Family Sports</h1>
 
     <p>Our Family. Our Seasons. Our Story.</p>
 
-    <div class="hero-photo">
+    <section class="athletes">
+
         <img
             src="assets/images/hero-ryley-water-polo.webp"
-            class="hero-image athlete-ryley"
-            alt="Ryley Floriano making a water polo save">
-    </div>
+            class="athlete athlete-ryley"
+            alt="Ryley Floriano">
 
-    <div class="athletes">
         <img
             src="assets/images/addison.png"
-            class="athlete-addison"
-            alt="Addison">
-    </div>
+            class="athlete athlete-addison"
+            alt="Addison Floriano">
+
+    </section>
 
 </header>
 
 <main>
 
+    <!-- Main Navigation -->
+
     <section class="main-buttons">
 
-        <a href="family.html">📅 Family Calendar</a>
+        <a href="family.html">
+            📅 Family Calendar
+        </a>
 
-        <a href="ryley.html">🤽 Ryley's Schedule</a>
+        <a href="ryley.html">
+            🤽 Ryley's Schedule
+        </a>
 
-        <a href="addison.html">🏐 Addison's Schedule</a>
+        <a href="addison.html">
+            🏐 Addison's Schedule
+        </a>
 
     </section>
 
+    <!-- Install App -->
+
     <section id="installContainer">
 
-        <button id="installButton" class="install-button">
+        <button
+            id="installButton"
+            class="install-button">
 
             <div class="install-left">
 
-                <div class="phone-circle">📱</div>
+                <div class="phone-circle">
+                    📱
+                </div>
 
                 <div>
-                    <div class="install-title">Install App</div>
+
+                    <div class="install-title">
+                        Install App
+                    </div>
+
                     <div class="install-subtitle">
                         Add Floriano Family Sports to your Home Screen
                     </div>
+
                 </div>
 
             </div>
@@ -79,30 +106,30 @@
 
 </main>
 
-<script src="js/config.js"></script>
-<script src="js/data.js"></script>
-<script src="js/ffs.js"></script>
-<script src="js/geocode.js"></script>
-<script src="js/weather.js"></script>
-<script src="js/family.js"></script>
-<script src="js/install.js"></script>
-
 <!-- Install Modal -->
 
-<div id="installModal" class="install-modal">
+<div
+    id="installModal"
+    class="install-modal">
 
     <div class="install-sheet">
 
         <div class="sheet-handle"></div>
 
-        <button id="closeInstallModal" class="close-install">✕</button>
+        <button
+            id="closeInstallModal"
+            class="close-install">
+            ✕
+        </button>
 
         <div class="install-sheet-icon">
+
             <img
                 id="installLogo"
                 src="assets/icons/icon-192.png"
-                alt="Floriano Family Sports"
-                class="install-logo">
+                class="install-logo"
+                alt="Floriano Family Sports">
+
         </div>
 
         <h2 class="install-title-main">
@@ -121,6 +148,8 @@
 
 </div>
 
+<!-- Featured Fundraiser -->
+
 <a
     href="https://harrissportsfundraising.com/products/esperanza-aquatics"
     target="_blank"
@@ -133,12 +162,14 @@
 
     <img
         src="assets/images/fundraiser-nfl.jpg"
-        alt="Esperanza Aquatics NFL Fundraiser"
-        class="featured-image">
+        class="featured-image"
+        alt="Esperanza Aquatics NFL Fundraiser">
 
     <div class="featured-content">
 
-        <h2>🏈 Win NFL Tickets</h2>
+        <h2>
+            🏈 Win NFL Tickets
+        </h2>
 
         <p>
             Support Esperanza Aquatics while helping
@@ -146,9 +177,13 @@
         </p>
 
         <div class="featured-highlights">
+
             <span>⭐ 3 Chances to Win</span>
+
             <span>💰 Only $20</span>
+
             <span>🏟️ SoFi Stadium</span>
+
         </div>
 
         <div class="featured-button">
@@ -159,5 +194,16 @@
 
 </a>
 
+<!-- Scripts -->
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ffs.js"></script>
+<script src="js/geocode.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/family.js"></script>
+<script src="js/install.js"></script>
+
 </body>
+
 </html>
