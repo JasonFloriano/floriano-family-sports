@@ -7,3 +7,17 @@
     /* Desktop overrides */
 
 }
+
+/* ======================================================
+   Desktop Hero Image
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .hero-image {
+        height: 360px;
+        object-position: center 30%;
+    }
+
+}
+
