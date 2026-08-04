@@ -21,3 +21,24 @@
 
 }
 
+/* ======================================================
+   Desktop Fundraiser
+====================================================== */
+
+@media (min-width: 1024px) {
+
+    .featured-card {
+        max-width: 650px;
+    }
+
+    .featured-content h2 {
+        font-size: 1.6rem;
+    }
+
+    .featured-image {
+        max-height: 340px;
+        object-fit: cover;
+    }
+}
+
+
