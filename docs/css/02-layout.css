@@ -30,7 +30,8 @@
 ====================================================== */
 
 .page-header {
-    padding: 25px 20px 10px;
+    position: relative;
+    padding: 65px 20px 10px;
     text-align: center;
 }
 
