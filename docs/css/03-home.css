@@ -24,7 +24,10 @@
 }
 
 .shield-small {
+    display: block;
     width: 140px;
+    margin: 0 auto;
+    filter: drop-shadow(0 15px 40px rgba(242,175,2,.25));
 }
 
 /* ======================================================
