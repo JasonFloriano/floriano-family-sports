@@ -10,7 +10,7 @@
 .subscribe-button {
     display: block;
     max-width: 340px;
-    margin: 20px auto;
+    margin: 36px auto 20px;
     padding: 18px 24px;
     background: #7A1436;
     color: #fff;
