@@ -1,20 +1,70 @@
 {
-  "FULL": { "school": "Fullerton High School", "mascot": "Indians" },
-  "SON":  { "school": "Sonora High School", "mascot": "Raiders" },
-  "ELT":  { "school": "El Toro High School", "mascot": "Chargers" },
-  "YL":   { "school": "Yorba Linda High School", "mascot": "Mustangs" },
-  "VAL":  { "school": "Valencia High School", "mascot": "Tigers" },
-  "DB":   { "school": "Diamond Bar High School", "mascot": "Brahmas" },
-  "ED":   { "school": "El Dorado High School", "mascot": "Golden Hawks" },
-  "TROY": { "school": "Troy High School", "mascot": "Warriors" },
-  "FOOT": { "school": "Foothill High School", "mascot": "Knights" },
-  "WB":   { "school": "Woodbridge High School", "mascot": "Warriors" },
-  "SH":   { "school": "Sunny Hills High School", "mascot": "Lancers" },
-  "NW":   { "school": "Northwood High School", "mascot": "Timberwolves" },
-  "BO":   { "school": "Brea Olinda High School", "mascot": "Wildcats" },
-  "PAC":  { "school": "Pacifica High School", "mascot": "Mariners" },
-  "ARL":  { "school": "Arlington High School", "mascot": "Lions" }
-  "WHIT":  { "school": "Gretchen Whitney High School", "mascot": "Wildcats" }
-  "ELMO":  { "school": "El Modena High School", "mascot": "Vanguards " }
-
+  "FULL": {
+    "school": "Fullerton High School",
+    "mascot": "Indians"
+  },
+  "SON": {
+    "school": "Sonora High School",
+    "mascot": "Raiders"
+  },
+  "ELT": {
+    "school": "El Toro High School",
+    "mascot": "Chargers"
+  },
+  "YL": {
+    "school": "Yorba Linda High School",
+    "mascot": "Mustangs"
+  },
+  "VAL": {
+    "school": "Valencia High School",
+    "mascot": "Tigers"
+  },
+  "DB": {
+    "school": "Diamond Bar High School",
+    "mascot": "Brahmas"
+  },
+  "ED": {
+    "school": "El Dorado High School",
+    "mascot": "Golden Hawks"
+  },
+  "TROY": {
+    "school": "Troy High School",
+    "mascot": "Warriors"
+  },
+  "FOOT": {
+    "school": "Foothill High School",
+    "mascot": "Knights"
+  },
+  "WB": {
+    "school": "Woodbridge High School",
+    "mascot": "Warriors"
+  },
+  "SH": {
+    "school": "Sunny Hills High School",
+    "mascot": "Lancers"
+  },
+  "NW": {
+    "school": "Northwood High School",
+    "mascot": "Timberwolves"
+  },
+  "BO": {
+    "school": "Brea Olinda High School",
+    "mascot": "Wildcats"
+  },
+  "PAC": {
+    "school": "Pacifica High School",
+    "mascot": "Mariners"
+  },
+  "ARL": {
+    "school": "Arlington High School",
+    "mascot": "Lions"
+  },
+  "WHIT": {
+    "school": "Gretchen Whitney High School",
+    "mascot": "Wildcats"
+  },
+  "ELMO": {
+    "school": "El Modena High School",
+    "mascot": "Vanguards"
+  }
 }
