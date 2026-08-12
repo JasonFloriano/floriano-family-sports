@@ -170,6 +170,15 @@
     "lat": "33.634365",
     "lon": "-117.878435"
   },
+    "ELMO": {
+    "name": "El Modena High School",
+    "address": "3920 E Spring Street",
+    "city": "Orange",
+    "state": "CA",
+    "zip": "92869",
+    "lat": "33.7896196",
+    "lon": "-117.8124890"
+  },
     "WHIT": {
     "name": "Gretchen Whitney High School",
     "address": "16800 Shoemaker Ave",
