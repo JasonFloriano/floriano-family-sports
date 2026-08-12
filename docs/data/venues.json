@@ -169,5 +169,14 @@
     "zip": "92660",
     "lat": "33.634365",
     "lon": "-117.878435"
+  },
+    "WHIT": {
+    "name": "Gretchen Whitney High School",
+    "address": "16800 Shoemaker Ave",
+    "city": "Cerritos",
+    "state": "CA",
+    "zip": "90703",
+    "lat": "33.87782",
+    "lon": "-118.05401"
   }
 }
