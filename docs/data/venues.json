@@ -179,6 +179,15 @@
     "lat": "33.7896196",
     "lon": "-117.8124890"
   },
+    "CENT": {
+    "name": "Centennial High School",
+    "address": "1820 Rimpau Ave",
+    "city": "Corona",
+    "state": "CA",
+    "zip": "92881",
+    "lat": "33.8583548",
+    "lon": "-117.5475069"
+  },
     "WHIT": {
     "name": "Gretchen Whitney High School",
     "address": "16800 Shoemaker Ave",
