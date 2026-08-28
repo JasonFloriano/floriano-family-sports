@@ -137,8 +137,8 @@ getEventDetails(event) {
 
             athlete: athlete?.name || "",
 
-            opponent: opponent
-    ? `${opponent.school} ${opponent.mascot ?? ""}`.trim()
+    opponent: opponent
+    ? `${opponent.school} — ${opponent.mascot ?? ""}`.trim()
     : event.TYPE,
 
             venue: venue
