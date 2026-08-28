@@ -442,6 +442,7 @@ async function renderAll() {
         ? `${game.opponent.school} — ${game.opponent.mascot ?? ""}`.trim()
         : game.display?.opponent ??
           game.TYPE;
+        
         const venue =
             game.display?.venue ??
             game.venue?.name ??
