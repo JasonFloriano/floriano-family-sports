@@ -97,9 +97,12 @@ function createEventCard(event) {
         "";
 
     const opponent =
-        event.display?.opponent ??
-        event.opponent?.school ??
-        event.TYPE;
+    event.display?.opponent ??
+    (
+        event.opponent?.school
+            ? `${event.opponent.school} ${event.opponent.mascot ?? ""}`.trim()
+            : event.TYPE
+    );
 
     const venue =
         event.display?.venue ??
