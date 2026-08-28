@@ -1,82 +1,82 @@
 {
   "FULL": {
-    "school": "Fullerton High School",
+    "school": "Fullerton",
     "mascot": "Indians"
   },
   "SON": {
-    "school": "Sonora High School",
+    "school": "Sonora",
     "mascot": "Raiders"
   },
   "ELT": {
-    "school": "El Toro High School",
+    "school": "El Toro",
     "mascot": "Chargers"
   },
   "YL": {
-    "school": "Yorba Linda High School",
+    "school": "Yorba Linda",
     "mascot": "Mustangs"
   },
   "VAL": {
-    "school": "Valencia High School",
+    "school": "Valencia",
     "mascot": "Tigers"
   },
   "DB": {
-    "school": "Diamond Bar High School",
+    "school": "Diamond Bar",
     "mascot": "Brahmas"
   },
   "ED": {
-    "school": "El Dorado High School",
+    "school": "El Dorado",
     "mascot": "Golden Hawks"
   },
   "TROY": {
-    "school": "Troy High School",
+    "school": "Troy",
     "mascot": "Warriors"
   },
   "FOOT": {
-    "school": "Foothill High School",
+    "school": "Foothill",
     "mascot": "Knights"
   },
   "WB": {
-    "school": "Woodbridge High School",
+    "school": "Woodbridge",
     "mascot": "Warriors"
   },
   "SH": {
-    "school": "Sunny Hills High School",
+    "school": "Sunny Hills",
     "mascot": "Lancers"
   },
   "NW": {
-    "school": "Northwood High School",
+    "school": "Northwood",
     "mascot": "Timberwolves"
   },
   "BO": {
-    "school": "Brea Olinda High School",
+    "school": "Brea",
     "mascot": "Wildcats"
   },
   "PAC": {
-    "school": "Pacifica High School",
+    "school": "Pacifica",
     "mascot": "Mariners"
   },
   "ARL": {
-    "school": "Arlington High School",
+    "school": "Arlington",
     "mascot": "Lions"
   },
   "WHIT": {
-    "school": "Gretchen Whitney High School",
+    "school": "Gretchen Whitney",
     "mascot": "Wildcats"
   },
   "CENT": {
-    "school": "Centennial High School",
+    "school": "Centennial",
     "mascot": "Huskies"
   },
   "NOR": {
-    "school": "Norco High School",
+    "school": "Norco",
     "mascot": "Cougars"
   },
     "ELMO": {
-    "school": "El Modena High School",
+    "school": "El Modena",
     "mascot": "Vanguards"
   },
   "TBD": {
-    "school": "TO BE DETERMINED",
+    "school": "To Be Determined",
     "mascot": "Pink Unicorns"
   }
 }
