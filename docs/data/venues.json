@@ -188,6 +188,15 @@
     "lat": "33.8583548",
     "lon": "-117.5475069"
   },
+  "NOR": {
+    "name": "Norco High School",
+    "address": "2065 Temescal Ave",
+    "city": "Norco",
+    "state": "CA",
+    "zip": "92860",
+    "lat": "33.9119594",
+    "lon": "-117.5472718"
+  },
     "WHIT": {
     "name": "Gretchen Whitney High School",
     "address": "16800 Shoemaker Ave",
