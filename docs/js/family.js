@@ -438,9 +438,9 @@ async function renderAll() {
 
         const game = currentOrNext;
 
-        const opponent =
+const opponent =
     game.opponent?.school
-        ? `${game.opponent.school} — ${game.opponent.mascot ?? ""}`.trim()
+        ? `${game.opponent.school}${game.opponent.mascot ? ` • ${game.opponent.mascot}` : ""}`
         : game.display?.opponent ??
           game.TYPE;
         
