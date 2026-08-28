@@ -71,8 +71,12 @@
     "school": "Norco High School",
     "mascot": "Cougars"
   },
-  "ELMO": {
+    "ELMO": {
     "school": "El Modena High School",
     "mascot": "Vanguards"
+  },
+  "TBD": {
+    "school": "TO BE DETERMINED",
+    "mascot": "Pink Unicorns"
   }
 }
