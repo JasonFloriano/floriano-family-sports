@@ -98,9 +98,10 @@ function createEventCard(event) {
 
     const opponent =
     event.opponent?.school
-        ? `${event.opponent.school} — ${event.opponent.mascot ?? ""}`.trim()
+        ? `${event.opponent.school}${event.opponent.mascot ? ` • ${event.opponent.mascot}` : ""}`
         : event.display?.opponent ??
           event.TYPE;
+        
     const venue =
         event.display?.venue ??
         event.venue?.name ??
