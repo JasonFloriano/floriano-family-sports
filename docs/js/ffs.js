@@ -1,6 +1,13 @@
 // ======================================================
 // Floriano Family Sports (FFS)
-// Core Data Engine v3.1.1
+// Core Data Engine v3.2.0
+// =======================================================
+// FIXES:
+// • All-day Google Calendar dates no longer shift backward
+// • Multi-day all-day events display their full date range
+// • Timed events continue using their real start time
+// • TBD time logic preserved
+// • Existing FFS metadata structure preserved
 // =======================================================
 
 const FFS = {
@@ -12,10 +19,16 @@ const FFS = {
 
     data: null,
 
+    // ==================================================
+    // CALENDAR
+    // ==================================================
+
     calendar: {
+
         events: [],
 
         async load(config) {
+
             const url =
                 `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(config.calendarId)}/events` +
                 `?key=${config.apiKey}` +
@@ -39,242 +52,793 @@ const FFS = {
         }
     },
 
+    // ==================================================
+    // INITIALIZATION
+    // ==================================================
+
     async init() {
+
         this.data = await loadData();
+
         console.log("FFS Data:", this.data);
+
         await this.calendar.load(this.config);
+
         console.log("🏆 FFS Initialized");
-        //this.renderNextGame();
+
+        // this.renderNextGame();
     },
 
+    // ==================================================
+    // METADATA PARSER
+    // ==================================================
+
     parseMetadata(description = "") {
+
         const meta = {};
 
         description.split(/\r?\n/).forEach(line => {
+
             const i = line.indexOf("=");
 
             if (i > -1) {
-                meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+
+                meta[line.slice(0, i).trim()] =
+                    line.slice(i + 1).trim();
+
             }
+
         });
 
         return meta;
     },
 
-    convertGoogleEvent(event) {
+    // ==================================================
+    // GOOGLE ALL-DAY DATE PARSER
+    // ==================================================
+    // IMPORTANT:
+    //
+    // Google Calendar returns all-day dates as:
+    //
+    //     "2026-09-04"
+    //
+    // DO NOT use:
+    //
+    //     new Date("2026-09-04")
+    //
+    // because JavaScript treats that as UTC midnight.
+    //
+    // Instead, construct the date using local year/month/day.
+    // This prevents California from seeing the previous day.
+    // ==================================================
 
-    const meta = this.parseMetadata(event.description || "");
+    parseAllDayDate(dateString) {
 
-    if (!meta.ATHLETEID) return null;
+        if (!dateString) return null;
 
-    const start = new Date(event.start.dateTime || event.start.date);
+        const parts = dateString.split("-");
 
-    return {
+        if (parts.length !== 3) return null;
 
-        ATHLETEID: meta.ATHLETEID,
-        TEAMID: meta.TEAMID,
-        VENUEID: meta.VENUEID,
-        OPPONENTID: meta.OPPONENTID,
-        FACILITY: meta.FACILITY,
-        TYPE: meta.TYPE,
+        const year = Number(parts[0]);
+        const month = Number(parts[1]);
+        const day = Number(parts[2]);
 
-        // Keep the raw Date object for sorting/filtering
-        start: start,
+        if (
+            !Number.isFinite(year) ||
+            !Number.isFinite(month) ||
+            !Number.isFinite(day)
+        ) {
+            return null;
+        }
 
-        HOME: /HOME/i.test(event.summary || ""),
+        return new Date(
+            year,
+            month - 1,
+            day
+        );
+    },
 
-        DATE: start.toLocaleDateString("en-US", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-        }),
+    // ==================================================
+    // ADD DAYS — LOCAL TIME SAFE
+    // ==================================================
 
-        TIME: event.start.dateTime
-            ? start.toLocaleTimeString("en-US", {
-                hour: "numeric",
-                minute: "2-digit"
-            })
-            : "TBD"
+    addDays(date, days) {
 
-    };
+        const result = new Date(date);
 
-},
+        result.setDate(
+            result.getDate() + days
+        );
 
-getAthlete(id) {
-    return this.data.athletes[id];
-},
+        return result;
+    },
 
-getTeam(id) {
-    return this.data.teams[id];
-},
+    // ==================================================
+    // FORMAT LONG DATE
+    // ==================================================
 
-getVenue(id) {
-    return this.data.venues[id];
-},
+    formatLongDate(date) {
 
-getOpponent(id) {
-    return this.data.opponents[id];
-},
+        if (!date) return "";
 
-getEventDetails(event) {
+        return date.toLocaleDateString(
+            "en-US",
+            {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            }
+        );
+    },
 
-    const athlete = this.getAthlete(event.ATHLETEID);
-    const team = this.getTeam(event.TEAMID);
-    const venue = this.getVenue(event.VENUEID);
-    const opponent = this.getOpponent(event.OPPONENTID);
+    // ==================================================
+    // FORMAT SHORT DATE
+    // ==================================================
 
-    return {
+    formatShortDate(date) {
 
-        ...event,
+        if (!date) return "";
 
-        athlete,
-        team,
-        venue,
-        opponent,
+        return date.toLocaleDateString(
+            "en-US",
+            {
+                weekday: "short",
+                month: "short",
+                day: "numeric"
+            }
+        );
+    },
 
-        display: {
+    // ==================================================
+    // FORMAT DATE RANGE
+    // ==================================================
+    // Google Calendar's all-day END date is exclusive.
+    //
+    // Example:
+    //
+    // start = Sep 4
+    // end   = Sep 6
+    //
+    // Actual event:
+    //
+    // Sep 4 – Sep 5
+    //
+    // So we subtract one day from the API end date.
+    // ==================================================
 
-    athlete: athlete?.name || "",
+    formatDateRange(start, end, short = false) {
 
-    opponent: opponent
-        ? `${opponent.school}${opponent.mascot ? ` • ${opponent.mascot}` : ""}`
-        : event.TYPE,
-        
-            venue: venue
-                ? venue.name
-                : "",
+        if (!start) return "";
 
-            badge: event.TYPE,
+        if (!end) {
 
-            homeAway: event.HOME
-                ? "HOME"
-                : "AWAY",
-
-            shortDate: event.start.toLocaleDateString(
-                "en-US",
-                {
-                    weekday: "short",
-                    month: "short",
-                    day: "numeric"
-                }
-            ),
-
-            directions: venue
-                ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    `${venue.address}, ${venue.city}, ${venue.state} ${venue.zip}`
-                )}`
-                : "",
-
-            accent:
-                event.ATHLETEID === "ADDISON"
-                    ? "addison"
-                    : "ryley"
+            return short
+                ? this.formatShortDate(start)
+                : this.formatLongDate(start);
 
         }
 
-    };
+        const actualEnd = this.addDays(end, -1);
 
-},
-getNextGame() {
+        // Same calendar day
+        if (
+            start.getFullYear() === actualEnd.getFullYear() &&
+            start.getMonth() === actualEnd.getMonth() &&
+            start.getDate() === actualEnd.getDate()
+        ) {
 
-    const now = new Date();
+            return short
+                ? this.formatShortDate(start)
+                : this.formatLongDate(start);
+        }
 
-    const event = this.calendar.events.find(event =>
-        ["LEAGUE", "TOURNAMENT"].includes(event.TYPE) &&
-        event.start >= now
-    );
+        if (short) {
 
-    if (!event) return null;
+            return `${this.formatShortDate(start)} – ${this.formatShortDate(actualEnd)}`;
 
-    return this.getEventDetails(event);
+        }
 
-},
+        return `${this.formatLongDate(start)} – ${this.formatLongDate(actualEnd)}`;
+    },
 
-getUpcomingEvents() {
+    // ==================================================
+    // GOOGLE EVENT CONVERTER
+    // ==================================================
 
-    const now = new Date();
+    convertGoogleEvent(event) {
 
-    return this.calendar.events
-        .filter(event => event.start >= now)
-        .sort((a, b) => a.start - b.start)
-        .map(event => this.getEventDetails(event));
+        const meta =
+            this.parseMetadata(
+                event.description || ""
+            );
 
-},
+        // Ignore calendar events that aren't FFS events
+        if (!meta.ATHLETEID) {
+            return null;
+        }
 
-getTodaysEvents() {
+        // ------------------------------------------------
+        // TIMED EVENT
+        // ------------------------------------------------
 
-    const today = new Date().toDateString();
+        const isTimedEvent =
+            !!event.start?.dateTime;
 
-    return this.getUpcomingEvents().filter(event =>
-        event.start.toDateString() === today
-    );
+        // ------------------------------------------------
+        // ALL-DAY EVENT
+        // ------------------------------------------------
 
-},
+        const isAllDayEvent =
+            !!event.start?.date;
 
-getAthleteSchedule(athleteId) {
+        let start;
+        let end = null;
 
-    return this.getUpcomingEvents().filter(event =>
-        event.ATHLETEID === athleteId
-    );
+        if (isTimedEvent) {
 
-},
+            start =
+                new Date(event.start.dateTime);
 
-getEventsByType(type) {
+            if (event.end?.dateTime) {
 
-    return this.getUpcomingEvents().filter(event =>
-        event.TYPE === type
-    );
+                end =
+                    new Date(event.end.dateTime);
 
-},
+            }
 
-renderNextGame() {
+        } else if (isAllDayEvent) {
 
-    const game = this.getNextGame();
+            // CRITICAL FIX:
+            // Parse Google date as LOCAL calendar date.
+            start =
+                this.parseAllDayDate(
+                    event.start.date
+                );
 
-    if (!game) {
-        console.warn("No upcoming games found.");
-        return;
+            if (event.end?.date) {
+
+                end =
+                    this.parseAllDayDate(
+                        event.end.date
+                    );
+
+            }
+
+        } else {
+
+            return null;
+        }
+
+        if (!start || Number.isNaN(start.getTime())) {
+
+            console.warn(
+                "FFS: Invalid event start date",
+                event
+            );
+
+            return null;
+        }
+
+        // ------------------------------------------------
+        // DISPLAY DATE
+        // ------------------------------------------------
+
+        const dateDisplay =
+            isAllDayEvent
+                ? this.formatDateRange(
+                    start,
+                    end,
+                    false
+                )
+                : this.formatLongDate(start);
+
+        const shortDateDisplay =
+            isAllDayEvent
+                ? this.formatDateRange(
+                    start,
+                    end,
+                    true
+                )
+                : this.formatShortDate(start);
+
+        // ------------------------------------------------
+        // RETURN NORMALIZED EVENT
+        // ------------------------------------------------
+
+        return {
+
+            // --------------------------------------------
+            // FFS METADATA
+            // --------------------------------------------
+
+            ATHLETEID:
+                meta.ATHLETEID,
+
+            TEAMID:
+                meta.TEAMID,
+
+            VENUEID:
+                meta.VENUEID,
+
+            OPPONENTID:
+                meta.OPPONENTID,
+
+            FACILITY:
+                meta.FACILITY,
+
+            TYPE:
+                meta.TYPE,
+
+            // --------------------------------------------
+            // GOOGLE DATA
+            // --------------------------------------------
+
+            summary:
+                event.summary || "",
+
+            description:
+                event.description || "",
+
+            location:
+                event.location || "",
+
+            // --------------------------------------------
+            // EVENT TYPE
+            // --------------------------------------------
+
+            isAllDay:
+                isAllDayEvent,
+
+            isTimed:
+                isTimedEvent,
+
+            // --------------------------------------------
+            // RAW DATES
+            // --------------------------------------------
+
+            start:
+                start,
+
+            end:
+                end,
+
+            // --------------------------------------------
+            // DISPLAY DATES
+            // --------------------------------------------
+
+            DATE:
+                dateDisplay,
+
+            shortDate:
+                shortDateDisplay,
+
+            // --------------------------------------------
+            // TIME
+            // --------------------------------------------
+
+            TIME:
+                isTimedEvent
+                    ? start.toLocaleTimeString(
+                        "en-US",
+                        {
+                            hour: "numeric",
+                            minute: "2-digit"
+                        }
+                    )
+                    : "TBD",
+
+            // --------------------------------------------
+            // HOME / AWAY
+            // --------------------------------------------
+
+            HOME:
+                /HOME/i.test(
+                    event.summary || ""
+                )
+        };
+    },
+
+    // ==================================================
+    // ATHLETE
+    // ==================================================
+
+    getAthlete(id) {
+
+        return this.data.athletes[id];
+
+    },
+
+    // ==================================================
+    // TEAM
+    // ==================================================
+
+    getTeam(id) {
+
+        return this.data.teams[id];
+
+    },
+
+    // ==================================================
+    // VENUE
+    // ==================================================
+
+    getVenue(id) {
+
+        return this.data.venues[id];
+
+    },
+
+    // ==================================================
+    // OPPONENT
+    // ==================================================
+
+    getOpponent(id) {
+
+        return this.data.opponents[id];
+
+    },
+
+    // ==================================================
+    // EVENT DETAILS
+    // ==================================================
+
+    getEventDetails(event) {
+
+        const athlete =
+            this.getAthlete(
+                event.ATHLETEID
+            );
+
+        const team =
+            this.getTeam(
+                event.TEAMID
+            );
+
+        const venue =
+            this.getVenue(
+                event.VENUEID
+            );
+
+        const opponent =
+            this.getOpponent(
+                event.OPPONENTID
+            );
+
+        return {
+
+            ...event,
+
+            athlete,
+
+            team,
+
+            venue,
+
+            opponent,
+
+            display: {
+
+                // ----------------------------------------
+                // ATHLETE
+                // ----------------------------------------
+
+                athlete:
+                    athlete?.name || "",
+
+                // ----------------------------------------
+                // OPPONENT
+                // ----------------------------------------
+
+                opponent:
+
+                    opponent
+
+                        ? `${opponent.school}${opponent.mascot
+                            ? ` • ${opponent.mascot}`
+                            : ""
+                        }`
+
+                        : event.TYPE,
+
+                // ----------------------------------------
+                // VENUE
+                // ----------------------------------------
+
+                venue:
+                    venue
+                        ? venue.name
+                        : "",
+
+                // ----------------------------------------
+                // BADGE
+                // ----------------------------------------
+
+                badge:
+                    event.TYPE,
+
+                // ----------------------------------------
+                // HOME / AWAY
+                // ----------------------------------------
+
+                homeAway:
+
+                    event.HOME
+                        ? "HOME"
+                        : "AWAY",
+
+                // ----------------------------------------
+                // DATE
+                // ----------------------------------------
+                // IMPORTANT:
+                // Use the already-correct date generated
+                // by convertGoogleEvent().
+                // ----------------------------------------
+
+                shortDate:
+                    event.shortDate,
+
+                // ----------------------------------------
+                // DIRECTIONS
+                // ----------------------------------------
+
+                directions:
+
+                    venue
+
+                        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                            `${venue.address}, ${venue.city}, ${venue.state} ${venue.zip}`
+                        )}`
+
+                        : "",
+
+                // ----------------------------------------
+                // ACCENT
+                // ----------------------------------------
+
+                accent:
+
+                    event.ATHLETEID === "ADDISON"
+                        ? "addison"
+                        : "ryley"
+            }
+        };
+    },
+
+    // ==================================================
+    // NEXT GAME
+    // ==================================================
+
+    getNextGame() {
+
+        const now =
+            new Date();
+
+        const event =
+            this.calendar.events.find(
+                event =>
+
+                    ["LEAGUE", "TOURNAMENT"]
+                        .includes(event.TYPE)
+
+                    &&
+
+                    event.start >= now
+            );
+
+        if (!event) {
+            return null;
+        }
+
+        return this.getEventDetails(
+            event
+        );
+    },
+
+    // ==================================================
+    // UPCOMING EVENTS
+    // ==================================================
+
+    getUpcomingEvents() {
+
+        const now =
+            new Date();
+
+        return this.calendar.events
+
+            .filter(event => {
+
+                // Timed event:
+                // use start time.
+
+                if (event.isTimed) {
+                    return event.start >= now;
+                }
+
+                // All-day event:
+                // consider it upcoming until its
+                // exclusive end date has passed.
+
+                if (event.isAllDay && event.end) {
+                    return event.end > now;
+                }
+
+                return event.start >= now;
+
+            })
+
+            .sort(
+                (a, b) =>
+                    a.start - b.start
+            )
+
+            .map(
+                event =>
+                    this.getEventDetails(event)
+            );
+    },
+
+    // ==================================================
+    // TODAY'S EVENTS
+    // ==================================================
+
+    getTodaysEvents() {
+
+        const today =
+            new Date();
+
+        return this.calendar.events
+
+            .filter(event => {
+
+                return (
+                    event.start.getFullYear()
+                    ===
+                    today.getFullYear()
+
+                    &&
+
+                    event.start.getMonth()
+                    ===
+                    today.getMonth()
+
+                    &&
+
+                    event.start.getDate()
+                    ===
+                    today.getDate()
+                );
+
+            })
+
+            .sort(
+                (a, b) =>
+                    a.start - b.start
+            )
+
+            .map(
+                event =>
+                    this.getEventDetails(event)
+            );
+    },
+
+    // ==================================================
+    // ATHLETE SCHEDULE
+    // ==================================================
+
+    getAthleteSchedule(athleteId) {
+
+        return this.getUpcomingEvents()
+
+            .filter(
+                event =>
+                    event.ATHLETEID === athleteId
+            );
+    },
+
+    // ==================================================
+    // EVENTS BY TYPE
+    // ==================================================
+
+    getEventsByType(type) {
+
+        return this.getUpcomingEvents()
+
+            .filter(
+                event =>
+                    event.TYPE === type
+            );
+    },
+
+    // ==================================================
+    // RENDER NEXT GAME
+    // ==================================================
+
+    renderNextGame() {
+
+        const game =
+            this.getNextGame();
+
+        if (!game) {
+
+            console.warn(
+                "No upcoming games found."
+            );
+
+            return;
+        }
+
+        if (
+            !game.opponent ||
+            !game.venue
+        ) {
+
+            console.warn(
+                "Incomplete event",
+                game
+            );
+
+            return;
+        }
+
+        const school =
+            (
+                game.opponent.school || ""
+            ).replace(
+                " High School",
+                ""
+            );
+
+        document.getElementById(
+            "next-athlete"
+        ).textContent =
+            `🏐 ${game.athlete.name}`;
+
+        document.getElementById(
+            "next-opponent"
+        ).textContent =
+
+            game.HOME
+
+                ? `🏠 HOME vs ${school} ${game.opponent.mascot}`
+
+                : `🚌 AWAY @ ${school} ${game.opponent.mascot}`;
+
+        document.getElementById(
+            "next-date"
+        ).textContent =
+            `📅 ${game.DATE}`;
+
+        document.getElementById(
+            "next-time"
+        ).textContent =
+            `🕓 ${game.TIME}`;
+
+        document.getElementById(
+            "next-venue"
+        ).textContent =
+            `📍 ${game.venue.name}`;
+
+        const address =
+            `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
+
+        document.getElementById(
+            "next-directions"
+        ).href =
+            `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    },
+
+    // ==================================================
+    // DEBUG / CALENDAR VIEW
+    // ==================================================
+
+    showCalendar() {
+
+        console.table(
+            this.calendar.events
+        );
+
     }
-
-    if (!game.opponent || !game.venue) {
-        console.warn("Incomplete event", game);
-        return;
-    }
-
-    const school = (game.opponent.school || "").replace(" High School", "");
-
-    document.getElementById("next-athlete").textContent =
-        `🏐 ${game.athlete.name}`;
-
-    document.getElementById("next-opponent").textContent =
-        game.HOME
-            ? `🏠 HOME vs ${school} ${game.opponent.mascot}`
-            : `🚌 AWAY @ ${school} ${game.opponent.mascot}`;
-
-    document.getElementById("next-date").textContent =
-        `📅 ${game.DATE}`;
-
-    document.getElementById("next-time").textContent =
-        `🕓 ${game.TIME}`;
-
-    document.getElementById("next-venue").textContent =
-        `📍 ${game.venue.name}`;
-
-    const address =
-        `${game.venue.address}, ${game.venue.city}, ${game.venue.state} ${game.venue.zip}`;
-
-    document.getElementById("next-directions").href =
-        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-
-},
-
-showCalendar() {
-    console.table(this.calendar.events);
-}
 
 };
-
-
-
-
