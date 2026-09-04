@@ -620,75 +620,64 @@ const FFS = {
     // Future games are always eligible.
     // ==================================================
 
-    getNextGame() {
+getNextGame() {
 
-        const now = new Date();
+    const now = new Date();
 
-        const GAME_DISPLAY_WINDOW =
-            75 * 60 * 1000; // 75 minutes
+    // Keep a game active for 75 minutes
+    // after its scheduled start time.
+    const GAME_DISPLAY_WINDOW = 75 * 60 * 1000;
 
-        const games =
-            this.calendar.events
+    const games = this.calendar.events
+        .filter(event => {
 
-                .filter(event => {
+            // Only actual League/Tournament games
+            if (
+                !["LEAGUE", "TOURNAMENT"]
+                    .includes(event.TYPE)
+            ) {
+                return false;
+            }
 
-                    // Only actual games
-                    if (
-                        !["LEAGUE", "TOURNAMENT"]
-                            .includes(event.TYPE)
-                    ) {
-                        return false;
-                    }
+            // Only timed games
+            if (!event.isTimed) {
+                return false;
+            }
 
-                    // Next Game applies to timed games.
-                    // Do not allow all-day events to
-                    // interfere with game selection.
-                    if (!event.isTimed) {
-                        return false;
-                    }
+            // Must have a valid start time
+            if (
+                !(event.start instanceof Date) ||
+                Number.isNaN(event.start.getTime())
+            ) {
+                return false;
+            }
 
-                    // Must have a valid start date.
-                    if (
-                        !(event.start instanceof Date) ||
-                        Number.isNaN(
-                            event.start.getTime()
-                        )
-                    ) {
-                        return false;
-                    }
+            // Negative = game is in the future
+            // Positive = game has already started
+            const age =
+                now.getTime() -
+                event.start.getTime();
 
-                    const age =
-                        now.getTime() -
-                        event.start.getTime();
+            // Include future games and games
+            // that started less than 75 minutes ago.
+            return age < GAME_DISPLAY_WINDOW;
+        })
 
-                    // Keep:
-                    //
-                    // • Future games
-                    // • Games currently within
-                    //   the 75-minute active window
-                    //
-                    // Exclude games older than 75 minutes.
-                    return age < GAME_DISPLAY_WINDOW;
-
-                })
-
-                // Always use chronological order.
-                .sort(
-                    (a, b) =>
-                        a.start.getTime() -
-                        b.start.getTime()
-                );
-
-        const event = games[0];
-
-        if (!event) {
-            return null;
-        }
-
-        return this.getEventDetails(
-            event
+        // Always choose the earliest game
+        .sort(
+            (a, b) =>
+                a.start.getTime() -
+                b.start.getTime()
         );
-    },
+
+    const event = games[0];
+
+    if (!event) {
+        return null;
+    }
+
+    return this.getEventDetails(event);
+},
 
     // ==================================================
     // UPCOMING EVENTS
