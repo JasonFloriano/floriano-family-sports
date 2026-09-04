@@ -439,83 +439,88 @@ async function renderAll() {
     // events are NOT eligible.
     //
 
-    const now =
-        new Date();
+const now =
+    new Date();
 
-    const currentOrNext =
-        events
-            .filter(event => {
-
-                // ---------------------------------
-                // ONLY ACTUAL GAMES
-                // ---------------------------------
-
-                if (
-                    !["LEAGUE", "TOURNAMENT"]
-                        .includes(event.TYPE)
-                ) {
-                    return false;
-                }
-
-                // ---------------------------------
-                // ONLY TIMED EVENTS
-                // ---------------------------------
-
-                if (!event.isTimed) {
-                    return false;
-                }
-
-                // ---------------------------------
-                // VALID START TIME REQUIRED
-                // ---------------------------------
-
-                if (
-                    !(event.start instanceof Date) ||
-                    Number.isNaN(
-                        event.start.getTime()
-                    )
-                ) {
-                    return false;
-                }
-
-                // ---------------------------------
-                // CALCULATE ELAPSED TIME
-                // ---------------------------------
-                //
-                // Positive = game has started
-                // Negative = game is in the future
-                //
-
-                const elapsed =
-                    now.getTime() -
-                    event.start.getTime();
-
-                // ---------------------------------
-                // QUALIFICATION
-                // ---------------------------------
-                //
-                // Future games qualify.
-                //
-                // Games that started less than
-                // 75 minutes ago also qualify.
-                //
-
-                return (
-                    elapsed <
-                    GAME_DISPLAY_WINDOW
-                );
-
-            })
+const currentOrNext =
+    events
+        .filter(event => {
 
             // ---------------------------------
-            // EARLIEST QUALIFYING GAME WINS
+            // NORMALIZE EVENT TYPE
             // ---------------------------------
 
-            .sort(
-                (a, b) =>
-                    a.start.getTime() -
-                    b.start.getTime()
-            )[0];
+            const type =
+                String(event.TYPE || "")
+                    .trim()
+                    .toUpperCase();
+
+            // ---------------------------------
+            // ONLY ACTUAL GAMES
+            // ---------------------------------
+
+            if (
+                !["LEAGUE", "TOURNAMENT"]
+                    .includes(type)
+            ) {
+                return false;
+            }
+
+            // ---------------------------------
+            // ONLY TIMED EVENTS
+            // ---------------------------------
+
+            if (!event.isTimed) {
+                return false;
+            }
+
+            // ---------------------------------
+            // VALID START TIME REQUIRED
+            // ---------------------------------
+
+            if (
+                !(event.start instanceof Date) ||
+                Number.isNaN(
+                    event.start.getTime()
+                )
+            ) {
+                return false;
+            }
+
+            // ---------------------------------
+            // CALCULATE ELAPSED TIME
+            // ---------------------------------
+
+            const elapsed =
+                now.getTime() -
+                event.start.getTime();
+
+            // ---------------------------------
+            // QUALIFICATION
+            // ---------------------------------
+            //
+            // Future games qualify.
+            //
+            // Games that started less than
+            // 75 minutes ago also qualify.
+            //
+
+            return (
+                elapsed <
+                GAME_DISPLAY_WINDOW
+            );
+
+        })
+
+        // ---------------------------------
+        // EARLIEST QUALIFYING GAME WINS
+        // ---------------------------------
+
+        .sort(
+            (a, b) =>
+                a.start.getTime() -
+                b.start.getTime()
+        )[0];
 
     // =====================================
     // NEXT GAME CONTAINER
