@@ -620,106 +620,63 @@ const FFS = {
     // Future games are always eligible.
     // ==================================================
 
-getNextGame() {
+    getNextGame() {
 
-    const now = new Date();
+        const now = new Date();
 
-    // Keep a game active for 75 minutes
-    // after its scheduled start time.
-    const GAME_DISPLAY_WINDOW = 75 * 60 * 1000;
+        // Keep a game active for 75 minutes
+        // after its scheduled start time.
+        const GAME_DISPLAY_WINDOW = 75 * 60 * 1000;
 
-    const games = this.calendar.events
-        .filter(event => {
-
-            // Only actual League/Tournament games
-            if (
-                !["LEAGUE", "TOURNAMENT"]
-                    .includes(event.TYPE)
-            ) {
-                return false;
-            }
-
-            // Only timed games
-            if (!event.isTimed) {
-                return false;
-            }
-
-            // Must have a valid start time
-            if (
-                !(event.start instanceof Date) ||
-                Number.isNaN(event.start.getTime())
-            ) {
-                return false;
-            }
-
-            // Negative = game is in the future
-            // Positive = game has already started
-            const age =
-                now.getTime() -
-                event.start.getTime();
-
-            // Include future games and games
-            // that started less than 75 minutes ago.
-            return age < GAME_DISPLAY_WINDOW;
-        })
-
-        // Always choose the earliest game
-        .sort(
-            (a, b) =>
-                a.start.getTime() -
-                b.start.getTime()
-        );
-
-    const event = games[0];
-
-    if (!event) {
-        return null;
-    }
-
-    return this.getEventDetails(event);
-},
-
-    // ==================================================
-    // UPCOMING EVENTS
-    // ==================================================
-
-    getUpcomingEvents() {
-
-        const now =
-            new Date();
-
-        return this.calendar.events
-
+        const games = this.calendar.events
             .filter(event => {
 
-                // Timed event:
-                // use start time.
-
-                if (event.isTimed) {
-                    return event.start >= now;
+                // Only League and Tournament games
+                if (
+                    !["LEAGUE", "TOURNAMENT"]
+                        .includes(event.TYPE)
+                ) {
+                    return false;
                 }
 
-                // All-day event:
-                // consider it upcoming until its
-                // exclusive end date has passed.
-
-                if (event.isAllDay && event.end) {
-                    return event.end > now;
+                // Next Game only uses timed games
+                if (!event.isTimed) {
+                    return false;
                 }
 
-                return event.start >= now;
+                // Must have a valid start time
+                if (
+                    !(event.start instanceof Date) ||
+                    Number.isNaN(event.start.getTime())
+                ) {
+                    return false;
+                }
 
+                // Positive = game has started
+                // Negative = game is in the future
+                const elapsed =
+                    now.getTime() -
+                    event.start.getTime();
+
+                // Include future games and games
+                // that started less than 75 minutes ago.
+                return elapsed < GAME_DISPLAY_WINDOW;
             })
 
+            // Always choose the earliest game
             .sort(
                 (a, b) =>
-                    a.start - b.start
-            )
-
-            .map(
-                event =>
-                    this.getEventDetails(event)
+                    a.start.getTime() -
+                    b.start.getTime()
             );
+
+        const event = games[0];
+
+        if (!event) {
+            return null;
+        }
+
+        return this.getEventDetails(event);
     },
 
     // ==================================================
