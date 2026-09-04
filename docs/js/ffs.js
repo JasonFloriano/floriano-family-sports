@@ -1,6 +1,6 @@
 // ======================================================
 // Floriano Family Sports (FFS)
-// Core Data Engine v3.2.0
+// Core Data Engine v3.2.1
 // =======================================================
 // FIXES:
 // • All-day Google Calendar dates no longer shift backward
@@ -8,6 +8,7 @@
 // • Timed events continue using their real start time
 // • TBD time logic preserved
 // • Existing FFS metadata structure preserved
+// • Next Game remains active for 75 minutes after start
 // =======================================================
 
 const FFS = {
@@ -678,7 +679,62 @@ const FFS = {
 
         return this.getEventDetails(event);
     },
+    
+    // ==================================================
+    // UPCOMING EVENTS
+    // ==================================================
 
+    getUpcomingEvents() {
+
+        const now =
+            new Date();
+
+        return this.calendar.events
+
+            .filter(event => {
+
+                // Timed event:
+                // use start time.
+
+                if (event.isTimed) {
+
+                    return (
+                        event.start >= now
+                    );
+                }
+
+                // All-day event:
+                // consider it upcoming until its
+                // exclusive end date has passed.
+
+                if (
+                    event.isAllDay &&
+                    event.end
+                ) {
+
+                    return (
+                        event.end > now
+                    );
+                }
+
+                return (
+                    event.start >= now
+                );
+
+            })
+
+            .sort(
+                (a, b) =>
+                    a.start - b.start
+            )
+
+            .map(
+                event =>
+                    this.getEventDetails(
+                        event
+                    )
+            );
+    },
     // ==================================================
     // TODAY'S EVENTS
     // ==================================================
