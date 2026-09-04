@@ -197,6 +197,15 @@
     "lat": "33.9119594",
     "lon": "-117.5472718"
   },
+    "POR": {
+    "name": "Portola High School",
+    "address": "1001 Cadence",
+    "city": "Irvine",
+    "state": "CA",
+    "zip": "92618",
+    "lat": "33.6729354",
+    "lon": "-117.7128803"
+  },
     "WHIT": {
     "name": "Gretchen Whitney High School",
     "address": "16800 Shoemaker Ave",
