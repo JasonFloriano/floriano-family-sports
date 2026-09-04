@@ -1,6 +1,6 @@
 // =========================================
 // Floriano Family Sports
-// Family Dashboard v1.4.0
+// Family Dashboard v1.4.1
 // =========================================
 
 let activeFilter = "ALL";
@@ -97,11 +97,11 @@ function createEventCard(event) {
         "";
 
     const opponent =
-    event.opponent?.school
-        ? `${event.opponent.school}${event.opponent.mascot ? ` • ${event.opponent.mascot}` : ""}`
-        : event.display?.opponent ??
-          event.TYPE;
-        
+        event.opponent?.school
+            ? `${event.opponent.school}${event.opponent.mascot ? ` • ${event.opponent.mascot}` : ""}`
+            : event.display?.opponent ??
+              event.TYPE;
+
     const venue =
         event.display?.venue ??
         event.venue?.name ??
@@ -327,6 +327,20 @@ function isFutureEvent(event) {
 }
 
 // =========================================
+// NEXT GAME CONFIGURATION
+// =========================================
+//
+// A game remains the active NEXT GAME
+// for 75 minutes after its scheduled start.
+//
+// After 75 minutes, FFS moves automatically
+// to the next chronological game.
+//
+
+const GAME_DISPLAY_WINDOW =
+    75 * 60 * 1000;
+
+// =========================================
 // Countdown Timer
 // =========================================
 
@@ -408,352 +422,35 @@ async function renderAll() {
     // NEXT GAME
     // =====================================
     //
-    // Find the first event that hasn't started.
-    // Today's games that are already underway
-    // will not replace the next future event.
+    // A timed LEAGUE or TOURNAMENT game
+    // remains the active NEXT GAME for
+    // 75 minutes after its start.
     //
-    // If a game is currently happening, it is
-    // treated as the current/next game.
+    // Future games always qualify.
+    //
+    // Practices, school events, and
+    // all-day events do NOT qualify.
+    //
 
     const now = new Date();
 
     const currentOrNext =
-        events.find(event => {
-
-            const sameDay = isSameDay(
-                event.start,
-                now
-            );
-
-            const future = event.start >= now;
-
-            return sameDay || future;
-
-        });
-
-    const nextContainer =
-        document.querySelector(".next-up");
-
-    if (currentOrNext) {
-
-        const game = currentOrNext;
-
-const opponent =
-    game.opponent?.school
-        ? `${game.opponent.school}${game.opponent.mascot ? ` • ${game.opponent.mascot}` : ""}`
-        : game.display?.opponent ??
-          game.TYPE;
-        
-        const venue =
-            game.display?.venue ??
-            game.venue?.name ??
-            "";
-
-        const countdown =
-            getCountdown(game.start);
-
-        let weather = "";
-
-        try {
-
-            weather =
-                await Weather.getForecast(game);
-
-        } catch (error) {
-
-            console.warn(
-                "Weather unavailable:",
-                error
-            );
-
-        }
-
-        if (nextContainer) {
-
-            nextContainer.innerHTML = `
-
-<h2>NEXT GAME</h2>
-
-<div class="hero-card">
-
-    <h3>${game.athlete.name}</h3>
-
-    <div class="hero-badge ${game.TYPE.toLowerCase()}">
-        ${
-            game.TYPE === "LEAGUE"
-                ? "LEAGUE GAME"
-                : game.TYPE
-        }
-    </div>
-
-    <div class="hero-opponent">
-        🆚 ${opponent}
-    </div>
-
-    <div class="hero-info">
-        📅 ${game.DATE}
-    </div>
-
-    <div class="hero-info">
-        🕓 ${game.TIME}
-    </div>
-
-    <div class="hero-info">
-        📍 ${venue}
-    </div>
-
-    <div class="countdown">
-
-        <div class="countdown-label">
-            STARTS IN
-        </div>
-
-        <div class="countdown-grid">
-
-            <div class="count-box">
-
-                <div
-                    id="countdown-days"
-                    class="count-value">
-                    ${countdown.days}
-                </div>
-
-                <div
-                    id="countdown-day-label"
-                    class="count-unit">
-                    ${countdown.dayLabel}
-                </div>
-
-            </div>
-
-            <div class="count-box">
-
-                <div
-                    id="countdown-hours"
-                    class="count-value">
-                    ${countdown.hours}
-                </div>
-
-                <div
-                    id="countdown-hour-label"
-                    class="count-unit">
-                    ${countdown.hourLabel}
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    ${weather}
-
-    ${
-        game.display?.directions
-            ? `
-<a
-    class="venue-card"
-    href="${game.display.directions}"
-    target="_blank"
-    rel="noopener">
-
-    <div class="venue-title">
-        📍 GAME LOCATION
-    </div>
-
-    <div class="venue-name">
-        🏫 ${game.venue?.name || venue}
-    </div>
-
-    <div class="venue-address">
-        ${game.venue?.address || ""}
-    </div>
-
-    <div class="venue-city">
-        ${
-            game.venue
-                ? `${game.venue.city}, ${game.venue.state} ${game.venue.zip}`
-                : ""
-        }
-    </div>
-
-    <div class="venue-action">
-        🧭 Open in Google Maps →
-    </div>
-
-</a>
-`
-            : ""
-    }
-
-</div>
-
-`;
-
-        }
-
-    } else {
-
-        if (nextContainer) {
-            nextContainer.innerHTML = "";
-        }
-
-    }
-
-    // =====================================
-    // TODAY SECTION
-    // =====================================
-
-    renderSection(
-        "#today",
-        "TODAY",
-        today
-    );
-
-    // =====================================
-    // UPCOMING SECTION
-    // =====================================
-    //
-    // IMPORTANT:
-    // Only show events on FUTURE DAYS.
-    //
-    // This prevents today's games from
-    // appearing twice.
-    //
-    // Today → TODAY
-    // Tomorrow/later → UPCOMING
-    //
-
-    const upcoming = events
-        .filter(isFutureDay)
-        .slice(0, 10);
-
-    renderSection(
-        "#week",
-        activeFilter === "ALL"
-            ? "UPCOMING"
-            : `UPCOMING • ${activeFilter}`,
-        upcoming
-    );
-
-    // =====================================
-    // COUNTDOWN UPDATE
-    // =====================================
-
-    clearInterval(
-        window.countdownTimer
-    );
-
-    window.countdownTimer =
-        setInterval(() => {
-
-            if (!currentOrNext) return;
-
-            const countdown =
-                getCountdown(
-                    currentOrNext.start
-                );
-
-            const days =
-                document.getElementById(
-                    "countdown-days"
-                );
-
-            const hours =
-                document.getElementById(
-                    "countdown-hours"
-                );
-
-            const dayLabel =
-                document.getElementById(
-                    "countdown-day-label"
-                );
-
-            const hourLabel =
-                document.getElementById(
-                    "countdown-hour-label"
-                );
-
-            if (days)
-                days.textContent =
-                    countdown.days;
-
-            if (hours)
-                hours.textContent =
-                    countdown.hours;
-
-            if (dayLabel)
-                dayLabel.textContent =
-                    countdown.dayLabel;
-
-            if (hourLabel)
-                hourLabel.textContent =
-                    countdown.hourLabel;
-
-        }, 60000);
-
-}
-
-// =========================================
-// Filter Chips
-// =========================================
-
-function setupFilters() {
-
-    const buttons =
-        document.querySelectorAll(".filter");
-
-    buttons.forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                buttons.forEach(b =>
-                    b.classList.remove("active")
-                );
-
-                button.classList.add("active");
-
-                activeFilter =
-                    button.dataset.athlete
-                        .toUpperCase();
-
-                renderAll();
-
-            }
-        );
-
-    });
-
-}
-
-// =========================================
-// Initialize
-// =========================================
-
-async function initFamily() {
-
-    try {
-
-        await FFS.init();
-
-        setupFilters();
-
-        await renderAll();
-
-    } catch (error) {
-
-        console.error(
-            "FFS Family Dashboard Error:",
-            error
-        );
-
-    }
-
-}
-
-document.addEventListener(
-    "DOMContentLoaded",
-    initFamily
-);
+        events
+            .filter(event => {
+
+                // ---------------------------------
+                // ONLY ACTUAL GAMES
+                // ---------------------------------
+
+                if (
+                    !["LEAGUE", "TOURNAMENT"]
+                        .includes(event.TYPE)
+                ) {
+                    return false;
+                }
+
+                // ---------------------------------
+                // ONLY TIMED EVENTS
+                // ---------------------------------
+
+                if (!
