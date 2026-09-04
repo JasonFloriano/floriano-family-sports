@@ -609,23 +609,77 @@ const FFS = {
     // ==================================================
     // NEXT GAME
     // ==================================================
+    //
+    // GAME WINDOW:
+    // A timed game remains the active "Next Game"
+    // for 75 minutes after its scheduled start.
+    //
+    // After 75 minutes, FFS moves to the next
+    // chronological game.
+    //
+    // Future games are always eligible.
+    // ==================================================
 
     getNextGame() {
 
-        const now =
-            new Date();
+        const now = new Date();
 
-        const event =
-            this.calendar.events.find(
-                event =>
+        const GAME_DISPLAY_WINDOW =
+            75 * 60 * 1000; // 75 minutes
 
-                    ["LEAGUE", "TOURNAMENT"]
-                        .includes(event.TYPE)
+        const games =
+            this.calendar.events
 
-                    &&
+                .filter(event => {
 
-                    event.start >= now
-            );
+                    // Only actual games
+                    if (
+                        !["LEAGUE", "TOURNAMENT"]
+                            .includes(event.TYPE)
+                    ) {
+                        return false;
+                    }
+
+                    // Next Game applies to timed games.
+                    // Do not allow all-day events to
+                    // interfere with game selection.
+                    if (!event.isTimed) {
+                        return false;
+                    }
+
+                    // Must have a valid start date.
+                    if (
+                        !(event.start instanceof Date) ||
+                        Number.isNaN(
+                            event.start.getTime()
+                        )
+                    ) {
+                        return false;
+                    }
+
+                    const age =
+                        now.getTime() -
+                        event.start.getTime();
+
+                    // Keep:
+                    //
+                    // • Future games
+                    // • Games currently within
+                    //   the 75-minute active window
+                    //
+                    // Exclude games older than 75 minutes.
+                    return age < GAME_DISPLAY_WINDOW;
+
+                })
+
+                // Always use chronological order.
+                .sort(
+                    (a, b) =>
+                        a.start.getTime() -
+                        b.start.getTime()
+                );
+
+        const event = games[0];
 
         if (!event) {
             return null;
