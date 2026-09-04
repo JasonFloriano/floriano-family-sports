@@ -659,12 +659,13 @@ const FFS = {
                     now.getTime() -
                     event.start.getTime();
 
-                // Include future games and games
-                // that started less than 75 minutes ago.
+                // Future games qualify.
+                // Games that started less than 75 minutes ago
+                // also qualify.
                 return elapsed < GAME_DISPLAY_WINDOW;
             })
 
-            // Always choose the earliest game
+            // Earliest qualifying game wins
             .sort(
                 (a, b) =>
                     a.start.getTime() -
