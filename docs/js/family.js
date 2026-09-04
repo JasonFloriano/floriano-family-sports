@@ -330,11 +330,17 @@ function isFutureEvent(event) {
 // NEXT GAME CONFIGURATION
 // =========================================
 //
-// A game remains the active NEXT GAME
-// for 75 minutes after its scheduled start.
+// A timed LEAGUE or TOURNAMENT game remains
+// the active NEXT GAME for 75 minutes after
+// its scheduled start.
 //
-// After 75 minutes, FFS moves automatically
-// to the next chronological game.
+// After 75 minutes, FFS moves to the next
+// chronological qualifying game.
+//
+// Future games always qualify.
+//
+// Practices, school events, and all-day
+// events are NOT eligible for NEXT GAME.
 //
 
 const GAME_DISPLAY_WINDOW =
@@ -416,7 +422,8 @@ async function renderAll() {
     // TODAY
     // =====================================
 
-    const today = events.filter(isToday);
+    const today =
+        events.filter(isToday);
 
     // =====================================
     // NEXT GAME
@@ -424,15 +431,16 @@ async function renderAll() {
     //
     // A timed LEAGUE or TOURNAMENT game
     // remains the active NEXT GAME for
-    // 75 minutes after its start.
+    // 75 minutes after its scheduled start.
     //
     // Future games always qualify.
     //
-    // Practices, school events, and
-    // all-day events do NOT qualify.
+    // Practices, school events, and all-day
+    // events are NOT eligible.
     //
 
-    const now = new Date();
+    const now =
+        new Date();
 
     const currentOrNext =
         events
@@ -453,4 +461,448 @@ async function renderAll() {
                 // ONLY TIMED EVENTS
                 // ---------------------------------
 
-                if (!
+                if (!event.isTimed) {
+                    return false;
+                }
+
+                // ---------------------------------
+                // VALID START TIME REQUIRED
+                // ---------------------------------
+
+                if (
+                    !(event.start instanceof Date) ||
+                    Number.isNaN(
+                        event.start.getTime()
+                    )
+                ) {
+                    return false;
+                }
+
+                // ---------------------------------
+                // CALCULATE ELAPSED TIME
+                // ---------------------------------
+                //
+                // Positive = game has started
+                // Negative = game is in the future
+                //
+
+                const elapsed =
+                    now.getTime() -
+                    event.start.getTime();
+
+                // ---------------------------------
+                // QUALIFICATION
+                // ---------------------------------
+                //
+                // Future games qualify.
+                //
+                // Games that started less than
+                // 75 minutes ago also qualify.
+                //
+
+                return (
+                    elapsed <
+                    GAME_DISPLAY_WINDOW
+                );
+
+            })
+
+            // ---------------------------------
+            // EARLIEST QUALIFYING GAME WINS
+            // ---------------------------------
+
+            .sort(
+                (a, b) =>
+                    a.start.getTime() -
+                    b.start.getTime()
+            )[0];
+
+    // =====================================
+    // NEXT GAME CONTAINER
+    // =====================================
+
+    const nextContainer =
+        document.querySelector(".next-up");
+
+    if (currentOrNext) {
+
+        const game =
+            currentOrNext;
+
+        const opponent =
+            game.opponent?.school
+                ? `${game.opponent.school}${game.opponent.mascot ? ` • ${game.opponent.mascot}` : ""}`
+                : game.display?.opponent ??
+                  game.TYPE;
+
+        const venue =
+            game.display?.venue ??
+            game.venue?.name ??
+            "";
+
+        const countdown =
+            getCountdown(
+                game.start
+            );
+
+        let weather = "";
+
+        try {
+
+            weather =
+                await Weather.getForecast(
+                    game
+                );
+
+        } catch (error) {
+
+            console.warn(
+                "Weather unavailable:",
+                error
+            );
+
+        }
+
+        if (nextContainer) {
+
+            nextContainer.innerHTML = `
+
+<h2>NEXT GAME</h2>
+
+<div class="hero-card">
+
+    <h3>${game.athlete.name}</h3>
+
+    <div class="hero-badge ${game.TYPE.toLowerCase()}">
+        ${
+            game.TYPE === "LEAGUE"
+                ? "LEAGUE GAME"
+                : game.TYPE
+        }
+    </div>
+
+    <div class="hero-opponent">
+        🆚 ${opponent}
+    </div>
+
+    <div class="hero-info">
+        📅 ${game.DATE}
+    </div>
+
+    <div class="hero-info">
+        🕓 ${game.TIME}
+    </div>
+
+    <div class="hero-info">
+        📍 ${venue}
+    </div>
+
+    <div class="countdown">
+
+        <div class="countdown-label">
+            STARTS IN
+        </div>
+
+        <div class="countdown-grid">
+
+            <div class="count-box">
+
+                <div
+                    id="countdown-days"
+                    class="count-value">
+                    ${countdown.days}
+                </div>
+
+                <div
+                    id="countdown-day-label"
+                    class="count-unit">
+                    ${countdown.dayLabel}
+                </div>
+
+            </div>
+
+            <div class="count-box">
+
+                <div
+                    id="countdown-hours"
+                    class="count-value">
+                    ${countdown.hours}
+                </div>
+
+                <div
+                    id="countdown-hour-label"
+                    class="count-unit">
+                    ${countdown.hourLabel}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    ${weather}
+
+    ${
+        game.display?.directions
+            ? `
+<a
+    class="venue-card"
+    href="${game.display.directions}"
+    target="_blank"
+    rel="noopener">
+
+    <div class="venue-title">
+        📍 GAME LOCATION
+    </div>
+
+    <div class="venue-name">
+        🏫 ${game.venue?.name || venue}
+    </div>
+
+    <div class="venue-address">
+        ${game.venue?.address || ""}
+    </div>
+
+    <div class="venue-city">
+        ${
+            game.venue
+                ? `${game.venue.city}, ${game.venue.state} ${game.venue.zip}`
+                : ""
+        }
+    </div>
+
+    <div class="venue-action">
+        🧭 Open in Google Maps →
+    </div>
+
+</a>
+`
+            : ""
+    }
+
+</div>
+
+`;
+
+        }
+
+    } else {
+
+        if (nextContainer) {
+
+            nextContainer.innerHTML = "";
+
+        }
+
+    }
+
+    // =====================================
+    // TODAY SECTION
+    // =====================================
+
+    renderSection(
+        "#today",
+        "TODAY",
+        today
+    );
+
+    // =====================================
+    // UPCOMING SECTION
+    // =====================================
+    //
+    // Only show events on FUTURE DAYS.
+    //
+    // Today → TODAY
+    // Tomorrow/later → UPCOMING
+    //
+
+    const upcoming =
+        events
+            .filter(isFutureDay)
+            .slice(0, 10);
+
+    renderSection(
+        "#week",
+        activeFilter === "ALL"
+            ? "UPCOMING"
+            : `UPCOMING • ${activeFilter}`,
+        upcoming
+    );
+
+    // =====================================
+    // COUNTDOWN UPDATE
+    // =====================================
+    //
+    // Update every minute.
+    //
+    // When the current game's 75-minute
+    // display window expires, automatically
+    // rebuild the dashboard and select
+    // the next chronological game.
+    //
+
+    clearInterval(
+        window.countdownTimer
+    );
+
+    window.countdownTimer =
+        setInterval(
+            async () => {
+
+                // ---------------------------------
+                // NO CURRENT GAME
+                // ---------------------------------
+
+                if (!currentOrNext) {
+
+                    await renderAll();
+
+                    return;
+
+                }
+
+                const currentTime =
+                    new Date();
+
+                const elapsed =
+                    currentTime.getTime() -
+                    currentOrNext.start.getTime();
+
+                // ---------------------------------
+                // 75-MINUTE WINDOW EXPIRED
+                // ---------------------------------
+
+                if (
+                    elapsed >=
+                    GAME_DISPLAY_WINDOW
+                ) {
+
+                    console.log(
+                        "⏭️ NEXT GAME window expired — advancing."
+                    );
+
+                    await renderAll();
+
+                    return;
+
+                }
+
+                // ---------------------------------
+                // UPDATE COUNTDOWN
+                // ---------------------------------
+
+                const countdown =
+                    getCountdown(
+                        currentOrNext.start
+                    );
+
+                const days =
+                    document.getElementById(
+                        "countdown-days"
+                    );
+
+                const hours =
+                    document.getElementById(
+                        "countdown-hours"
+                    );
+
+                const dayLabel =
+                    document.getElementById(
+                        "countdown-day-label"
+                    );
+
+                const hourLabel =
+                    document.getElementById(
+                        "countdown-hour-label"
+                    );
+
+                if (days)
+                    days.textContent =
+                        countdown.days;
+
+                if (hours)
+                    hours.textContent =
+                        countdown.hours;
+
+                if (dayLabel)
+                    dayLabel.textContent =
+                        countdown.dayLabel;
+
+                if (hourLabel)
+                    hourLabel.textContent =
+                        countdown.hourLabel;
+
+            },
+            60000
+        );
+
+}
+
+// =========================================
+// Filter Chips
+// =========================================
+
+function setupFilters() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".filter"
+        );
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                buttons.forEach(b =>
+                    b.classList.remove("active")
+                );
+
+                button.classList.add(
+                    "active"
+                );
+
+                activeFilter =
+                    button.dataset.athlete
+                        .toUpperCase();
+
+                renderAll();
+
+            }
+        );
+
+    });
+
+}
+
+// =========================================
+// Initialize
+// =========================================
+
+async function initFamily() {
+
+    try {
+
+        await FFS.init();
+
+        setupFilters();
+
+        await renderAll();
+
+    } catch (error) {
+
+        console.error(
+            "FFS Family Dashboard Error:",
+            error
+        );
+
+    }
+
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initFamily
+);
